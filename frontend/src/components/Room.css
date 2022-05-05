@@ -1,0 +1,88 @@
+
+.cover{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.btn-container{
+    display: inline-block;
+    
+    margin: 1vw 1vw 1vw 4vw;
+}
+
+.close-room{
+    background-color: #ee2c2c; 
+    border: #ee2c2c;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.mute-mic{
+    background-color: #80c3e2; 
+    border: #80c3e2;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+    
+}
+
+.mute-mic-off{
+    background-color: #ee2c2c; 
+    border: #ee2c2c;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+}
+
+
+
+.share{
+    background-color: #80c3e2; 
+    border: #80c3e2;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+}
+
+.camera{
+    background-color: #80c3e2; 
+    border: #80c3e2;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+}
+
+
+.camera-close{
+    background-color: #e93737; 
+    border: #e93737;
+    border-radius: 40px;
+    color: white;
+    display: block;
+    font-size: 1vw;
+    width: 5vw;
+    height: 3.5vw;
+}
+

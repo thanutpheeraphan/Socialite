@@ -1,0 +1,72 @@
+/* 
+.grid-container{
+
+} */
+
+.roomCardContainer{
+	background-color:#69E48E;
+	padding: 3em 2em;
+	margin-top: 4em;
+	margin-bottom: 0em;
+	margin-left: 5em;
+	margin-right: 10em;
+	/* margin-right: 100em; */
+	padding-left: 1em;
+	padding-top: 2em;
+	padding-bottom: 1em;
+	overflow: auto;
+	border-radius: .5em;
+	border: none;
+	cursor: pointer;
+	/* flex: 1 1 0; */
+	/* position: absolute; */
+}
+
+
+.roomCardContainer h2{
+	padding-left: 4%;
+	font-size: 3em;
+	color: #fff;
+	font-weight: 500;
+}
+
+.roomCardContainer h3{
+	font-size: 1.875em;
+	font-weight: 500;
+	line-height: 1;
+	color: rgb(255, 255, 255);
+}
+
+.roomMembers img {
+	width: 80px;
+	height: 80px;
+	border-radius: 0.6em;
+}
+
+.roomMembers {
+	padding-left: 3.5%;
+	display: flex;
+	align-items: flex-start;
+	color: #fff;
+	font-size: 3em;
+
+}
+
+.roomMembers p{
+	font-size: 0.975em;
+	font-weight: 100;
+	line-height: 1;
+	margin-bottom: 0.5em;
+	color: var(--textColor);
+}
+
+.roomMembers > div:first-child{
+	position: relative;
+	margin-right: 2em;
+}
+
+.roomMembers > div:first-child>img:nth-child(2){
+	position: absolute;
+	left: 1em;
+	top: 1em;
+}
