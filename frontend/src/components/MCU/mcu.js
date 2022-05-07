@@ -133,6 +133,14 @@ var McuProcess = (function () {
       video_st = newVideoState;
 
       removeVideoStream(rtp_vid_senders);
+
+	  serverProcess(
+		  JSON.stringify({
+			  Video_switch_off: "Video_switch_off",
+		  }),
+		  rtp_vid_senders
+	  );
+
       return;
     }
     if (newVideoState == video_states.Camera) {
@@ -158,6 +166,12 @@ var McuProcess = (function () {
           },
           audio: false,
         });
+		vstream.oninactive = (e) => {
+			removeVideoStream(rtp_vid_senders);
+			$("#ScreenShareOnOf").html(
+			  '<span class="material-icons ">present_to_all</span><div >Present Now</div>'
+			);
+		  };
       }
       if (vstream && vstream.getVideoTracks().length > 0) {
         videoCamTrack = vstream.getVideoTracks()[0];
@@ -298,7 +312,9 @@ var McuProcess = (function () {
       } catch (e) {
         console.log(e);
       }
-    }
+    }else if (message.Video_switch_off){
+		document.querySelector("#v_" + from_connid +"").srcObject = null;
+	}
   }
 
   return {
