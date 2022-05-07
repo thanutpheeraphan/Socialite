@@ -1,6 +1,7 @@
 import {Mcu} from "../MCU/mcu.js";
 import React, { useEffect } from "react";
 import otherJPG from "../../img/other.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css";
 import $ from "jquery";
 
@@ -32,7 +33,6 @@ const MCURoom = (props) => {
 
   return (
     <div>
-   
       <body>
         <main class=" d-flex flex-column home-wrap">
           <div class="g-top text-light">
@@ -84,10 +84,10 @@ const MCURoom = (props) => {
                 style={{ flexBasis: 25 + "%", zIndex: 1, display: "none" }}
               >
                 <div
-                  class="meeting-heading-wrap d-flex justify-content-between align-items-center pr-3 pl-3"
+                  class="meeting-heading-wrap d-flex justify-content-between align-items-center pe-3 ps-3"
                   style={{ height: 10 + "vh" }}
                 >
-                  <div class="meeting-heading font-weight-bold ">
+                  <div class="meeting-heading fw-bold ">
                     Meeing Details
                   </div>
                   <div class="meeting-heading-cross display-center cursor-pointer">
@@ -95,11 +95,11 @@ const MCURoom = (props) => {
                   </div>
                 </div>
                 <div
-                  class="people-chat-wrap d-flex justify-content-between align-items-center ml-3 mr-3 pr-3 pl-3"
+                  class="people-chat-wrap d-flex justify-content-between align-items-center ms-3 me-3 pe-3 ps-3"
                   style={{ height: 10 + "vh", fontSize: 14 + "px" }}
                 >
                   <div class="people-heading display-center cursor-pointer">
-                    <div class="people-headin-icon display-center mr-1">
+                    <div class="people-headin-icon display-center me-1">
                       <span class="material-icons">people</span>
                     </div>
                     <div class="people-headin-text display-center">
@@ -107,14 +107,14 @@ const MCURoom = (props) => {
                     </div>
                   </div>
                   <div class="chat-heading d-flex just-content-round align-items-center cursor-pointer">
-                    <div class="chat-heading-icon display-center mr-1">
+                    <div class="chat-heading-icon display-center me-1">
                       <span class="material-icons">message</span>
                     </div>
                     <div class="chat-heading-text">Chat</div>
                   </div>
                 </div>
                 <div
-                  class="in-call-chat-wrap mr-3 ml-3 pl-3 pr-3"
+                  class="in-call-chat-wrap me-3 ms-3 ps-3 pe-3"
                   style={{
                     fontSize: 14 + "px",
                     height: 69 + "vh",
@@ -136,13 +136,13 @@ const MCURoom = (props) => {
                             }}
                           />
                         </div>
-                        <div class="participant-name ml-2">You</div>
+                        <div class="participant-name ms-2">You</div>
                       </div>
                       <div class="participant-action-wrap display-center">
-                        <div class="participant-action-dot display-center mr-2 cursor-pointer">
+                        <div class="participant-action-dot display-center me-2 cursor-pointer">
                           <span class="material-icons">more_vert</span>
                         </div>
-                        <div class="participant-action-pin display-center mr-2 cursor-pointer">
+                        <div class="participant-action-pin display-center me-2 cursor-pointer">
                           <span class="material-icons">push_pin</span>
                         </div>
                       </div>
@@ -185,7 +185,7 @@ const MCURoom = (props) => {
                 </div>
               </div>
             </div>
-            <div class="g-top-left bg-light text-secondary w-25 d-flex align-items-center justify-content-between pl-2 pr-2">
+            <div class="g-top-left bg-light text-secondary w-25 d-flex align-items-center justify-content-between ps-2 pe-2">
               <div class="top-left-participant-wrap pt-2 cursor-pointer">
                 <div class="top-left-participant-icon">
                   <span class="material-icons">people</span>
@@ -225,7 +225,7 @@ const MCURoom = (props) => {
                       >
                         content_copy
                       </span>
-                      <span class="copy_info font-weight-bold">
+                      <span class="copy_info fw-bold">
                         Copy Joining Info{" "}
                         <span
                           style={{
@@ -233,7 +233,7 @@ const MCURoom = (props) => {
                             backgroundColor: "aquamarine",
                             borderRadius: 5 + "px",
                           }}
-                          class="link-conf font-weight-bold p-1"
+                          class="link-conf fw-bold p-1"
                         >
                           Link Copied
                         </span>
@@ -252,14 +252,14 @@ const MCURoom = (props) => {
               style={{ height: 10 + "vh" }}
             >
               <div
-                class="mic-toggle-wrap action-icon-style display-center mr-2 cursor-pointer"
+                class="mic-toggle-wrap action-icon-style display-center me-2 cursor-pointer"
                 id="miceMuteUnmute"
               >
                 <span class="material-icons" style={{ width: 100 + "%" }}>
                   mic_off
                 </span>
               </div>
-              <div class="end-call-wrap action-icon-style display-center mr-2 cursor-pointer">
+              <div class="end-call-wrap action-icon-style display-center me-2 cursor-pointer">
                 <span class="material-icons text-danger">call</span>
               </div>
               <div
@@ -272,12 +272,12 @@ const MCURoom = (props) => {
               </div>
             </div>
             <div
-              class="bottom-right d-flex just-content-center align-items-center mr-3"
+              class="bottom-right d-flex just-content-center align-items-center me-3"
               id="screenShare-wrap"
               style={{ height: 10 + "vh" }}
             >
               <div
-                class="present-now-wrap d-flex just-content-center flex-column align-items-center mr-5 cursor-pointer"
+                class="present-now-wrap d-flex just-content-center flex-column align-items-center me-5 cursor-pointer"
                 id="ScreenShareOnOf"
               >
                 <span class="material-icons">present_to_all</span>
