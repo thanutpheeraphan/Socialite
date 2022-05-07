@@ -39,6 +39,10 @@ function Home(props) {
 	var eight_digit_value = Math.floor(Math.random()*100000000);
 	props.history.push({pathname: `/room/?roomID=${eight_digit_value}`});
   };
+  const joinRoomFunc = () => {
+	var room_id = window.prompt("Enter the room ID");  
+	props.history.push({pathname: `/room/?roomID=${room_id}`});
+  };
   const create = () => {
     room_link = uuid();
 
@@ -254,6 +258,18 @@ function Home(props) {
         </div>
       ))}
       <div>
+		  <Fab   
+		  onClick={joinRoomFunc}
+          variant="extended"
+          aria-label="add"
+          style={{ position: "fixed", 
+          right: 10,
+          bottom: 70, 
+          background: 'rgba(45, 52, 54, 1)',
+          color:'#fff',
+          fontSize: 15, }} >
+			  Join Room
+		  </Fab>
         <Fab
         //   onClick={handleShow}
 		  onClick={createRoomFunc}

@@ -40,8 +40,8 @@ const MCURoom = (props) => {
               {/* style={{marginRight: spacing + 'em'}} */}
               <div
                 id="meetingContainer"
-                class="w-75 d-none"
-                // style={{ display: "none", flexBasis: 75 + "%" }}
+                class="w-75"
+                style={{ display: "none"}}
               >
                 <div class="call-wrap" style={{ backgroundColor: "black" }}>
                   <div
@@ -55,7 +55,7 @@ const MCURoom = (props) => {
                         style={{ fontSize: 14 + "px" }}
                       ></h2>
                       <div class="display-center">
-                        <video autoPlay muted id="locaVideoPlayer"></video>
+					  <video autoPlay muted id="locaVideoPlayer"></video>
                       </div>
                     </div>
                     <div
