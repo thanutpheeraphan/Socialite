@@ -19,8 +19,7 @@ var McuProcess = (function () {
   var video_st = video_states.None;
   var videoCamTrack;
   var rtp_vid_senders = [];
-  async function _init(SDP_function, my_connid) 
-  {
+  async function _init(SDP_function, my_connid) {
     serverProcess = SDP_function;
 
     let my_connection_id = my_connid;
@@ -31,7 +30,7 @@ var McuProcess = (function () {
   function eventProcess() {
     $("#miceMuteUnmute").on("click", async function () {
       if (!audio) {
-        // await loadAudio();
+        await loadAudio();
       }
       if (!audio) {
         alert("Audio permission has not granted");
@@ -48,7 +47,7 @@ var McuProcess = (function () {
         $(this).html(
           "<span class='material-icons' style='width:100%;'>mic_off</span>"
         );
-        // removeMediaSenders(rtp_aud_senders);
+        removeMediaSenders(rtp_aud_senders);
       }
       isAudioMute = !isAudioMute;
     });
@@ -66,6 +65,19 @@ var McuProcess = (function () {
         await videoProcess(video_states.ScreenShare);
       }
     });
+  }
+
+  async function loadAudio() {
+    try {
+      var astream = await navigator.mediaDevices.getUserMedia({
+        video: false,
+        audio: true,
+      });
+      audio = astream.getAudioTracks()[0];
+      audio.enabled = false;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   function connection_status(connection) {
@@ -92,6 +104,24 @@ var McuProcess = (function () {
     }
   }
 
+  function removeMediaSenders(rtp_senders) {
+    for (var con_id in peers_connection_ids) {
+      if (rtp_senders[con_id] && connection_status(peers_connection[con_id])) {
+        peers_connection[con_id].removeTrack(rtp_senders[con_id]);
+        rtp_senders[con_id] = null;
+      }
+    }
+  }
+
+  function removeVideoStream(rtp_vid_senders) {
+    if (videoCamTrack) {
+      videoCamTrack.stop();
+      videoCamTrack = null;
+      local_div.srcObject = null;
+      removeMediaSenders(rtp_vid_senders);
+    }
+  }
+
   async function videoProcess(newVideoState) {
     if (newVideoState == video_states.None) {
       $("#videoCamOnOff").html(
@@ -102,7 +132,7 @@ var McuProcess = (function () {
       );
       video_st = newVideoState;
 
-    //   removeVideoStream(rtp_vid_senders);
+      removeVideoStream(rtp_vid_senders);
       return;
     }
     if (newVideoState == video_states.Camera) {
@@ -308,7 +338,7 @@ export var Mcu = (function () {
     };
     socket.on("connect", () => {
       if (socket.connected) {
-		console.log("SDP_function: " , SDP_function);
+        console.log("SDP_function: ", SDP_function);
         McuProcess.init(SDP_function, socket.id);
         if (user_id != "" && meeting_id != "") {
           socket.emit("userconnect", {
@@ -331,7 +361,7 @@ export var Mcu = (function () {
           McuProcess.setNewConnection(other_users[i].connectionId);
         }
       }
-    }); 
+    });
     socket.on("SDPProcess", async function (data) {
       await McuProcess.processClientFunc(data.message, data.from_connid);
     });

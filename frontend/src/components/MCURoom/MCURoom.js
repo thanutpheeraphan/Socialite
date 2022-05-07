@@ -1,8 +1,8 @@
 import {Mcu} from "../MCU/mcu.js";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import otherJPG from "../../img/other.jpg";
 import "./style.css";
-import $, { getScript } from "jquery";
+import $ from "jquery";
 
 
 const MCURoom = (props) => {
