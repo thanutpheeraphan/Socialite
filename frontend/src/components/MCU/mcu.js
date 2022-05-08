@@ -1,5 +1,8 @@
-import $, { getScript } from "jquery";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../MCURoom/style.css";
+import $ from "jquery";
 const io = require("socket.io-client");
+
 
 var McuProcess = (function () {
   var peers_connection_ids = [];
@@ -317,25 +320,24 @@ var McuProcess = (function () {
     }
   }
 
-  async function closeConnection(connid){
-	  peers_connection_ids[connid] = null;
-	  if(peers_connection[connid]){
-		  peers_connection[connid].close();
-		  peers_connection[connid] = null;
-
-	  }
-	  if(remote_aud_stream[connid]){
-		  remote_aud_stream[connid].getTracks().forEach((t)=>{
-			  if(t.stop) t.stop();
-		  })
-		  remote_aud_stream[connid] = null;
-	  }
-	  if(remote_vid_stream[connid]){
-		remote_vid_stream[connid].getTracks().forEach((t)=>{
-			if(t.stop) t.stop();
-		})
-		remote_vid_stream[connid] = null;
-	}
+  async function closeConnection(connid) {
+    peers_connection_ids[connid] = null;
+    if (peers_connection[connid]) {
+      peers_connection[connid].close();
+      peers_connection[connid] = null;
+    }
+    if (remote_aud_stream[connid]) {
+      remote_aud_stream[connid].getTracks().forEach((t) => {
+        if (t.stop) t.stop();
+      });
+      remote_aud_stream[connid] = null;
+    }
+    if (remote_vid_stream[connid]) {
+      remote_vid_stream[connid].getTracks().forEach((t) => {
+        if (t.stop) t.stop();
+      });
+      remote_vid_stream[connid] = null;
+    }
   }
 
   return {
@@ -366,6 +368,7 @@ export var Mcu = (function () {
     $("#me h2").text(user_id + "(Me)");
 
     event_process_for_signaling_server();
+    eventHandling();
   }
 
   function event_process_for_signaling_server() {
@@ -410,6 +413,49 @@ export var Mcu = (function () {
     socket.on("SDPProcess", async function (data) {
       await McuProcess.processClientFunc(data.message, data.from_connid);
     });
+
+    socket.on("showChatMessage", function (data) {
+      var time = new Date();
+      var lTime = time.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+
+      var div = $("<div>").html(
+        "<span class='font-weight-bold mr-3' style='color:black'>" +
+          data.from +
+          "</span>" +
+          lTime +
+          "</br>" +
+          data.message
+      );
+      $("#messages").append(div);
+    });
+  }
+
+  function eventHandling() {
+    $("#btnsend").on("click", function () {
+      var msgData = $("#msgbox").val();
+      socket.emit("sendMessage", msgData);
+      var time = new Date();
+      var lTime = time.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+
+      var div = $("<div>").html(
+        "<span class='font-weight-bold mr-3' style='color:black'>" +
+          user_id +
+          "</span>" +
+          lTime +
+          "</br>" +
+          msgData
+      );
+      $("#messages").append(div);
+      $("#msgbox").val("");
+    });
   }
 
   function addUser(other_user_id, connId) {
@@ -421,6 +467,18 @@ export var Mcu = (function () {
     newDivId.show();
     $("#divUsers").append(newDivId);
   }
+  $(document).on("click",".people-heading", function(){
+	$(".in-call-wrap-up").show(300);
+    $(".chat-show-wrap").hide(300);
+    // $(this).addClass("active");
+    // $(".chat-heading").removeClass("active");
+  });
+  $(document).on("click", ".chat-heading", function () {
+    $(".in-call-wrap-up").hide(300);
+    $(".chat-show-wrap").show(300);
+    // $(this).addClass("active");
+    // $(".people-heading").removeClass("active");
+  });
   return {
     _init: function (uid, mid) {
       init(uid, mid);
