@@ -10,7 +10,8 @@ import { Modal } from "react-bootstrap";
 import "../components/Navbar/Navbar.css";
 import { parse, v1 as uuid } from "uuid";
 import { toast } from "react-toastify";
-
+import SearchBar from "../components/SearchBar/SearchBar";
+import RooMockData from "../data/MockData.json";
 
 import {
   BsFillChatDotsFill,
@@ -223,7 +224,8 @@ function Home(props) {
   /*{setAuth} */
 
   return (
-    <div style={{backgroundColor: '',}}>
+    <div>
+      <SearchBar placeholder="Enter Search..." data={RooMockData}/>
       {data.map((item) => (
             <div
               className={style.roomCardContainer}
@@ -261,7 +263,7 @@ function Home(props) {
           </div>
         </div>
       ))}
-      <div>
+      <div className="bg-[#2f3136] flex flex-col min-w-max">
 		  <Fab   
 		  onClick={joinRoomFunc}
           variant="extended"
@@ -295,6 +297,7 @@ function Home(props) {
           <Modal.Header className="modal-style" closeButton>
             <Modal.Title style={{fontSize:20}}>Create Room</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
             <div>
               {/* //onSubmit={create} */}

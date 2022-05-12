@@ -5,15 +5,14 @@
 
 .roomCardContainer{
 	background-color:#69E48E;
-	padding: 3em 2em;
 	margin-top: 4em;
 	margin-bottom: 0em;
-	margin-left: 5em;
-	margin-right: 10em;
+	margin-left: 7.5em;
+	margin-right: 12.5em;
 	/* margin-right: 100em; */
-	padding-left: 1em;
-	padding-top: 2em;
-	padding-bottom: 1em;
+	padding-left: 0.5em;
+	padding-top: 1em;
+	padding-bottom: .5em;
 	overflow: auto;
 	border-radius: .5em;
 	border: none;
@@ -24,22 +23,23 @@
 
 
 .roomCardContainer h2{
-	padding-left: 4%;
-	font-size: 3em;
+	font-family: 'Open Sans', sans-serif;
+	padding-left: 4.5%;
+	font-size: 2em;
 	color: #fff;
 	font-weight: 500;
 }
 
 .roomCardContainer h3{
-	font-size: 1.875em;
+	font-size: 1.5em;
 	font-weight: 500;
 	line-height: 1;
 	color: rgb(255, 255, 255);
 }
 
 .roomMembers img {
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	border-radius: 0.6em;
 }
 
@@ -48,7 +48,7 @@
 	display: flex;
 	align-items: flex-start;
 	color: #fff;
-	font-size: 3em;
+	font-size: 1.8em;
 
 }
 
