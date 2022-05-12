@@ -180,16 +180,19 @@ const Navbar = ({ setAuth, isAutheticated }) => {
                   </a>
                   <ul className="dropdown-menu form-wrapper">
                     <li>
-                      <button className="btn btn-primary btn-block">
-                        Settings
-                      </button>
-
-                      <button
-                        onClick={(e) => logout(e)}
-                        className="btn btn-primary btn-block"
-                      >
-                        Logout
-                      </button>
+                      <Link to="/forgetPass">
+                        <button className="btn btn-primary btn-block">
+                          Settings 
+                        </button>
+                      </Link>
+                      <Link>
+                        <button
+                          onClick={(e) => logout(e)}
+                          className="btn btn-primary btn-block"
+                        >
+                          Logout
+                        </button>
+                      </Link>
                     </li>
                   </ul>
                 </li>

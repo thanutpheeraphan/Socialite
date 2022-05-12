@@ -27,6 +27,7 @@ import Dashboard2 from "./pages/Dashboard/Dashboard";
 import Safety from "./pages/Safety/Safety";
 import Support from "./pages/Support/Support";
 import MCURoom from "./components/MCURoom/MCURoom";
+import Forgetpass from "./pages/ForgetPass/Forgetpass";
 
 toast.configure();
 
@@ -139,7 +140,16 @@ function App() {
               )
             }
           />
-          
+          <Route
+            exact path="/forgetPass"
+            render={(props) =>
+              !isAuthenticated ? (
+                <Forgetpass {...props} setAuth={setAuth}/>
+              ) : (
+                <Redirect to= "/"/>
+              )
+            }
+          />
 
 		   {/* <Route path="/room/:roomID" component={Room} /> */}
 		   <Route path="/room/:roomID" component={MCURoom} />

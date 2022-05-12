@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 import styled, {keyframes}from "styled-components";
 import "./SpSection2.css";
 
@@ -9,7 +9,7 @@ import mockCreate from "../../img/MockCreate.svg";
 
 import {HContent} from "../../components/HomeSection/HomeSection2"
 
-import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, Move, MoveIn, MoveOut, Sticky, StickyIn, ZoomIn, FadeOut } from "react-scroll-motion";
+import { Animator, ScrollContainer, ScrollPage, batch, Fade,MoveIn, MoveOut, Sticky, } from "react-scroll-motion";
 
 const move = keyframes`
     0% {transform: scale(1.05)}

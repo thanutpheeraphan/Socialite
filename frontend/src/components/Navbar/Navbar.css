@@ -92,6 +92,7 @@
 /* button login */
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
     color: rgb(255, 255, 255);
+    text-decoration: none;
     font-size: 18px;
     font-style: bold;
     font-family: sans-serif;
@@ -99,10 +100,12 @@
     padding-top: 10px;
     padding-bottom: 7.5px;
     vertical-align: middle;
+    margin-bottom: .5vw;
     border: none;
 }	
 .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
     color: #fff;
+    text-decoration: none;
     outline: none;
     background: #535363;
     transform: scale(1.01);
@@ -111,6 +114,7 @@
 
 /* Box position */
 .navbar .navbar-right li:first-child a {
+    text-decoration: none;
     transition: all .2 ease-in-out;
     padding-right: 10px;
     padding-top: 20px;
@@ -235,6 +239,7 @@
     }
 
     .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+        text-decoration: none;
         display: block;
     }
 }
