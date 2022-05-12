@@ -44,13 +44,12 @@ function Home(props) {
 	props.history.push({pathname: `/room/?roomID=${room_id}`});
   };
   const create = () => {
-    room_link = uuid();
 
-    // props.history.push(`/room/${id}`);
+
     console.log(user_id);
+	console.log(name);
     console.log(room_name);
     console.log(password);
-    console.log(room_link);
     console.log(status);
 
     addToDb();
@@ -58,6 +57,10 @@ function Home(props) {
 
   const addToDb = async () => {
     // e.preventDefault();
+
+	// console.log(eight_digit_value);
+	var eight_digit_value = Math.floor(Math.random()*100000000);
+    room_link = eight_digit_value;
 
     try {
       const body = {
@@ -68,7 +71,7 @@ function Home(props) {
         status,
         room_member,
       };
-	  const response = await fetch("http://localhost:5000/rooms/createroom", {
+	  const response = await fetch(process.env.REACT_APP_API_URL+"/rooms/createroom", {
     //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/rooms/createroom", {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -79,7 +82,8 @@ function Home(props) {
       console.log(parseResponse);
 
       if (parseResponse.status == true) {
-        props.history.push({pathname: `/room/${room_link}`, search: '?query=abc', state:{parseResponse} });
+		props.history.push({pathname: `/room/?roomID=${room_link}`, state:{name} });
+        // props.history.push({pathname: `/room/${room_link}`, search: '?query=abc', state:{parseResponse} });
         // toast.success("Room created");
       } else {
         toast.error(parseResponse);
@@ -95,14 +99,14 @@ function Home(props) {
   const getName = async (e) => {
     try {
 
-      const response = await fetch("http://localhost:5000/dashboard/", {
+      const response = await fetch(process.env.REACT_APP_API_URL+"/dashboard/", {
         method: "GET",
         headers: { jwt_token: localStorage.token },
       });
 
       const parseResponse = await response.json();
-      console.log(parseResponse.user_id);
-      setName(parseResponse.user_id);
+      console.log(parseResponse);
+      setName(parseResponse.user_name);
       setId(parseResponse.user_id);
 
       //   console.log(parseResponse);
@@ -163,7 +167,7 @@ function Home(props) {
     // e.preventDefault();
 
     try {
-      const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/rooms/getrooms", {
+      const response = await fetch(process.env.REACT_APP_API_URL+"/rooms/getrooms", {
         method: "GET",
       });
 
@@ -272,7 +276,7 @@ function Home(props) {
 		  </Fab>
         <Fab
         //   onClick={handleShow}
-		  onClick={createRoomFunc}
+		  onClick={handleShow}
           variant="extended"
           aria-label="add"
           style={{ position: "fixed", 
@@ -375,7 +379,7 @@ function Home(props) {
                 </Modal.Footer> */}
               </form>
               <div>
-                <button className="create-button" onClick={createRoomFunc}>Create</button>
+                <button className="create-button" onClick={create}>Create</button>
               </div>
             </div>
           </Modal.Body>

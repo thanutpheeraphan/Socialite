@@ -23,7 +23,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
       const body = { email, password };
 	  
 	//   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/login", {
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch(process.env.REACT_APP_API_URL+"/auth/login", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body),

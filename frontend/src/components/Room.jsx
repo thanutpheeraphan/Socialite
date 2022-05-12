@@ -76,8 +76,7 @@ const Room = (props) => {
         const params = location.state.parseResponse.room_link;
 		
         const closeRoom = await fetch(
-        //   `http://localhost:5000/rooms/close/${params}`,
-		  "http://localhost:5000/rooms/close/${params}",
+			process.env.REACT_APP_API_URL+"/rooms/close/${params}",
           {
             method: "DELETE",
           }

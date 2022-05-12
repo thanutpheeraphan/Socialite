@@ -39,7 +39,7 @@ function App() {
 
   async function isAuth() {
     try {
-	  const response = await fetch("http://localhost:5000/auth/verify", {
+	  const response = await fetch(process.env.REACT_APP_API_URL+ "/auth/verify", {
 
     //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/verify", {
         method: "GET",

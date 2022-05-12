@@ -1,5 +1,6 @@
 import {Mcu} from "../MCU/mcu.js";
 import React, { useEffect } from "react";
+import { useLocation} from "react-router-dom";
 import otherJPG from "../../img/other.jpg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css";
@@ -7,12 +8,20 @@ import $ from "jquery";
 
 
 const MCURoom = (props) => {
+	const location = useLocation();
+	const userName = location.state.name;
   //   const uploadForm = useRef(null);
   //   const newFunc = () => {
   useEffect(() => {
+	// const location = useLocation();
+	// const testName = location.state.parseResponse.name;
+	console.log(props);
+	console.log(userName);
+	let roomID = props.match.params.roomID;
+	console.log(roomID.slice(8));
     const urlParams = new URLSearchParams(window.location.search);
     var meeting_id = urlParams.get("roomID");
-    var user_id = window.prompt("Enter your username");
+    var user_id = userName;
 
     console.log("Meeting ID: ", meeting_id);
     console.log("User ID: ", user_id);

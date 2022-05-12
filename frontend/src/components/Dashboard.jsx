@@ -6,7 +6,7 @@ const Dashboard = ({ setAuth }) => {
   async function getName() {
     try {
     //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/dashboard/", {
-		const response = await fetch("http://localhost:5000/dashboard/", {
+		const response = await fetch(process.env.REACT_APP_API_URL+"/dashboard/", {
 		  
         method: "GET",
         headers: {jwt_token: localStorage.token }
