@@ -91,6 +91,7 @@ export const Block = styled.div`
 	}
 `;
 const Title = styled.h1`
+	font-family: 'Open Sans', sans-serif;
 	font-size: calc(1.3rem + 0.75vw);
     font-weight: bold;
 	line-height: 1.5;

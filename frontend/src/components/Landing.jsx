@@ -7,6 +7,7 @@ import HomeSection3 from './HomeSection/HomeSection3';
 import Footer from "./Footer";
 
 const Container = styled.div`
+	font-family: 'Open Sans', sans-serif;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
