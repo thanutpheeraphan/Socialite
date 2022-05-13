@@ -18,20 +18,20 @@
 }
 .registertitle{
     margin-right: 40%;
-    margin-top: 0%;
-    font-size: 70px;
-    padding: 20px;
+    margin-top: 4%;
+    font-size: 3.5vw;
+    padding: 1vw;
 }
 
 .title-desc{
     margin-top: 15%;
-    padding: 50px;
-    font-size: 50px;
+    padding: 1vw;
+    font-size: 3vw;
 }
 
 .form-desc{
-    padding: 20px;
-    font-size: 30px;
+    padding: 1vw;
+    font-size: 2vw;
 }
 
 .Container{
@@ -39,7 +39,7 @@
     margin: auto;
     
     width: 80%;
-    height: 600px;
+    height: auto;
 
     background-color: #ffffff;
 }
@@ -76,12 +76,12 @@
 
 .sign-up-form > label{
     width: 100%;
-    padding: .5em;
+    padding: .5vw;
 }
 
 .sign-up-form > label > input{
     width: 60%;
-    margin: 10px;
+    margin: .5vw;
 }
 
 
@@ -96,6 +96,7 @@
 
     color: #fff;
     text-decoration: none;
+    margin-bottom: 5vw;
 }
 
 button:focus{
@@ -107,7 +108,7 @@ button:hover{
 }
 
 input{
-    font-size: 30px;
+    font-size: 3vw;
     padding: 2em;
     border: 1px solid #838383;
     border-radius: 10px;

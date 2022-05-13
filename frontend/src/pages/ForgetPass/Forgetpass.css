@@ -7,17 +7,17 @@
 
 .FPtitle{
     position: relative;
-
-    font-size: 55px;
-    padding: 50px;
+    font-size: 2.8vw;
+    padding: 4vw;
+    padding-bottom: 2vw;
 }
 
-.Container{
+.ContainerFP{
     font-family: 'Open Sans', sans-serif;
     position: relative;
     margin: auto;
     width: 40%;
-    height: 34vw;
+    height: auto;
     background-color: #ffffff;
 }
 
@@ -29,18 +29,19 @@
 
 .forget-form > label{
     width: 100%;
-    padding: .5em;
+    padding: .5vw;
 }
 
 .forget-form > label > input{
     width: 60%;
-    margin: 10px;
+    margin: 4vw;
 }
 
 .forget-btn{
-    margin-top: 5vw;
-    font-size: 15px;
-    padding: 10px 60px;
+    margin-top: 6vw;
+    margin-bottom: 3vw;
+    font-size: 1vw;
+    padding: .5vw 2.5vw;
 
     border: 1px solid #35353F;
     border-radius: 2em;

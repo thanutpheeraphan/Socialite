@@ -18,7 +18,7 @@ const Forgetpass = () => {
     return(
         <Fragment>
             <div className="bg">
-                <div className="Container">
+                <div className="ContainerFP">
                     <h1 className="FPtitle">Forget password</h1>
                     <form className="forget-form" onSubmit={onForget}>
                         <label>

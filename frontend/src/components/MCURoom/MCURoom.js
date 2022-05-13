@@ -89,12 +89,23 @@ const MCURoom = (props) => {
                 </div>
               </div>
               <div
-                class="g-right-details-wrap bg-light text-secondary h-100"
-                style={{ flexBasis: 25 + "%", zIndex: 1, display: "none" }}
+                class="g-right-details-wrap text-secondary h-100"
+                style={{ 
+                  flexBasis: 25 + "%",
+                  zIndex: 1,
+                  display: "none", 
+                  backgroundColor: "#F0F0F0",
+                  borderColor: "2px #F0F0F0"  
+                }}
               >
                 <div
                   class="meeting-heading-wrap d-flex justify-content-between align-items-center pe-3 ps-3"
-                  style={{ height: 10 + "vh" , color: "black"}}
+                  style={{ 
+                    height: 10 + "vh" ,
+                    color: "white", 
+                    backgroundColor:"#35353F"
+                   
+                  }}
                 >
                   <div class="meeting-heading fw-bold ">
                     Meeting Details
@@ -103,9 +114,13 @@ const MCURoom = (props) => {
                     <span class="material-icons">clear</span>
                   </div>
                 </div>
+
                 <div
                   class="people-chat-wrap d-flex justify-content-between align-items-center ms-3 me-3 pe-3 ps-3"
-                  style={{ height: 10 + "vh", fontSize: 14 + "px" }}
+                  style={{ 
+                    height: 10 + "vh",
+                    fontSize: 14 + "px" ,
+                  }}
                 >
                   <div class="people-heading display-center cursor-pointer"
                     style={{color: "black"}}>
@@ -118,9 +133,9 @@ const MCURoom = (props) => {
                   </div>
                   <div class="chat-heading d-flex just-content-round align-items-center cursor-pointer">
                     <div class="chat-heading-icon display-center me-1">
-                      <span class="material-icons">message</span>
+                      <span class="material-icons" style={{color: "black"}}>message</span>
                     </div>
-                    <div class="chat-heading-text">Chat</div>
+                    <div class="chat-heading-text" style={{color: "black"}}>Chat</div>
                   </div>
                 </div>
                 <div
@@ -129,10 +144,14 @@ const MCURoom = (props) => {
                     fontSize: 14 + "px",
                     height: 69 + "vh",
                     // overflowY: "scroll",
+                    // backgroundColor: "grey",
+                    // opacity: "0.1"
                   }}
                 >
                   <div class="in-call-wrap-up" style={{ display: "none" }}>
-                    <div class="in-call-wrap d-flex justify-content-between align-items-center mb-3">
+                    <div class="in-call-wrap d-flex justify-content-between align-items-center mb-3"
+                      style={{color: "black"}}
+                      >
                       <div class="participant-img-name-wrap display-center cursor-pointer">
                         <div class="participant-img">
                           <img
@@ -146,14 +165,14 @@ const MCURoom = (props) => {
                             }}
                           />
                         </div>
-                        <div class="participant-name ms-2">You</div>
+                        <div class="participant-name ms-2" style={{color: "black"}}>You</div>
                       </div>
                       <div class="participant-action-wrap display-center">
                         <div class="participant-action-dot display-center me-2 cursor-pointer">
-                          <span class="material-icons">more_vert</span>
+                          <span class="material-icons" style={{color: "black"}}>more_vert</span>
                         </div>
                         <div class="participant-action-pin display-center me-2 cursor-pointer">
-                          <span class="material-icons">push_pin</span>
+                          <span class="material-icons" style={{color: "black"}}>push_pin</span>
                         </div>
                       </div>
                     </div>
@@ -180,13 +199,14 @@ const MCURoom = (props) => {
                           style={{
                             borderBottom: 1 + "px solid teal",
                             border: "none",
+                            backgroundColor: "white"
                           }}
                         />
                       </div>
                       <div
                         class="chat-message-sent-action display-center"
                         id="btnsend"
-                        style={{ color: "teal", cursor: "pointer" }}
+                        style={{ color: "#35353F", cursor: "pointer" }}
                       >
                         <span class="material-icons">send</span>
                       </div>

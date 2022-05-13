@@ -67,10 +67,10 @@ const Navbar = ({ setAuth, isAutheticated }) => {
     <Fragment>
       <nav className="navbar navbar-default navbar-expand-lg navbar-light">
         <div className="navbar-header">
-          <a className="nav-logo">
+          
+          {/* <a href="./home" className="homelogo"> */}
             <img src={logo} alt="logo" className="img_icon"/>
-          </a>
-
+          {/* </a> */}
           <button
             type="button"
             data-target=".navbar-collapse"

@@ -4,6 +4,10 @@
     width: 250px;
 }  
 
+.img_icon:hover{
+    /* background-color: rgb(255, 0, 0); */
+}
+
 /* form-size */
 .form-group >.form-control {
     box-shadow: none;		
@@ -35,6 +39,7 @@
 .navbar .nav li {
     position: relative;
 }
+
 
 /* content spacing */
 .navbar .nav li a {
@@ -152,7 +157,7 @@
     font-size: 23px;
 }
 .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-    
+
     padding: 0px 2.5px;
     line-height: normal;
 }
@@ -295,3 +300,7 @@
    width: 20%;
    height: 20%;
 }
+
+/* .nav .homelogo:hover{
+    text-decoration: none;
+} */
