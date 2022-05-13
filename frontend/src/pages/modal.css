@@ -3,6 +3,7 @@
 .modal {
 	text-align: center;
 	padding: 0!important;
+  width: 100vw;
 }
 
 .modal-style{
@@ -10,11 +11,23 @@
 	color: #fff;
 }
 
+.modal-title{
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: -1vw;
+}
+
+.modal-header{
+  text-align: justify;
+}
+
 .modal-header .btn-close{
 	background-color: rgb(255, 255, 255);
-	opacity: .8;
-	margin-right: 2px;
-	border-radius: 4px;
+	opacity: .75;
+  width: .6vw;
+  height: .6vw;
+	margin-right: -.2vw;
+	border-radius: 100px;
 	transition: 0.3s;
 }
 
@@ -49,7 +62,7 @@
   	text-decoration: none;
 	display: inline-block;
 }
-.tag-container {
+/* .tag-container {
     min-width: 60%;
     max-width: 75%;
     display: flex;
@@ -81,4 +94,4 @@
   .tag span {
     margin-left: 5px;
     cursor: pointer;
-  }
+  } */

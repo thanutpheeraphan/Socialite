@@ -14,6 +14,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import RooMockData from "../data/MockData.json";
 import "../components/SearchBar/SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
+import TagsInput from "../components/TagsInput/TagsInput";
 
 import {
   BsFillChatDotsFill,
@@ -38,7 +39,7 @@ function Home(props) {
 
   const [name, setName] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -74,7 +75,7 @@ function Home(props) {
     console.log(room_name);
     console.log(password);
     console.log(status);
-	console.log(tags);
+	  // console.log(tags);
 
     addToDb();
   };
@@ -95,7 +96,7 @@ function Home(props) {
         room_link,
         status,
         room_member,
-		tags,
+		    // tags,
       };
       const response = await fetch(
         process.env.REACT_APP_API_URL + "/rooms/createroom",
@@ -247,22 +248,61 @@ function Home(props) {
     getName();
   }, []);
 
-
-  const addTag = (e) => {
-    if (e.key === "Enter") {
-      if (e.target.value.length > 0) {
-		setTags(oldArray => [...oldArray, e.target.value]);
-        // setTags([...tags, e.target.value]);
-        // e.target.value = "";
-      }
-    }
+  //test tag input
+  // const addTag = (e) => {
+  //   if (e.key === "Enter") {
+  //     if (e.target.value.length > 0) {
+	// 	setTags(oldArray => [...oldArray, e.target.value]);
+  //       // setTags([...tags, e.target.value]);
+  //       // e.target.value = "";
+  //     }
+  //   }
 	
-  };
-  const removeTag = (removedTag) => {
-    const newTags = tags.filter((tag) => tag !== removedTag);
-    setTags(newTags);
-  };
+  // };
+  // const removeTag = (removedTag) => {
+  //   const newTags = tags.filter((tag) => tag !== removedTag);
+  //   setTags(newTags);
+  // };
+
+  //testaginput2
+  // const TagsInput = props => {
+  //   const [tags, setTags] = React.useState([]);
+  //   const addTags = event => {
+  //     if (event.key === "Enter" && event.target.value !== ""){
+  //       setTags([...tags, event.target.value]);
+  //       props.selectedTags([...tags, event.target.value]);
+  //       event.target.value = "";
+  //     }
+  //   };
+  //   const removeTags = index => {
+  //     setTags([...tags.filter(tag => tags.indexOf(tag) !== index)]);
+  //   };
+  //   return (
+  //     <div className="tags-input">
+  //       <ul>
+  //         {tags.map((tag,index) => (
+  //           <li key={index}>
+  //             <span>{tag}</span>
+  //             <i className="material-icons"
+  //               onClick={() => removeTags(index)}
+  //             >
+  //               close
+  //             </i>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //       <input
+  //         type="text"
+  //         onKeyUp={event => addTags(event)}
+  //         placeholder="Press enter to add tags"
+  //         />
+  //     </div>
+  //   );
+  // };
+
+  
   /*{setAuth} */
+  // const selectedTags = tags => console.log(tags);
 
   return (
     <div>
@@ -274,14 +314,15 @@ function Home(props) {
             // className="form-control"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-			onKeyPress={e => e.key === 'Enter' && onSubmitForm}
+			      onKeyPress={e => e.key === 'Enter' && onSubmitForm}
           />
           {/* <button className="btn btn-success">Search</button> */}
-		  <div className="searchIcon">
-		  <SearchIcon onClick={onSubmitForm}/>
-        </div>
+          <div className="searchIcon">
+            <SearchIcon onClick={onSubmitForm}/>
+          </div>
         </form>
       </div>
+      
       {data.length != 0 ? (
         <div>
           {data.map((item, index) =>
@@ -365,13 +406,16 @@ function Home(props) {
         </Fab>
 
         <Modal show={show} onHide={handleClose} animation={false}>
-          <Modal.Header className="modal-style" closeButton>
-            <Modal.Title style={{ fontSize: 20 }}>Create Room</Modal.Title>
+          <Modal.Header className="modal-style" closeButton >
+
+            <Modal.Title>Create Room</Modal.Title>
+
           </Modal.Header>
 
           <Modal.Body>
             <div>
               {/* //onSubmit={create} */}
+              
               <form>
                 <div className="form-group">
                   <input
@@ -384,6 +428,7 @@ function Home(props) {
                     onChange={(e) => onChange(e)}
                   />
                 </div>
+                {/* <TagsInput selectedTags={selectedTags}/> */}
                 {/* <div className="form-group">
                   <input
                     type="password"
@@ -396,7 +441,7 @@ function Home(props) {
                   />
                 </div> */}
 
-                <div className="form-group">
+                {/* <div className="form-group">
                   {tags.map((tag, index) => {
                     return (
                       <div key={index} className="">
@@ -413,7 +458,7 @@ function Home(props) {
                     value={tag}
                     onChange={(e) => onChange(e)}
                   />
-                </div>
+                </div> */}
                 {/* <div className="form-group">
 				<input
                   type="submit"
@@ -428,7 +473,7 @@ function Home(props) {
                 />
 				</div> */}
                 <div>
-                  <Modal.Footer />
+                  
                   {/* <div>
                       <Button variant="secondary" onClick={handleClose}>
                         Cancel
@@ -453,14 +498,20 @@ function Home(props) {
                     Create Room
                   </Button>
                 </Modal.Footer> */}
+              <TagsInput />
+
               </form>
+              {/* <Modal.Footer /> */}
               <div>
                 <button className="create-button" onClick={create}>
                   Create
                 </button>
               </div>
             </div>
-          </Modal.Body>
+            
+            
+            </Modal.Body>
+          
           {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
@@ -469,6 +520,7 @@ function Home(props) {
               Save Changes
             </Button>
           </Modal.Footer> */}
+          
         </Modal>
       </div>
     </div>
