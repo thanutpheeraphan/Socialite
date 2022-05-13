@@ -51,6 +51,14 @@
 	vertical-align: middle;
 }
 
+.NoRoom{
+  margin-top: 7.5vw;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  font-family: 'Open Sans', 'sans-serif';
+}
+
 .create-button{
 	background-color: #2f3136;
 	color: #fff;
