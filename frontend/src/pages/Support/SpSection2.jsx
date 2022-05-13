@@ -163,9 +163,6 @@ const SpSection2= () =>{
 
             <ScrollPage page= {3}>
             <SupportSection id = "supsection2" className="alt_bg">
-                    <Animator animation={MoveIn(0,1000)}>
-                        <SuPic src={mockHome} className="fth_img"></SuPic>
-                    </Animator>
                     <Animator animation={MoveIn(0,-1000)}>
                         <SpBlock id = "Block" className="fth_block">	
                             <Title>Search & Join</Title>
@@ -175,6 +172,10 @@ const SpSection2= () =>{
                             <SubText>The room will show up accordingly to the user's search input.</SubText>
                         </SpBlock>
                     </Animator>
+                    <Animator animation={MoveIn(0,1000)}>
+                        <SuPic src={mockHome} className="fth_img"></SuPic>
+                    </Animator>
+                    
                 </SupportSection>
             </ScrollPage>
         </ScrollContainer>
