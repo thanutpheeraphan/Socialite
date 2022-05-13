@@ -78,8 +78,8 @@
     padding: 1px 20px;
 }
 
-.login:focus {
-    transition: all 0.3s ease 0s;
+/* .login:focus {
+    transition: all 0.3s ease-in-out 1s;
     background: #39D3B2;
     color: rgb(255, 255, 255);
     border-radius: 20px 20px 0 0;
@@ -87,7 +87,7 @@
     transform: scale(1.075);
     text-decoration: none;
     padding: 5px 20px;
-}
+} */
 
 /* button login */
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
