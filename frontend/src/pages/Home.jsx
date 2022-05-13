@@ -14,6 +14,8 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import RooMockData from "../data/MockData.json";
 import "../components/SearchBar/SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 import {
   BsFillChatDotsFill,
@@ -24,6 +26,8 @@ import {
 import logo from "../img/socialiteicon.svg";
 import user1 from "../img/user1.jpg";
 import user2 from "../img/user2.jpg";
+import { fontSize } from "@mui/system";
+import { Hidden } from "@mui/material";
 
 function Home(props) {
   const [createRoomInputs, setRoomInputs] = useState({
@@ -78,6 +82,23 @@ function Home(props) {
 
     addToDb();
   };
+
+  const ClipisText = (props) => {
+    const {children} = props
+
+    return(
+      <div style={{
+        //overflow
+        // overflow: "hidden",
+        textOverflow: "clip",
+        // maxWidth: 100,
+        maxLength: 8
+      }}>
+        {children}
+      </div>
+    )
+  }
+
 
   const addToDb = async () => {
     // e.preventDefault();
@@ -293,6 +314,7 @@ function Home(props) {
       
       {data.length != 0 ? (
         <div>
+          
           {data.map((item, index) =>
               <div
                 className={style.roomCardContainer}
@@ -305,8 +327,30 @@ function Home(props) {
                   joinRoom(item);
                 }}
               >
-                <h2>{item.room_name}</h2>
                 {/* <h3>{item.sub_title}</h3> */}
+                <div className={style.upperIndex}>
+                  <span className="title">
+                      {item.room_name}
+                  </span>
+              
+                  <span>
+                    
+                  <Chip  
+                    label={<ClipisText>{item.tags}</ClipisText>}
+                    maxLength={8}
+                    color="primary"
+                    style={{
+                      marginTop:"-.4vw",
+                      paddingLeft: 15,
+                      paddingRight: 15,  
+                      backgroundColor: "#35353F",
+                    }}  
+                  /> 
+                  </span>
+                </div>
+                
+                
+
                 <div className={style.roomMembers}>
                           {/* <div>
                   <img src={logo} alt="" />
@@ -325,10 +369,12 @@ function Home(props) {
                       <span className="mr-2">{item.room_member}</span>{" "}
                       <span className="mx-1"></span>
                       <BsFillPersonFill />
+                      
                     </p>
                   </div>
                 </div>
               </div>
+              
           )}
         </div>
       ) : (
