@@ -303,17 +303,16 @@ function Home(props) {
                 <h2>{item.room_name}</h2>
                 {/* <h3>{item.sub_title}</h3> */}
                 <div className={style.roomMembers}>
-                  {/* <div>
-					<img src={logo} alt="" />
-					<img src={logo} alt="" />
-				  </div> */}
+                          {/* <div>
+                  <img src={logo} alt="" />
+                  <img src={logo} alt="" />
+                  </div> */}
                   <div>
-                    {/* {item.members.map((person) => (
-					  <p>
-						{person.first_name} {person.last_name} <BsChatDots />
-					  </p>
-					))} */}
-
+                              {/* {item.members.map((person) => (
+                      <p>
+                      {person.first_name} {person.last_name} <BsChatDots />
+                      </p>
+                    ))} */}
                     <p className="d-flex align-items-center">
                       {/* <span className="mr-2">1.8</span> <BsFillPersonFill /> */}
                       <span className="mx-2"></span>

@@ -1,6 +1,7 @@
 .searchInputs {
+    
     margin-top: 3vw;
-    margin-left: 25vw;
+    margin-left: 28vw;
     display: flex;
     font-size: 20px;
 }
@@ -41,7 +42,7 @@
   
   .dataResult {
     margin-top: 5px;
-    margin-left: 25vw;
+    margin-left: 28vw;
     width: 42.5vw;
     height: auto;
     background-color: whitesmoke;
