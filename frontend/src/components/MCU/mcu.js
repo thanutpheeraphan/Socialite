@@ -359,7 +359,7 @@ var McuProcess = (function () {
 export var Mcu = (function () {
   var socket = null;
   var user_id = "";
-  var meeting_id = "";
+  let meeting_id;
 
   function init(uid, mid) {
     user_id = uid;
