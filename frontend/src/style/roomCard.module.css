@@ -25,14 +25,14 @@
 }
 
 
-.roomCardContainer h2{
+/* .roomCardContainer h2{
 	font-family: 'Open Sans', sans-serif;
 	padding-top: 2%;
 	padding-left: 5%;
 	font-size: 1.5vw;
 	color: #fff;
 	font-weight: 500;
-}
+} */
 
 .roomCardContainer h3{
 	font-size: 1.5em;
@@ -46,7 +46,7 @@
 	font-family: 'Open Sans', sans-serif;
 	padding-top: 2%;
 	padding-left: 5%;
-	font-size: 1.5vw;
+	font-size: 1.8vw;
 	color: #fff;
 	font-weight: 500;
 	
@@ -59,11 +59,30 @@
 }
 
 .roomMembers {
-	padding-left: 3.5%;
+	padding-left: 3%;
 	display: flex;
 	align-items: flex-start;
 	color: #fff;
-	font-size: 1.8em;
+	font-size: .75vw;
+}
+
+
+/* iconmember */
+.roomMembers p{
+	font-size: 2.5vw;
+	line-height: 1;
+	color: #fff;
+}
+
+.roomMembers > div:first-child{
+	position: relative;
+	margin-right: 0.6vw;
+}
+
+.roomMembers > div:first-child>img:nth-child(2){
+	position: absolute;
+	left: 1vw;
+	top: 1vw;
 }
 
 .upperIndex{
@@ -71,27 +90,12 @@
 	text-overflow: clip, 
 }
 
-.upperIndex span{
-	font-size: 1.2vw;
-	text-overflow: clip, 
+.upperIndex div{
+	font-family: "Open Sans", 'sans-serif'; 
+	color: #fff;
+	font-size: 1.65vw;
+	font-weight: 550;
+	padding-left: 6%;
 }
 
-.roomMembers p{
-	font-size: 2.5vw;
-	font-weight: 100;
-	line-height: 1;
-	margin-bottom: 0.5em;
-	color: var(--textColor);
-}
-
-.roomMembers > div:first-child{
-	position: relative;
-	margin-right: 2em;
-}
-
-.roomMembers > div:first-child>img:nth-child(2){
-	position: absolute;
-	left: 1em;
-	top: 1em;
-}
 

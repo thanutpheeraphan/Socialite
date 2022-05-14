@@ -16,6 +16,8 @@ import "../components/SearchBar/SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+
 
 import {
   BsFillChatDotsFill,
@@ -26,7 +28,7 @@ import {
 import logo from "../img/socialiteicon.svg";
 import user1 from "../img/user1.jpg";
 import user2 from "../img/user2.jpg";
-import { fontSize } from "@mui/system";
+import { fontFamily, fontSize } from "@mui/system";
 import { Hidden } from "@mui/material";
 
 function Home(props) {
@@ -92,7 +94,9 @@ function Home(props) {
         // overflow: "hidden",
         textOverflow: "clip",
         // maxWidth: 100,
-        maxLength: 8
+        maxLength: 8,
+        fontSize: "1.4vw",
+        paddingLeft: ".1vw"
       }}>
         {children}
       </div>
@@ -290,11 +294,19 @@ function Home(props) {
     setTags(newTags);
   };
   
+  // const ListItem = styled('li')(({ theme }) => ({
+  //   margin: theme.spacing(-2),
+  // }));
+
+
   /*{setAuth} */
   // const selectedTags = tags => console.log(tags);
 
   return (
-    <div>
+    <div style={{
+      display: "grid",
+      justifyContent: "",
+    }}>
       <div className="search">
         <form className="searchInputs" onSubmit={onSubmitForm}>
           <input
@@ -326,30 +338,19 @@ function Home(props) {
                   getRoomData(item);
                   joinRoom(item);
                 }}
+                
               >
                 {/* <h3>{item.sub_title}</h3> */}
                 <div className={style.upperIndex}>
-                  <span className="title">
+                  <div style={{
+                    fontSize: "1.6vw",
+                    fontFamily: "'Open Sans', sans-serif"
+                  }}>
                       {item.room_name}
-                  </span>
-              
-                  <span>
-                    
-                  <Chip  
-                    label={<ClipisText>{item.tags}</ClipisText>}
-                    maxLength={8}
-                    color="primary"
-                    style={{
-                      marginTop:"-.4vw",
-                      paddingLeft: 15,
-                      paddingRight: 15,  
-                      backgroundColor: "#35353F",
-                    }}  
-                  /> 
-                  </span>
+                  </div> 
+                  {/* <span>                     
+                  </span> */}
                 </div>
-                
-                
 
                 <div className={style.roomMembers}>
                           {/* <div>
@@ -369,12 +370,51 @@ function Home(props) {
                       <span className="mr-2">{item.room_member}</span>{" "}
                       <span className="mx-1"></span>
                       <BsFillPersonFill />
-                      
                     </p>
                   </div>
+                    {item.tags.map((data,index) =>
+                      <li style={{
+                          fontSize:"2vw", 
+                          paddingLeft:"1vw",
+                              
+                      }}>
+                        <Chip  
+                          label={
+                            <ClipisText>
+                              {item.tags[index]}
+                            </ClipisText>}
+                            
+                          color="primary"
+                          style={{
+                            marginTop:"-1vw",
+                            marginLeft: "-3.0vw",
+                            maxWidth: "10vw",
+                            paddingLeft: 15,
+                            paddingRight: 15,
+                            paddingBottom: 2,
+                            backgroundColor: "#35353F",
+                                      
+                          }}  
+                        />
+                      </li>
+                    )}
+
+                    {/* <Chip  
+                        label={<ClipisText>{item.tags}</ClipisText>}
+                        maxLength={8}
+                        color="primary"
+                        style={{
+                          marginTop:".25vw",
+                          marginLeft: "-3.5vw",
+                          paddingLeft: 15,
+                          paddingRight: 15,  
+                          backgroundColor: "#35353F",            
+                        }}  
+                    /> */}
+                      
                 </div>
               </div>
-              
+          
           )}
         </div>
       ) : (
