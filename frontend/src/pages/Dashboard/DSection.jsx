@@ -59,8 +59,8 @@ const DSection = () => {
 		// e.preventDefault();
 		try {
 		  const response = await fetch(
-			  "http://localhost:5000/dashboard/getusers",
-			// process.env.REACT_APP_API_URL + "/dashboard/getusers",
+			//   "http://localhost:5000/dashboard/getusers",
+			process.env.REACT_APP_API_URL + "/dashboard/getusers",
 			{
 			  method: "GET",
 			}
