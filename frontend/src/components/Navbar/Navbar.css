@@ -44,7 +44,7 @@
 /* content spacing */
 .navbar .nav li a {
     color: rgb(255, 255, 255);
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     font-size: 23px;
     padding: 20px 40px;
@@ -66,7 +66,7 @@
     background: #39D3B2;
     color: rgb(255, 255, 255);
     border-radius: 50px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     font-size: 23px;
     padding: 1px 20px;
@@ -77,7 +77,7 @@
     transform: scale(1.02);
     background: #39D3B2;
     border-radius: 50px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     transform: scale(1.075);
     padding: 1px 20px;
@@ -88,7 +88,7 @@
     background: #39D3B2;
     color: rgb(255, 255, 255);
     border-radius: 20px 20px 0 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     transform: scale(1.075);
     text-decoration: none;
     padding: 5px 20px;
@@ -100,7 +100,7 @@
     text-decoration: none;
     font-size: 18px;
     font-style: bold;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #35353F;
     padding-top: 10px;
     padding-bottom: 7.5px;
@@ -152,7 +152,7 @@
 .navbar .nav .dropdown-menu li {
     transition: all 0.3s ease-in-out;
     color: rgb(0, 0, 0);
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 23px;
 }

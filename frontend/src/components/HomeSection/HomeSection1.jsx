@@ -85,7 +85,7 @@ export const LS = styled.div`
 const Title = styled.h1`
 	font-family: 'Open Sans', sans-serif;
 	font-size: calc(3rem + 1.5vw);
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1.5;
 	padding: 1rem 1;
     color: black;

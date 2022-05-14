@@ -1,5 +1,5 @@
 body{
-    font-family: robot, lato !important;
+    font-family: 'Open Sans', sans-serif;
     font-size: large;
 }
 ul{
@@ -13,7 +13,7 @@ ul{
 .navbar-brand{
     font-size: 27px;
     padding-left: 10px;
-    font-family: 'Lato';
+    font-family: 'Open Sans', sans-serif;
 }
 .nav-item a{
     color: gray !important;

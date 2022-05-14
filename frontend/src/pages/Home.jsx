@@ -18,7 +18,6 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 
-
 import {
   BsFillChatDotsFill,
   BsChatDots,
@@ -303,29 +302,30 @@ function Home(props) {
   // const selectedTags = tags => console.log(tags);
 
   return (
-    <div style={{
-      display: "grid",
-      justifyContent: "",
-    }}>
-      <div className="search">
-        <form className="searchInputs" onSubmit={onSubmitForm}>
-          <input
-            type="text"
-            placeholder="Search by tag or name..."
-            // className="form-control"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-			      onKeyPress={e => e.key === 'Enter' && onSubmitForm}
-          />
-          {/* <button className="btn btn-success">Search</button> */}
-          <div className="searchIcon">
-            <SearchIcon onClick={onSubmitForm}/>
-          </div>
-        </form>
-      </div>
+    
+    <section id="container">
+      <item-a>
+        <div className="search">
+          <form className="searchInputs" onSubmit={onSubmitForm}>
+            <input
+              type="text"
+              placeholder="Search by tag or name..."
+              // className="form-control"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyPress={e => e.key === 'Enter' && onSubmitForm}
+            />
+            {/* <button className="btn btn-success">Search</button> */}
+            <div className="searchIcon">
+              <SearchIcon onClick={onSubmitForm}/>
+            </div>
+          </form>
+        </div>
+      </item-a>
       
-      {data.length != 0 ? (
-        <div>
+      <item-b>
+        {data.length != 0 ? (
+          <div>
           
           {data.map((item, index) =>
               <div
@@ -341,6 +341,7 @@ function Home(props) {
                 
               >
                 {/* <h3>{item.sub_title}</h3> */}
+                {/* Room Title */}
                 <div className={style.upperIndex}>
                   <div style={{
                     fontSize: "1.6vw",
@@ -367,64 +368,64 @@ function Home(props) {
                       {/* <span className="mr-2">1.8</span> <BsFillPersonFill /> */}
                       <span className="mx-2"></span>
                       {/* mx is margin horizontal  */}
-                      <span className="mr-2">{item.room_member}</span>{" "}
-                      <span className="mx-1"></span>
+                      <span className="mr-2" style={{
+                        paddingRight:".5vw"
+                      }}>
+                        {item.room_member}
+                        </span>{" "}
+                      {/* <span className="mx-1"></span> */}
                       <BsFillPersonFill />
                     </p>
-                  </div>
-                    {item.tags.map((data,index) =>
-                      <li style={{
-                          fontSize:"2vw", 
-                          paddingLeft:"1vw",
-                              
-                      }}>
-                        <Chip  
-                          label={
-                            <ClipisText>
-                              {item.tags[index]}
-                            </ClipisText>}
-                            
-                          color="primary"
-                          style={{
-                            marginTop:"-1vw",
-                            marginLeft: "-3.0vw",
-                            maxWidth: "10vw",
-                            paddingLeft: 15,
-                            paddingRight: 15,
-                            paddingBottom: 2,
-                            backgroundColor: "#35353F",
-                                      
-                          }}  
-                        />
-                      </li>
-                    )}
-
-                    {/* <Chip  
-                        label={<ClipisText>{item.tags}</ClipisText>}
-                        maxLength={8}
-                        color="primary"
-                        style={{
-                          marginTop:".25vw",
-                          marginLeft: "-3.5vw",
-                          paddingLeft: 15,
-                          paddingRight: 15,  
-                          backgroundColor: "#35353F",            
-                        }}  
-                    /> */}
-                      
+                  </div>                  
                 </div>
+                <div 
+                style={{
+                  display: "inline",
+                  paddingLeft: ".5vw",
+                  paddingTop: ".3vw"
+                }}
+                className="d-flex align-items-center"
+                >
+                  {item.tags.map((data,index) =>
+                        <li style={{
+                            marginTop:"1vw",
+                            fontSize:"2vw", 
+                            paddingLeft:"1vw",
+                            display: "list-item"     
+                        }}>
+                          <Chip  
+                            label={
+                              <ClipisText>
+                                {item.tags[index]}
+                              </ClipisText>}
+                              
+                            color="primary"
+                            style={{
+                              marginLeft: "-3.0vw",
+                              maxWidth: "10vw",
+                              paddingLeft: 15,
+                              paddingRight: 15,
+                              paddingBottom: 2,
+                              backgroundColor: "#35353F",
+                                        
+                            }}  
+                          />
+                        </li>
+                      )}
+                    </div>
               </div>
           
           )}
-        </div>
-      ) : (
-        <div className="NoRoom">
-          <p>No rooms found</p>
-		  {/* <button>test</button> */}
-        </div>
-      )}
+          </div>
+        ) : (
+          <div className="NoRoom">
+            <p>No rooms found</p>
+        {/* <button>test</button> */}
+          </div>
+        )}
+      </item-b>
 
-      <div className="bg-[#2f3136] flex flex-col min-w-max">
+      <item-c>
         <Fab
           onClick={joinRoomFunc}
           variant="extended"
@@ -541,7 +542,6 @@ function Home(props) {
                         value="Create Room"
                       />
                     </div> */}
-                
                 {/* <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Cancel
@@ -550,24 +550,16 @@ function Home(props) {
                     Create Room
                   </Button>
                 </Modal.Footer> */}
-                
               {/* <TagsInput /> */}
-
               </form>
-
               <div>
                 <button className="create-button" onClick={create}>
                   Create
                 </button>
               </div>
-
-              
             </div>
-
-            
             </Modal.Body>
-          
-          {/* <Modal.Footer>
+            {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
@@ -575,10 +567,15 @@ function Home(props) {
               Save Changes
             </Button>
           </Modal.Footer> */}
-          
         </Modal>
-      </div>
-    </div>
+      </item-c>
+    </section>
+  //   <section id="container">
+  //     <item-a/>
+  //     <item-b/>
+  //     <item-c/>
+      
+  // </section>
   );
 }
 
