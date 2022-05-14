@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Feature = styled.div`
@@ -33,22 +34,70 @@ const Sub = styled.div`
 `
 
 const DSection = () => {
+
+	const [room_count , setRoomCount] = useState(0);
+	const [user_count, setUserCount] = useState(0);
+	const getRoomCount = async (e) => {
+		// e.preventDefault();
+		try {
+		  const response = await fetch(
+			process.env.REACT_APP_API_URL + "/rooms/getrooms",
+			{
+			  method: "GET",
+			}
+		  );
+	
+		  const parseResponse = await response.json();
+		
+		  setRoomCount(parseResponse.length);
+		//   console.log(parseResponse);
+		} catch (err) {
+		  console.error(err.message);
+		}
+	  };
+	const getUserCount = async (e) => {
+		// e.preventDefault();
+		try {
+		  const response = await fetch(
+			  "http://localhost:5000/dashboard/getusers",
+			// process.env.REACT_APP_API_URL + "/dashboard/getusers",
+			{
+			  method: "GET",
+			}
+		  );
+	
+		  const parseResponse = await response.json();
+		  console.log(parseResponse["count"]);
+		  setUserCount(parseResponse["count"]);
+		//   console.log(parseResponse);
+		} catch (err) {
+		  console.error(err.message);
+		}
+	  };
+
+	useEffect(()=>{
+		getRoomCount();
+		getUserCount();
+	},[])
+	
+
+
     return(
         <Feature>
             {/* Item Boxex */}
             <Item>
-                <Title>Users</Title>
+                <Title>Registered Users</Title>
                 <Contain>
-                    <Number>-</Number>
+                    <Number>{user_count}</Number>
                 </Contain>
-                <Sub>PlaceHolder</Sub>
+                {/* <Sub>{user_count}</Sub> */}
             </Item>
             <Item>
-                <Title>Rooms</Title>
+                <Title>Online Rooms</Title>
                 <Contain>
-                    <Number>-</Number>
+                    <Number>{room_count}</Number>
                 </Contain>
-                <Sub>PlaceHolder</Sub>
+                {/* <Sub>{room_count}</Sub> */}
             </Item>
         </Feature>
     )

@@ -71,7 +71,11 @@ function Home(props) {
   };
   const joinRoomFunc = () => {
     var room_id = window.prompt("Enter the room ID");
-    props.history.push({ pathname: `/room/?roomID=${room_id}` });
+    // props.history.push({ pathname: `/room/?roomID=${room_id}` });
+	props.history.push({
+		pathname: `/room/?roomID=${room_id}`,
+		state: { name },
+	  });
   };
   const create = () => {
     console.log(user_id);

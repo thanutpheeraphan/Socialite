@@ -17,6 +17,7 @@ const io = require("socket.io")(server, {
 });
 var userConnections = [];
 io.on("connection", (socket) => {
+//   console.log(socket);
   console.log("socket id is ", socket.id);
   socket.on("userconnect", (data) => {
     console.log("userconnect", data.displayName, data.meetingid);
