@@ -35,7 +35,8 @@ io.on("connection", (socket) => {
     });
 
 	var userCount = userConnections.length;
-	console.log(userCount);
+	// console.log(userCount);
+	console.log(userConnections);
     other_users.forEach((v) => {
       socket.to(v.connectionId).emit("inform_others_about_me", {
         other_user_id: data.displayName,
@@ -85,6 +86,7 @@ io.on("connection", (socket) => {
 		  uNumber: userNumberAffUserLeave,
         });
       });
+	  console.log(userConnections); //need to check each meeting id or find another way 
     }
   });
 });
