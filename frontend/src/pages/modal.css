@@ -145,5 +145,28 @@
 }
 #container > item-c{
   grid-area: sidebar;
-  background-color: #86FFCC;
+  background-color: #c7ffe8;
 }
+
+/* grid room container */
+.grid-container{
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 35vw 35vw;
+  gap: 2vw;
+  padding: 3vw;
+  padding-right: 6vw;
+}
+
+
+
+/* .grid-container {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 20vw 20vw; 
+  gap: 10px;
+  background-color: #2196F3;
+  padding-left: 10vw;
+  padding-right: 10vw;
+} */
+

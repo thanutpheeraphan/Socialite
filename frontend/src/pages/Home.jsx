@@ -328,8 +328,12 @@ function Home(props) {
       </item-a>
       
       <item-b>
+        
+        
+        
         {data.length != 0 ? (
-          <div>
+          
+          <ul class='grid-container'>
           
           {data.map((item, index) =>
               <div
@@ -356,7 +360,7 @@ function Home(props) {
                   {/* <span>                     
                   </span> */}
                 </div>
-
+        
                 <div className={style.roomMembers}>
                           {/* <div>
                   <img src={logo} alt="" />
@@ -405,12 +409,12 @@ function Home(props) {
                               
                             color="primary"
                             style={{
-                              marginLeft: "-3.0vw",
+                              // marginLeft: "-3.0vw",
                               maxWidth: "10vw",
                               paddingLeft: 15,
                               paddingRight: 15,
                               paddingBottom: 2,
-                              backgroundColor: "#35353F",
+                              backgroundColor: "#114C60",
                                         
                             }}  
                           />
@@ -420,13 +424,15 @@ function Home(props) {
               </div>
           
           )}
-          </div>
+          </ul>
         ) : (
           <div className="NoRoom">
             <p>No rooms found</p>
         {/* <button>test</button> */}
           </div>
         )}
+        
+        
       </item-b>
 
       <item-c>
@@ -584,3 +590,4 @@ function Home(props) {
 }
 
 export default Home;
+
