@@ -373,6 +373,7 @@ export var Mcu = (function () {
 
   function event_process_for_signaling_server() {
     socket = io.connect();
+	console.log(socket);
     var SDP_function = function (data, to_connid) {
       socket.emit("SDPProcess", {
         message: data,
