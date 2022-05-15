@@ -27,7 +27,7 @@ const MCURoom = (props) => {
     console.log("User ID: ", user_id);
     if (!user_id || !meeting_id) {
       alert("User id or meeting id is missing!");
-      props.history.push({ pathname: `/home` });
+      props.history.push({ pathname: `/` });
 
       // window.location.href('/home');
       return;
@@ -89,37 +89,53 @@ const MCURoom = (props) => {
                 </div>
               </div>
               <div
-                class="g-right-details-wrap bg-light text-secondary h-100"
-                style={{ flexBasis: 25 + "%", zIndex: 1, display: "none" }}
+                class="g-right-details-wrap text-secondary h-100"
+                style={{ 
+                  flexBasis: 25 + "%",
+                  zIndex: 1,
+                  display: "none", 
+                  backgroundColor: "#F0F0F0",
+                  borderColor: "2px #F0F0F0"  
+                }}
               >
                 <div
                   class="meeting-heading-wrap d-flex justify-content-between align-items-center pe-3 ps-3"
-                  style={{ height: 10 + "vh" }}
+                  style={{ 
+                    height: 10 + "vh" ,
+                    color: "white", 
+                    backgroundColor:"#35353F"
+                   
+                  }}
                 >
                   <div class="meeting-heading fw-bold ">
-                    Meeing Details
+                    Meeting Details
                   </div>
                   <div class="meeting-heading-cross display-center cursor-pointer">
                     <span class="material-icons">clear</span>
                   </div>
                 </div>
+
                 <div
                   class="people-chat-wrap d-flex justify-content-between align-items-center ms-3 me-3 pe-3 ps-3"
-                  style={{ height: 10 + "vh", fontSize: 14 + "px" }}
+                  style={{ 
+                    height: 10 + "vh",
+                    fontSize: 14 + "px" ,
+                  }}
                 >
-                  <div class="people-heading display-center cursor-pointer">
-                    <div class="people-headin-icon display-center me-1">
+                  <div class="people-heading display-center cursor-pointer"
+                    style={{color: "black"}}>
+                    <div class="people-headin-icon display-center me-1" style={{color: "black"}}>
                       <span class="material-icons">people</span>
                     </div>
-                    <div class="people-headin-text display-center">
+                    <div class="people-headin-text display-center" style={{color: "black"}}>
                       Participant (<span class="participant-count">1</span>)
                     </div>
                   </div>
                   <div class="chat-heading d-flex just-content-round align-items-center cursor-pointer">
                     <div class="chat-heading-icon display-center me-1">
-                      <span class="material-icons">message</span>
+                      <span class="material-icons" style={{color: "black"}}>message</span>
                     </div>
-                    <div class="chat-heading-text">Chat</div>
+                    <div class="chat-heading-text" style={{color: "black"}}>Chat</div>
                   </div>
                 </div>
                 <div
@@ -128,10 +144,14 @@ const MCURoom = (props) => {
                     fontSize: 14 + "px",
                     height: 69 + "vh",
                     // overflowY: "scroll",
+                    // backgroundColor: "grey",
+                    // opacity: "0.1"
                   }}
                 >
                   <div class="in-call-wrap-up" style={{ display: "none" }}>
-                    <div class="in-call-wrap d-flex justify-content-between align-items-center mb-3">
+                    <div class="in-call-wrap d-flex justify-content-between align-items-center mb-3"
+                      style={{color: "black"}}
+                      >
                       <div class="participant-img-name-wrap display-center cursor-pointer">
                         <div class="participant-img">
                           <img
@@ -145,14 +165,14 @@ const MCURoom = (props) => {
                             }}
                           />
                         </div>
-                        <div class="participant-name ms-2">You</div>
+                        <div class="participant-name ms-2" style={{color: "black"}}>You</div>
                       </div>
                       <div class="participant-action-wrap display-center">
                         <div class="participant-action-dot display-center me-2 cursor-pointer">
-                          <span class="material-icons">more_vert</span>
+                          <span class="material-icons" style={{color: "black"}}>more_vert</span>
                         </div>
                         <div class="participant-action-pin display-center me-2 cursor-pointer">
-                          <span class="material-icons">push_pin</span>
+                          <span class="material-icons" style={{color: "black"}}>push_pin</span>
                         </div>
                       </div>
                     </div>
@@ -179,13 +199,14 @@ const MCURoom = (props) => {
                           style={{
                             borderBottom: 1 + "px solid teal",
                             border: "none",
+                            backgroundColor: "white"
                           }}
                         />
                       </div>
                       <div
                         class="chat-message-sent-action display-center"
                         id="btnsend"
-                        style={{ color: "teal", cursor: "pointer" }}
+                        style={{ color: "#35353F", cursor: "pointer" }}
                       >
                         <span class="material-icons">send</span>
                       </div>
@@ -194,7 +215,9 @@ const MCURoom = (props) => {
                 </div>
               </div>
             </div>
-            <div class="g-top-left bg-light text-secondary w-25 d-flex align-items-center justify-content-between ps-2 pe-2">
+            <div class="g-top-left text-secondary w-25 d-flex align-items-center justify-content-between ps-2 pe-2"
+              style={{color: "white"}}>
+                
               <div class="top-left-participant-wrap pt-2 cursor-pointer">
                 <div class="top-left-participant-icon">
                   <span class="material-icons">people</span>
@@ -209,7 +232,7 @@ const MCURoom = (props) => {
               <div class="top-left-time-wrap"></div>
             </div>
           </div>
-          <div class="g-bottom bg-light m-0 d-flex justify-content-between align-items-center">
+          <div class="g-bottom m-0 d-flex justify-content-between align-items-center">
             <div class="bottom-left d-flex" style={{ height: 10 + "vh" }}>
               <div
                 class="g-details border border-success mb-2"
@@ -256,6 +279,7 @@ const MCURoom = (props) => {
                 <span class="material-icons">keyboard_arrow_down</span>
               </div>
             </div>
+            {/* bottomBar */}
             <div
               class="bottom-middle d-flex just-content-center align-items-center"
               style={{ height: 10 + "vh" }}
@@ -268,9 +292,11 @@ const MCURoom = (props) => {
                   mic_off
                 </span>
               </div>
+
               <div class="end-call-wrap action-icon-style display-center me-2 cursor-pointer">
                 <span class="material-icons text-danger">call</span>
               </div>
+
               <div
                 class="video-toggle-wrap action-icon-style display-center cursor-pointer"
                 id="videoCamOnOff"
@@ -279,6 +305,7 @@ const MCURoom = (props) => {
                   videocam_off
                 </span>
               </div>
+              
             </div>
             <div
               class="bottom-right d-flex just-content-center align-items-center me-3"
@@ -288,6 +315,7 @@ const MCURoom = (props) => {
               <div
                 class="present-now-wrap d-flex just-content-center flex-column align-items-center me-5 cursor-pointer"
                 id="ScreenShareOnOf"
+                style={{color:"white"}}
               >
                 <span class="material-icons">present_to_all</span>
                 <div>Present Now</div>

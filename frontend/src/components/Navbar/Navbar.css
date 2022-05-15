@@ -4,6 +4,10 @@
     width: 250px;
 }  
 
+.img_icon:hover{
+    /* background-color: rgb(255, 0, 0); */
+}
+
 /* form-size */
 .form-group >.form-control {
     box-shadow: none;		
@@ -36,10 +40,11 @@
     position: relative;
 }
 
+
 /* content spacing */
 .navbar .nav li a {
     color: rgb(255, 255, 255);
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     font-size: 23px;
     padding: 20px 40px;
@@ -61,7 +66,7 @@
     background: #39D3B2;
     color: rgb(255, 255, 255);
     border-radius: 50px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     font-size: 23px;
     padding: 1px 20px;
@@ -72,37 +77,40 @@
     transform: scale(1.02);
     background: #39D3B2;
     border-radius: 50px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     transform: scale(1.075);
     padding: 1px 20px;
 }
 
-.login:focus {
-    transition: all 0.3s ease 0s;
+/* .login:focus {
+    transition: all 0.3s ease-in-out 1s;
     background: #39D3B2;
     color: rgb(255, 255, 255);
     border-radius: 20px 20px 0 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     transform: scale(1.075);
     text-decoration: none;
     padding: 5px 20px;
-}
+} */
 
 /* button login */
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
     color: rgb(255, 255, 255);
+    text-decoration: none;
     font-size: 18px;
     font-style: bold;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: #35353F;
     padding-top: 10px;
     padding-bottom: 7.5px;
     vertical-align: middle;
+    margin-bottom: .5vw;
     border: none;
 }	
 .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
     color: #fff;
+    text-decoration: none;
     outline: none;
     background: #535363;
     transform: scale(1.01);
@@ -111,6 +119,7 @@
 
 /* Box position */
 .navbar .navbar-right li:first-child a {
+    text-decoration: none;
     transition: all .2 ease-in-out;
     padding-right: 10px;
     padding-top: 20px;
@@ -143,12 +152,12 @@
 .navbar .nav .dropdown-menu li {
     transition: all 0.3s ease-in-out;
     color: rgb(0, 0, 0);
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 23px;
 }
 .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
-    
+
     padding: 0px 2.5px;
     line-height: normal;
 }
@@ -235,6 +244,7 @@
     }
 
     .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+        text-decoration: none;
         display: block;
     }
 }
@@ -290,3 +300,7 @@
    width: 20%;
    height: 20%;
 }
+
+/* .nav .homelogo:hover{
+    text-decoration: none;
+} */

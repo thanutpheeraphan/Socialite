@@ -17,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 //components
 
-import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import SignUp from "./pages/SignUp";
@@ -27,6 +26,7 @@ import Dashboard2 from "./pages/Dashboard/Dashboard";
 import Safety from "./pages/Safety/Safety";
 import Support from "./pages/Support/Support";
 import MCURoom from "./components/MCURoom/MCURoom";
+import Forgetpass from "./pages/ForgetPass/Forgetpass";
 
 toast.configure();
 
@@ -111,35 +111,30 @@ function App() {
           />
           <Route
             exact path="/safety"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Safety {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
+            component={Safety} 
           />
           <Route
             exact path="/dashboard"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Dashboard2 {...props} setAuth={setAuth}/>
-              ) : (
-                <Redirect to="/"/>
-              )
-            }
+            component={Dashboard2} 
           />
           <Route
             exact path="/support"
+            component={Support} 
+          />
+		  <Route
+            exact path="/forgetPass"
+            component={Forgetpass} 
+          />
+          {/* <Route
+            exact path="/forgetPass"
             render={(props) =>
               !isAuthenticated ? (
-                <Support {...props} setAuth={setAuth}/>
+                <Forgetpass {...props} setAuth={setAuth}/>
               ) : (
-                <Redirect to="/"/>
+                <Redirect to= "/"/>
               )
             }
-          />
-          
+          /> */}
 
 		   {/* <Route path="/room/:roomID" component={Room} /> */}
 		   <Route path="/room/:roomID" component={MCURoom} />

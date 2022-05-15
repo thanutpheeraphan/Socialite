@@ -10,7 +10,8 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
-    background: #69E48E;
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+        #69E48E 0%, #33D1B7 100%);
     @media only Screen and (max-width: 420px) {
         height: auto;
         padding-bottom: 2rem;

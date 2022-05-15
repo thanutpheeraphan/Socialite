@@ -5,13 +5,14 @@ import SSection from './SSection';
 import SSection2 from './SSection2';
 
 const Container = styled.div`
+    font-family: 'Open Sans', sans-serif;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 `;
 
-const Safety = ({setAuth}) => {
+const Safety = () => {
     return(
         <Container>
             <SSection/>

@@ -52,6 +52,7 @@ export const Content = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 70vw;
+	margin-left: 5vw;
 	@media only Screen and (max-width: 48em) {
 		flex-direction: column;
 		justify-content: center;
@@ -68,6 +69,7 @@ export const LS = styled.div`
 	color: var(--white);
 	position: relative;
 	z-index: 15;
+	margin-right: 5vw; 
 	@media only Screen and (max-width: 48em) {
 		width: 80%;
 		text-align: center;
@@ -81,7 +83,9 @@ export const LS = styled.div`
 	}
 `;
 const Title = styled.h1`
+	font-family: 'Open Sans', sans-serif;
 	font-size: calc(3rem + 1.5vw);
+	font-weight: 600;
 	line-height: 1.5;
 	padding: 1rem 1;
     color: black;

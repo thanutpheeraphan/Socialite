@@ -67,10 +67,10 @@ const Navbar = ({ setAuth, isAutheticated }) => {
     <Fragment>
       <nav className="navbar navbar-default navbar-expand-lg navbar-light">
         <div className="navbar-header">
-          <a className="nav-logo">
+          
+          {/* <a href="./home" className="homelogo"> */}
             <img src={logo} alt="logo" className="img_icon"/>
-          </a>
-
+          {/* </a> */}
           <button
             type="button"
             data-target=".navbar-collapse"
@@ -180,16 +180,19 @@ const Navbar = ({ setAuth, isAutheticated }) => {
                   </a>
                   <ul className="dropdown-menu form-wrapper">
                     <li>
-                      <button className="btn btn-primary btn-block">
-                        Settings
-                      </button>
-
-                      <button
-                        onClick={(e) => logout(e)}
-                        className="btn btn-primary btn-block"
-                      >
-                        Logout
-                      </button>
+                      <Link to="/forgetPass">
+                        <button className="btn btn-primary btn-block">
+                          Settings 
+                        </button>
+                      </Link>
+                      <Link>
+                        <button
+                          onClick={(e) => logout(e)}
+                          className="btn btn-primary btn-block"
+                        >
+                          Logout
+                        </button>
+                      </Link>
                     </li>
                   </ul>
                 </li>

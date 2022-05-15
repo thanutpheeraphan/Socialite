@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 import styled, {keyframes}from "styled-components";
 import "./SpSection2.css";
 
@@ -9,7 +9,7 @@ import mockCreate from "../../img/MockCreate.svg";
 
 import {HContent} from "../../components/HomeSection/HomeSection2"
 
-import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, Move, MoveIn, MoveOut, Sticky, StickyIn, ZoomIn, FadeOut } from "react-scroll-motion";
+import { Animator, ScrollContainer, ScrollPage, batch, Fade,MoveIn, MoveOut, Sticky, } from "react-scroll-motion";
 
 const move = keyframes`
     0% {transform: scale(1.05)}
@@ -163,9 +163,6 @@ const SpSection2= () =>{
 
             <ScrollPage page= {3}>
             <SupportSection id = "supsection2" className="alt_bg">
-                    <Animator animation={MoveIn(0,1000)}>
-                        <SuPic src={mockHome} className="fth_img"></SuPic>
-                    </Animator>
                     <Animator animation={MoveIn(0,-1000)}>
                         <SpBlock id = "Block" className="fth_block">	
                             <Title>Search & Join</Title>
@@ -175,6 +172,10 @@ const SpSection2= () =>{
                             <SubText>The room will show up accordingly to the user's search input.</SubText>
                         </SpBlock>
                     </Animator>
+                    <Animator animation={MoveIn(0,1000)}>
+                        <SuPic src={mockHome} className="fth_img"></SuPic>
+                    </Animator>
+                    
                 </SupportSection>
             </ScrollPage>
         </ScrollContainer>

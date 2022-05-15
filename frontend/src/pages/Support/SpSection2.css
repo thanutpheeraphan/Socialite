@@ -1,5 +1,5 @@
 .first_img{
-    margin: 10vw 70vw 0 -10vw;
+    margin: 15vw 50vw 0 -10vw;
     width: 35vw;
     height: auto;
 }
@@ -12,8 +12,8 @@
 }
 
 .alt_bg{
-    background-color: #69E48E;
-    background: #69E48E;
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+        #86FFCC 0%, #69E48E 100%);
 }
 
 .sec_block{
@@ -47,7 +47,8 @@
 .fth_block{
     height: 25vw;
     margin-top: 10vw;
-    margin-right: 5vw;
+    margin-left: 5vw;
+    padding-right: 10vw;
 }
 
 .fth_img{

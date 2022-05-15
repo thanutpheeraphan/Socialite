@@ -1,5 +1,5 @@
 body{
-    font-family: robot, lato !important;
+    font-family: 'Open Sans', sans-serif;
     font-size: large;
 }
 ul{
@@ -13,7 +13,7 @@ ul{
 .navbar-brand{
     font-size: 27px;
     padding-left: 10px;
-    font-family: 'Lato';
+    font-family: 'Open Sans', sans-serif;
 }
 .nav-item a{
     color: gray !important;
@@ -25,6 +25,7 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
 }
 li.nav-item{
     padding: 0 10px;
@@ -47,7 +48,8 @@ textarea:focus, input:focus{
 
 /*.......... index page........... */
 .home-wrap{
-    background-color: rgb(31,30,30);
+    /* background-color: rgb(31,30,30); */
+    background-color: white;
 }
 .g-top{
     height: 89vh;
@@ -67,10 +69,19 @@ height: 600px;
     height: 8vh;
     top:0;
     border-bottom-left-radius: 10px;
+    background-color: #35353F;
+    color: #ffffff;
 }
 .top-left-participant-wrap{
     position: relative;
+    color: #ffffff;
 }
+
+.top-left-chat-wrap{
+    position: relative;
+    color: #ffffff;
+}
+
 .cursor-pointer{
     cursor: pointer;
     padding: 5px;
@@ -78,10 +89,11 @@ height: 600px;
 .cursor-pointer:hover{
     cursor: pointer;
     padding: 5px;
-    background-color: rgb(226,225,225);
+    background-color: #5f5f6e;
     border-radius: 5px;
 }
 .top-left-participant-count{
+    color: #ffffff;
     position:absolute;
     top: -2px;
     right: -3px;
@@ -90,7 +102,8 @@ height: 600px;
 .g-bottom{
     /* margin: 0 -10px !important; */
     padding: 0 20px;
-    box-shadow: 0 0 5px black;
+    background-color: #35353F;
+    box-shadow: 0 0 5px #35353F;
     z-index: 2;
 }
 .bottom-left{
@@ -101,7 +114,7 @@ height: 600px;
     font-size: 8px !important;
     height: 40px;
     width: 40px;
-    border: 1px solid lightgray;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 50%;
 }
 .action-icon-style span.material-icons{
@@ -131,14 +144,14 @@ video{
     position: fixed;
     width: 30%;
     height: 30%;
-    top: 20.5%;
+    top: 30%;
     left:35.5%;
     display: block;
-    box-shadow: 0 0 5px white;
+    box-shadow: 0 0 5px #35353F;
     border-radius: 10px;
     z-index: 999;
-    columns: white;
-    border: 2px solid white;
+    columns: #35353F;
+    border: 2px solid #35353F;
 }
 .bottom-left{
     position: relative;
@@ -147,9 +160,9 @@ video{
 .g-details{
     position: absolute;
     width: 30vw;
-    background-color: white;
+    background-color: #35353F;
     margin-top: -135px;
-    counter-reset: black;
+    counter-reset: rgb(161, 161, 161);
     border-radius: 5px;
     padding: 5px;
 }

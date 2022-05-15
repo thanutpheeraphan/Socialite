@@ -1,0 +1,79 @@
+.bg{
+    padding: 3% 0 10.6%;
+    background: url('../../img/ForgetBack.svg');
+    text-align: center;
+    background-size: cover;
+}
+
+.FPtitle{
+    position: relative;
+    font-size: 2.8vw;
+    padding: 4vw;
+    padding-bottom: 2vw;
+}
+
+.ContainerFP{
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    margin: auto;
+    width: 40%;
+    height: auto;
+    background-color: #ffffff;
+}
+
+.forget-form{
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+}
+
+.forget-form > label{
+    width: 100%;
+    padding: .5vw;
+}
+
+.forget-form > label > input{
+    width: 60%;
+    margin: 4vw;
+}
+
+.forget-btn{
+    margin-top: 6vw;
+    margin-bottom: 3vw;
+    font-size: 1vw;
+    padding: .5vw 2.5vw;
+
+    border: 1px solid #35353F;
+    border-radius: 2em;
+
+    background-color: #35353F;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+button:focus{
+    outline: 0;
+}
+
+button:hover{
+    opacity: 0.9;
+}
+
+input{
+    font-size: 30px;
+    padding: 2em;
+    border: 1px solid #838383;
+    border-radius: 10px;
+}
+
+
+input[type=text],input[type=password],input[type=email]{
+    padding: 15px 15px;
+    margin: 0px;
+    color: #35353F;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    font-size: 15px;
+    transition: ease-in-out, width .35s ease-in-out;
+}

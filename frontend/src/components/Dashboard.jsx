@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-const Dashboard = ({ setAuth }) => {
+const Dashboard = () => {
   const [name, setName] = useState("");
 
   async function getName() {

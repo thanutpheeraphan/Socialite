@@ -359,7 +359,7 @@ var McuProcess = (function () {
 export var Mcu = (function () {
   var socket = null;
   var user_id = "";
-  var meeting_id = "";
+  let meeting_id;
 
   function init(uid, mid) {
     user_id = uid;
@@ -373,6 +373,7 @@ export var Mcu = (function () {
 
   function event_process_for_signaling_server() {
     socket = io.connect();
+	console.log(socket);
     var SDP_function = function (data, to_connid) {
       socket.emit("SDPProcess", {
         message: data,
