@@ -17,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 //components
 
-import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import SignUp from "./pages/SignUp";
@@ -122,13 +121,7 @@ function App() {
           />
           <Route
             exact path="/dashboard"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Dashboard2 {...props} setAuth={setAuth}/>
-              ) : (
-                <Redirect to="/"/>
-              )
-            }
+            component={Dashboard2} 
           />
           <Route
             exact path="/support"
