@@ -1,114 +1,100 @@
 import React, { Fragment, useState } from "react";
-import './SignUp.css';
+import { toast } from "react-toastify";
+import "./SignUp.css";
 
+const SignUp = ({ setAuth }) => {
+  const [inputs, setInputs] = useState({ email: "", password: "", name: "" });
 
-const SignUp = ({setAuth})=>{
+  const { email, password, name } = inputs;
 
-	const [inputs , setInputs] = useState({email:"", password:"",name:""})
+  const onChange = (e) => {
+    //take every input
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-	const {email , password, name} = inputs;
+  const onSubmitForm = async (e) => {
+    console.log("In function");
 
-	const onChange = (e) => {
-		//take every input
-		setInputs({...inputs,[e.target.name] : e.target.value});
-	}
-	
+    e.preventDefault();
 
-	const onSubmitForm = async(e) => {
-		console.log("In function");
+    try {
+      const body = { email, password, name };
 
-		e.preventDefault();
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
-		try{
+      const parseResponse = await response.json();
 
-			const body = {email,password,name};
+      if (response.status != 200) {
+        toast.error(parseResponse);
+      }
+      if (parseResponse.jwtToken) {
+        localStorage.setItem("token", parseResponse.jwtToken);
+        setAuth(true);
+      } else {
+        setAuth(false);
+      }
+    } catch (err) {
+      console.log("In err catch!");
+      // toast(err.message);
+      // console.error(err.message);
+    }
+  };
 
-			const response = await fetch(process.env.REACT_APP_API_URL+"/auth/register",
-			{
-				method:"POST",
-				headers:{"Content-type": "application/json"},
-				body: JSON.stringify(body)
-			});
+  return (
+    <Fragment>
+      <div className="center">
+        <div className="Container cfb">
+          <div className="banner-side">
+            <h1 className="title-desc">Socialite</h1>
+            <div className="form-desc">Smooth voice chat communication</div>
+            <div className="form-desc">Come and Connect with other people.</div>
+          </div>
 
-
-			const parseResponse = await response.json();
-
-			if(parseResponse.jwtToken){
-				localStorage.setItem("token", parseResponse.jwtToken);
-				setAuth(true);
-			}
-			else{
-				setAuth(false);
-			}
-
-
-
-		}
-		catch(err){
-			console.error(err.message)
-		}
-	}
-	
-
-
-
-	return (
-		<Fragment>
-			<div className="center">
-				<div className="Container cfb">
-			
-					<div className="banner-side">
-							<h1 className="title-desc">Socialite</h1>
-							<div className="form-desc">
-								Smooth voice chat communication
-							</div>
-							<div className="form-desc">
-								Come and Connect with other people.
-							</div>
-					</div>
-					
-					<div className="form-comp cfb">
-						
-						<h1 className="registertitle">Register</h1>
-						<form className='sign-up-form' onSubmit={onSubmitForm}>
-							<label>
-								<input type="email" 
-									name="email" 
-									placeholder="Email" 
-									value={email}
-									onChange={e => onChange(e)}
-								/>
-							</label>
-							<label>
-								<input type="password" 
-									name="password" 
-									placeholder="Password" 
-									value={password}
-									onChange={e => onChange(e)}
-								/>
-							</label>
-							<label>
-								<input type="text" 
-									name="name" 
-									placeholder="Name" 
-									value={name}
-									onChange={e => onChange(e)}
-								/>
-							</label>
-							<label></label>
-							<button className="register-btn">Register</button>
-						</form>
-					</div>
-					
-				</div>
-				
-			</div>
-			
-			
-		</Fragment>
-	);
-}
+          <div className="form-comp cfb">
+            <h1 className="registertitle">Register</h1>
+            <form className="sign-up-form" onSubmit={onSubmitForm}>
+              <label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                />
+              </label>
+              <label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => onChange(e)}
+                />
+              </label>
+              <label></label>
+              <button className="register-btn">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
+};
 
 export default SignUp;
-
- 
