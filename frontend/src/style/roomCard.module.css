@@ -4,25 +4,39 @@
 } */
 
 .roomCardContainer{
-	background-color:#69E48E;
+	/* background-color:#8BD298; */
+	background: linear-gradient(
+		to bottom,
+		#114C60,
+		#114C60 26%,
+		#8BD298 26%,
+		#8BD298
+	);
 	margin-top: 4vw;
-	/* margin-bottom: 0vw; */
-	margin-left: 3vw;
-	justify-content: space-around;
-	width: 23.5vw;
+	margin-left: 3.5vw;
+	/* justify-content: space-around; */
+	width: 27vw;
 	height: 13vw;
 	/* margin-right: 12.5vw; */
 	/* margin-right: 7.5vw; */
-	padding-left: 0.5vw;
-	padding-top: 1vw;
-	padding-bottom: .5vw;
+	/* padding-left: 0.5vw; */
+	/* padding-bottom: .5vw; */
 	/* overflow: auto; */
+	padding-inline-end: 5vw;
+	
 	border-radius: .5vw;
+	box-shadow: 2.5px 2.5px#114C60;
 	border: none;
 	cursor: pointer;
 	/* flex: 1 1 0; */
 	/* position: absolute; */
 }
+
+/* .roomCardContainer:hover{
+	transform: scale(1.02);
+	transition: 1s;
+	
+} */
 
 .roomCardContainer h3{
 	font-size: 1.5em;
@@ -38,7 +52,6 @@
 	font-size: 1.8vw;
 	color: #fff;
 	font-weight: 500;
-
 }
 
 .roomMembers img {
