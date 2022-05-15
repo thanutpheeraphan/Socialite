@@ -27,7 +27,7 @@ const MCURoom = (props) => {
     console.log("User ID: ", user_id);
     if (!user_id || !meeting_id) {
       alert("User id or meeting id is missing!");
-      props.history.push({ pathname: `/home` });
+      props.history.push({ pathname: `/` });
 
       // window.location.href('/home');
       return;

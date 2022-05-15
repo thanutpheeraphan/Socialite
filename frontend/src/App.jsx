@@ -111,13 +111,7 @@ function App() {
           />
           <Route
             exact path="/safety"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Safety {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
+            component={Safety} 
           />
           <Route
             exact path="/dashboard"
@@ -125,15 +119,13 @@ function App() {
           />
           <Route
             exact path="/support"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Support {...props} setAuth={setAuth}/>
-              ) : (
-                <Redirect to="/"/>
-              )
-            }
+            component={Support} 
           />
-          <Route
+		  <Route
+            exact path="/forgetPass"
+            component={Forgetpass} 
+          />
+          {/* <Route
             exact path="/forgetPass"
             render={(props) =>
               !isAuthenticated ? (
@@ -142,7 +134,7 @@ function App() {
                 <Redirect to= "/"/>
               )
             }
-          />
+          /> */}
 
 		   {/* <Route path="/room/:roomID" component={Room} /> */}
 		   <Route path="/room/:roomID" component={MCURoom} />

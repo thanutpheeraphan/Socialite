@@ -12,7 +12,7 @@ const Container = styled.div`
     background: aliceblue;
 `;
 
-const Support = ({setAuth}) => {
+const Support = () => {
     return(
         <Container>
             <SpSection/>

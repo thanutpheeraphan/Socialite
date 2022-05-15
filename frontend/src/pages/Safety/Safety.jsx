@@ -12,7 +12,7 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const Safety = ({setAuth}) => {
+const Safety = () => {
     return(
         <Container>
             <SSection/>
