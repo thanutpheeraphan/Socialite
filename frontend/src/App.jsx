@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Register from "./components/Register";
 import Login from "./components/Login";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUp/SignUp";
 import Room from "./components/Room";
 import Homepage from "./components/Landing";
 import Dashboard2 from "./pages/Dashboard/Dashboard";
@@ -39,12 +39,14 @@ function App() {
 
   async function isAuth() {
     try {
-	  const response = await fetch(process.env.REACT_APP_API_URL+ "/auth/verify", {
-
-    //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/verify", {
-        method: "GET",
-        headers: { jwt_token: localStorage.token },
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/auth/verify",
+        {
+          //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/verify", {
+          method: "GET",
+          headers: { jwt_token: localStorage.token },
+        }
+      );
 
       const parseResponse = await response.json();
 
@@ -62,70 +64,55 @@ function App() {
     isAuth();
   });
 
-  
-
   return (
-    
     <Fragment>
       <Router>
-        <div style={{backgroundColor:'',}}>
-        {/* <div style={{backgroundColor:'#86FFCC',}}> */}
+        <div style={{ backgroundColor: "" }}>
+          {/* <div style={{backgroundColor:'#86FFCC',}}> */}
           <Navbar setAuth={setAuth} isAutheticated={isAuthenticated} />
           {/* <Switch>
             <Route path="/" exact component={CreateRoom} />
            
           </Switch> */}
           <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) =>
-              !isAuthenticated ? (
-                <Homepage {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/home" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/signup"
-            render={(props) =>
-              !isAuthenticated ? (
-                <SignUp {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/home"
-            render={(props) =>
-              isAuthenticated ? (
-                <Home {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
-          <Route
-            exact path="/safety"
-            component={Safety} 
-          />
-          <Route
-            exact path="/dashboard"
-            component={Dashboard2} 
-          />
-          <Route
-            exact path="/support"
-            component={Support} 
-          />
-		  <Route
-            exact path="/forgetPass"
-            component={Forgetpass} 
-          />
-          {/* <Route
+            <Route
+              exact
+              path="/"
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Homepage {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/home" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/signup"
+              render={(props) =>
+                !isAuthenticated ? (
+                  <SignUp {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/home"
+              render={(props) =>
+                isAuthenticated ? (
+                  <Home {...props} setAuth={setAuth} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
+            <Route exact path="/safety" component={Safety} />
+            <Route exact path="/dashboard" component={Dashboard2} />
+            <Route exact path="/support" component={Support} />
+            <Route exact path="/forgetPass" component={Forgetpass} />
+            {/* <Route
             exact path="/forgetPass"
             render={(props) =>
               !isAuthenticated ? (
@@ -136,9 +123,9 @@ function App() {
             }
           /> */}
 
-		   {/* <Route path="/room/:roomID" component={Room} /> */}
-		   <Route path="/room/:roomID" component={MCURoom} />
-        </Switch>
+            {/* <Route path="/room/:roomID" component={Room} /> */}
+            <Route path="/room/:roomID" component={MCURoom} />
+          </Switch>
         </div>
       </Router>
     </Fragment>
