@@ -331,9 +331,17 @@ function Home(props) {
           <ul class="grid-container">
             {data.map((item, index) => (
               <div
-                className="Box Layout"
+                className="Box_Layout"
                 style={{
-                  height: "19vw",
+                  height: "15.5vw",
+                  width: "22vw",
+                  top: "3vw",
+                  left: "5vw",
+                  // marginLeft: "4vw",
+                  // marginTop: "2vw",
+                  // display: "flex",
+                  // alignItems: "center",
+                  // justifyContent: "center",
                 }}
               >
                 <div
@@ -406,9 +414,10 @@ function Home(props) {
                 {/* Chip */}
                 <div
                   style={{
-                    position: "static",
+                    // position: "static",
                     // display: "flex",
-                    paddingLeft: "3.5vw",
+                    // paddingLeft: "0vw",
+                    marginBottom: "3vw",
                     // paddingTop: ".3vw"
                   }}
                   className="d-flex align-items-center"
@@ -416,7 +425,7 @@ function Home(props) {
                   {item.tags.map((data, index) => (
                     <li
                       style={{
-                        marginTop: "1vw",
+                        // marginTop: "1vw",
                         fontSize: "2vw",
                         paddingLeft: "1vw",
                         display: "list-item",
@@ -433,6 +442,7 @@ function Home(props) {
                           position: "relative",
                           maxWidth: "10vw",
                           padding: ".1vw",
+                          // marginBottom: "0vw",
                           // paddingLeft: 15,
                           // paddingRight: 15,
                           // paddingBottom: 3,
