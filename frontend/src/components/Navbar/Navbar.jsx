@@ -21,39 +21,39 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 
     try {
       const body = { email, password };
-	  
-	//   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/login", {
-      const response = await fetch(process.env.REACT_APP_API_URL+"/auth/login", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(body),
-      });
+
+      //   const response = await fetch("http://8183-2001-fb1-44-8cda-4c81-af39-b096-fce3.ngrok.io/auth/login", {
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
       const parseResponse = await response.json();
-	  console.log(parseResponse);
+      console.log(parseResponse);
 
-	  if(parseResponse.jwtToken){
-		localStorage.setItem("token", parseResponse.jwtToken);
-		// console.log(parseResponse);
-		setAuth(true);
-		// toast.success("Login Successfully!")
-	  }
-	  else{
-		  setAuth(false);
-		//   toast.error(parseResponse);
-	  }
-
+      if (parseResponse.jwtToken) {
+        localStorage.setItem("token", parseResponse.jwtToken);
+        // console.log(parseResponse);
+        setAuth(true);
+        // toast.success("Login Successfully!")
+      } else {
+        setAuth(false);
+        //   toast.error(parseResponse);
+      }
     } catch (err) {
       console.error(err.message);
     }
   };
 
   const logout = async (e) => {
-
     e.preventDefault();
     localStorage.removeItem("token");
     setAuth(false);
-	// toast.success("Logged out successfully!");
+    // toast.success("Logged out successfully!");
   };
 
   if (isAutheticated == true) {
@@ -64,20 +64,18 @@ const Navbar = ({ setAuth, isAutheticated }) => {
     <Fragment>
       <nav className="navbar navbar-default navbar-expand-lg navbar-light">
         <div className="navbar-header">
-          
           {/* <a href="./home" className="homelogo"> */}
-            <img src={logo} alt="logo" className="img_icon"/>
+          <img src={logo} alt="logo" className="img_icon" />
           {/* </a> */}
           <button
             type="button"
             data-target=".navbar-collapse"
             data-toggle="collapse"
             className="navbar-toggle"
-			// onClick={} when clicking logo goto /home page 
+            // onClick={} when clicking logo goto /home page
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-
         </div>
 
         <div
@@ -88,26 +86,34 @@ const Navbar = ({ setAuth, isAutheticated }) => {
         >
           <ul className="nav navbar-nav">
             <li>
-              <a
-                data-toggle="collapse"
-                data-target=".navbar-collapse"
-                href="/"
-              >
+              <a data-toggle="collapse" data-target=".navbar-collapse" href="/">
                 Home
               </a>
             </li>
             <li>
-              <a data-toggle="collapse" data-target=".navbar-collapse" href="/dashboard">
+              <a
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                href="/dashboard"
+              >
                 Dashboard
               </a>
             </li>
             <li>
-              <a data-toggle="collapse" data-target=".navbar-collapse" href="/safety">
+              <a
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                href="/safety"
+              >
                 Safety
               </a>
             </li>
             <li>
-              <a data-toggle="collapse" data-target=".navbar-collapse" href="/support">
+              <a
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                href="/support"
+              >
                 Support
               </a>
             </li>
@@ -115,9 +121,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 
           {!isAutheticated ? (
             <ul className="nav navbar-nav navbar-right" id="accountDropdown">
-
               <li>
-
                 <button data-toggle="dropdown" className="login">
                   Login <i className="fas fa-caret-down" />
                 </button>
@@ -160,14 +164,20 @@ const Navbar = ({ setAuth, isAutheticated }) => {
                       <div className="form-footer">
                         <p>
                           Don't have an account?{" "}
-                          <Link to="/signup">Sign Up</Link>
+                          <Link
+                            to="/signup"
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            Sign Up
+                          </Link>
                         </p>
                       </div>
                     </form>
                   </li>
                 </ul>
               </li>
-
             </ul>
           ) : (
             <div>
@@ -178,24 +188,22 @@ const Navbar = ({ setAuth, isAutheticated }) => {
                   </a>
                   <ul className="dropdown-menu form-wrapper">
                     <li>
-                        
                       <a href="/forgetPass">
-                        <button 
+                        <button
                           className="btn btn-primary btn-block"
                           to="/forgetPass"
                           renderAs={Link}
                         >
-                          Settings 
+                          Settings
                         </button>
                       </a>
-                        
-                        <button
-                          onClick={(e) => logout(e)}
-                          className="btn btn-primary btn-block"
-                        >
-                          Logout
-                        </button>
-                      
+
+                      <button
+                        onClick={(e) => logout(e)}
+                        className="btn btn-primary btn-block"
+                      >
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </li>
