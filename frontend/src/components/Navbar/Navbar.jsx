@@ -76,6 +76,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
             data-target=".navbar-collapse"
             data-toggle="collapse"
             className="navbar-toggle"
+			// onClick={} when clicking logo goto /home page 
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -93,7 +94,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
               <a
                 data-toggle="collapse"
                 data-target=".navbar-collapse"
-                href="/home"
+                href="/"
               >
                 Home
               </a>
