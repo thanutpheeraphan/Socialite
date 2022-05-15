@@ -7,9 +7,9 @@
 	background-color:#69E48E;
 	margin-top: 4vw;
 	/* margin-bottom: 0vw; */
-	margin-left: 3vw;
+	margin-left: 7.5vw;
 	justify-content: space-around;
-	width: 23.5vw;
+	width: 27vw;
 	height: 13vw;
 	/* margin-right: 12.5vw; */
 	/* margin-right: 7.5vw; */
@@ -38,7 +38,6 @@
 	font-size: 1.8vw;
 	color: #fff;
 	font-weight: 500;
-
 }
 
 .roomMembers img {

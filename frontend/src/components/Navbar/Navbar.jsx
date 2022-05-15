@@ -43,15 +43,12 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 		//   toast.error(parseResponse);
 	  }
 
-
-  
     } catch (err) {
       console.error(err.message);
     }
   };
 
   const logout = async (e) => {
-
 
     e.preventDefault();
     localStorage.removeItem("token");
@@ -181,19 +178,24 @@ const Navbar = ({ setAuth, isAutheticated }) => {
                   </a>
                   <ul className="dropdown-menu form-wrapper">
                     <li>
-                      <Link to="/forgetPass">
-                        <button className="btn btn-primary btn-block">
+                        
+                      <a href="/forgetPass">
+                        <button 
+                          className="btn btn-primary btn-block"
+                          to="/forgetPass"
+                          renderAs={Link}
+                        >
                           Settings 
                         </button>
-                      </Link>
-                      <Link>
+                      </a>
+                        
                         <button
                           onClick={(e) => logout(e)}
                           className="btn btn-primary btn-block"
                         >
                           Logout
                         </button>
-                      </Link>
+                      
                     </li>
                   </ul>
                 </li>
