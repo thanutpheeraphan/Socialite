@@ -34,7 +34,7 @@ const MCURoom = (props) => {
     }
     // document.getElementById("meetingContainer").st
     $("meetingContainer").show();
-    console.log(typeof Mcu);
+	// console.log(typeof Mcu);
     Mcu._init(user_id, meeting_id);
   });
 
