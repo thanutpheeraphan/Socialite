@@ -64,13 +64,33 @@ function Home(props) {
       console.error(err.message);
     }
   };
-  const joinRoomFunc = (link) => {
+  const joinRoomFunc = async (link) => {
     // var room_id = window.prompt("Enter the room ID");
     // props.history.push({ pathname: `/room/?roomID=${room_id}` });
-    props.history.push({
-      pathname: `/room/?roomID=${link}`,
-      state: { name },
-    });
+    room_link = link;
+	const action = "join";
+    try {
+      const body = {
+        room_link,
+		action
+      };
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/rooms/userjoined",
+        {
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      if (response.status == 200) {
+        props.history.push({
+          pathname: `/room/?roomID=${link}`,
+          state: { name },
+        });
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
   const create = () => {
     console.log(user_id);
@@ -243,33 +263,11 @@ function Home(props) {
     }
   };
 
-  const joinRoom = (roomInfo) => {
-    if (roomInfo.status === true) {
-      const body = {
-        user_id,
-        room_name,
-        password,
-        room_link,
-        status,
-        room_member,
-      };
-
-      //   const response = await fetch("http://localhost:5000/rooms/userjoined", {
-      //     method: "PUT",
-      //     headers: { "Content-type": "application/json" },
-      //     body: JSON.stringify(body),
-      //   });
-      props.history.push(`/room/${roomInfo.room_link}`);
-    } else {
-      toast.error("Room Unavailable");
-    }
-  };
-
   useEffect(() => {
     onGetData();
     // onSubmitForm();
     getName();
-  }, []);
+  }, [user_id]);
 
   // test tag input
   const addTag = (e) => {
@@ -349,8 +347,10 @@ function Home(props) {
                   //   getRoomData(item);
                   //   joinRoom(item);
                   // }}
-				  onClick={()=>{joinRoomFunc(item.room_link)}}
-                //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
+                  onClick={() => {
+                    joinRoomFunc(item.room_link);
+                  }}
+                  //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
                 >
                   {/* Room Title */}
                   <div className={style.upperIndex}>
@@ -430,7 +430,7 @@ function Home(props) {
                       <Chip
                         label={<ClipisText>{item.tags[index]}</ClipisText>}
                         onClick={() =>
-                          console.log("item.tags[index]: ",item.tags[index])
+                          console.log("item.tags[index]: ", item.tags[index])
                         }
                         color="primary"
                         style={{
@@ -460,7 +460,7 @@ function Home(props) {
       </item-b>
 
       <item-c>
-        <Fab
+        {/* <Fab
           onClick={joinRoomFunc}
           variant="extended"
           aria-label="add"
@@ -474,7 +474,7 @@ function Home(props) {
           }}
         >
           Join Room
-        </Fab>
+        </Fab> */}
         <Fab
           //   onClick={handleShow}
           onClick={handleShow}

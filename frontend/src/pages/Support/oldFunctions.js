@@ -10,3 +10,22 @@
 //       state: { name },
 //     });
 //   };
+
+const joinRoom = (roomInfo) => {
+	try {
+		const body = {
+			room_link
+		  };
+
+        const response = await fetch("http://localhost:5000/rooms/userjoined", {
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(body),
+        });
+	} catch (error) {
+		
+	}
+
+
+  
+  };
