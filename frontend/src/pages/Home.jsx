@@ -15,8 +15,8 @@ import RooMockData from "../data/MockData.json";
 import "../components/SearchBar/SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
+import Pagination from "@mui/material/Pagination";
 
 import {
   BsFillChatDotsFill,
@@ -29,6 +29,7 @@ import user1 from "../img/user1.jpg";
 import user2 from "../img/user2.jpg";
 import { fontFamily, fontSize } from "@mui/system";
 import { Hidden } from "@mui/material";
+import usePagination from "@mui/material/usePagination/usePagination";
 
 function Home(props) {
   const [createRoomInputs, setRoomInputs] = useState({
@@ -44,6 +45,7 @@ function Home(props) {
   const [name, setName] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [tags, setTags] = useState([]);
+  const [room, setRoomOffset] = useState(0);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -292,13 +294,11 @@ function Home(props) {
     const newTags = tags.filter((tag) => tag !== removedTag);
     setTags(newTags);
   };
-
-  // const ListItem = styled('li')(({ theme }) => ({
-  //   margin: theme.spacing(-2),
-  // }));
-
-  /*{setAuth} */
-  // const selectedTags = tags => console.log(tags);
+  // const roomsInPage = 10;
+  // const handlePageClick = (event, page) => {
+  //   const newPage = (page - 1) * roomsInPage;
+  //   setRoomOffset(newPage);
+  // };
 
   return (
     <section id="container">
@@ -323,134 +323,151 @@ function Home(props) {
 
       <item-b>
         {data.length != 0 ? (
-          <ul class="grid-container">
-            {data.map((item, index) => (
-              <div
-                className="Box_Layout"
-                style={{
-                  height: "15.5vw",
-                  width: "22vw",
-                  top: "3vw",
-                  left: "5vw",
-                  // marginLeft: "4vw",
-                  // marginTop: "2vw",
-                  // display: "flex",
-                  // alignItems: "center",
-                  // justifyContent: "center",
-                }}
-              >
+          <div>
+            <ul class="grid-container">
+              {data.map((item, index) => (
                 <div
-                  className={style.roomCardContainer}
-                  value={item.room_name}
-                  key={index}
-                  //   onClick={() => getRoomId(item.room_name)}
-                  // onClick={() => {
-                  //   getName();
-                  //   getRoomData(item);
-                  //   joinRoom(item);
-                  // }}
-				  onClick={()=>{joinRoomFunc(item.room_link)}}
-                //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
+                  className="Box_Layout"
+                  style={{
+                    height: "15.5vw",
+                    width: "22vw",
+                    top: "3vw",
+                    left: "5vw",
+                    // marginLeft: "4vw",
+                    // marginTop: "2vw",
+                    // display: "flex",
+                    // alignItems: "center",
+                    // justifyContent: "center",
+                  }}
                 >
-                  {/* Room Title */}
-                  <div className={style.upperIndex}>
-                    <div
-                      style={{
-                        fontSize: "1.8vw",
-                        paddingBottom: ".5vw",
-                        fontWeight: "600",
-                        fontFamily: "'Open Sans', sans-serif",
-                      }}
-                    >
-                      {item.room_name}
-                    </div>
-                    {/* <span>                     
+                  <div
+                    className={style.roomCardContainer}
+                    value={item.room_name}
+                    key={index}
+                    //   onClick={() => getRoomId(item.room_name)}
+                    // onClick={() => {
+                    //   getName();
+                    //   getRoomData(item);
+                    //   joinRoom(item);
+                    // }}
+                    onClick={() => {
+                      joinRoomFunc(item.room_link);
+                    }}
+                    //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
+                  >
+                    {/* Room Title */}
+                    <div className={style.upperIndex}>
+                      <div
+                        style={{
+                          fontSize: "1.8vw",
+                          paddingBottom: ".5vw",
+                          fontWeight: "600",
+                          fontFamily: "'Open Sans', sans-serif",
+                        }}
+                      >
+                        {item.room_name}
+                      </div>
+                      {/* <span>                     
                   </span> */}
-                  </div>
+                    </div>
 
-                  <div className={style.roomMembers}>
-                    {/* <div>
+                    <div className={style.roomMembers}>
+                      {/* <div>
                   <img src={logo} alt="" />
                   <img src={logo} alt="" />
                   </div> */}
-                    <div>
-                      {/* {item.members.map((person) => (
+                      <div>
+                        {/* {item.members.map((person) => (
                       <p>
                       {person.first_name} {person.last_name} <BsChatDots />
                       </p>
                     ))} */}
-                      <p className="d-flex align-items-center">
-                        {/* <span className="mr-2">1.8</span> <BsFillPersonFill /> */}
-                        <span className="mx-2"></span>
-                        {/* mx is margin horizontal  */}
-                        <span
-                          className="mr-2"
-                          style={{
-                            paddingRight: ".5vw",
-                            paddingTop: "2vw",
-                          }}
-                        >
-                          {item.room_member}
-                        </span>{" "}
-                        {/* <span className="mx-1"></span> */}
-                        <span
-                          style={{
-                            paddingRight: ".5vw",
-                            paddingTop: "1.6vw",
-                            fontSize: "2vw",
-                          }}
-                        >
-                          <BsFillPersonFill />
-                        </span>
-                      </p>
+                        <p className="d-flex align-items-center">
+                          {/* <span className="mr-2">1.8</span> <BsFillPersonFill /> */}
+                          <span className="mx-2"></span>
+                          {/* mx is margin horizontal  */}
+                          <span
+                            className="mr-2"
+                            style={{
+                              paddingRight: ".5vw",
+                              paddingTop: "2vw",
+                            }}
+                          >
+                            {item.room_member}
+                          </span>{" "}
+                          {/* <span className="mx-1"></span> */}
+                          <span
+                            style={{
+                              paddingRight: ".5vw",
+                              paddingTop: "1.6vw",
+                              fontSize: "2vw",
+                            }}
+                          >
+                            <BsFillPersonFill />
+                          </span>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Chip */}
-                <div
-                  style={{
-                    // position: "static",
-                    // display: "flex",
-                    // paddingLeft: "0vw",
-                    marginBottom: "3vw",
-                    // paddingTop: ".3vw"
-                  }}
-                  className="d-flex align-items-center"
-                >
-                  {item.tags.map((data, index) => (
-                    <li
-                      style={{
-                        // marginTop: "1vw",
-                        fontSize: "2vw",
-                        paddingLeft: "1vw",
-                        display: "list-item",
-                      }}
-                    >
-                      <Chip
-                        label={<ClipisText>{item.tags[index]}</ClipisText>}
-                        onClick={() =>
-                          console.log("item.tags[index]: ",item.tags[index])
-                        }
-                        color="primary"
+                  {/* Chip */}
+                  <div
+                    style={{
+                      // position: "static",
+                      // display: "flex",
+                      // paddingLeft: "0vw",
+                      marginBottom: "3vw",
+                      // paddingTop: ".3vw"
+                    }}
+                    className="d-flex align-items-center"
+                  >
+                    {item.tags.map((data, index) => (
+                      <li
                         style={{
-                          // marginLeft: "-3.0vw",
-                          position: "relative",
-                          maxWidth: "10vw",
-                          padding: ".1vw",
-                          // marginBottom: "0vw",
-                          // paddingLeft: 15,
-                          // paddingRight: 15,
-                          // paddingBottom: 3,
-                          backgroundColor: "#114C60",
+                          // marginTop: "1vw",
+                          fontSize: "2vw",
+                          paddingLeft: "1vw",
+                          display: "list-item",
                         }}
-                      />
-                    </li>
-                  ))}
+                      >
+                        <Chip
+                          label={<ClipisText>{item.tags[index]}</ClipisText>}
+                          onClick={() =>
+                            console.log("item.tags[index]: ", item.tags[index])
+                          }
+                          color="primary"
+                          style={{
+                            // marginLeft: "-3.0vw",
+                            position: "relative",
+                            maxWidth: "10vw",
+                            padding: ".1vw",
+                            // marginBottom: "0vw",
+                            // paddingLeft: 15,
+                            // paddingRight: 15,
+                            // paddingBottom: 3,
+                            backgroundColor: "#114C60",
+                          }}
+                        />
+                      </li>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </ul>
+              ))}
+            </ul>
+            <div class="d-flex justify-content-center mt-5">
+              <Pagination
+                count={Math.ceil(data.length / 10)}
+                color="primary"
+                style={{
+                  marginTop: "2vw",
+                  width: "auto",
+                  height: "4vw",
+                }}
+                size="large"
+                // onChange={handlePageClick}
+              />
+            </div>
+          </div>
         ) : (
           <div className="NoRoom">
             <p>No rooms found</p>
