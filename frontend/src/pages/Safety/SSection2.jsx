@@ -58,7 +58,7 @@ const SubText = styled.h5`
 const Img = styled.img`
   margin-top: 1vw;
   margin-left: 2vw;
-  width: 60vw;
+  width: 53vw;
   height: auto;
   @media only Screen and (max-width: 48em) {
     display: none;
