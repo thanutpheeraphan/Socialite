@@ -461,12 +461,19 @@ export var Mcu = (function () {
         });
 
         var div = $("<div>").html(
-          "<span class='font-weight-bold mr-3' style='color:black'>" +
+          "<span class='d-flex justify-content-end' style='color:black;'>" +
+            "<b>" +
             user_id +
-            "</span>" + " " +
+            "&nbsp;" +
+            "</b>" +
             lTime +
-            "</br>" +
-            msgData
+            "</span>" +
+            "<div class='d-flex justify-content-end' style='color:grey;'>" +
+            msgData +
+            "</div>"
+
+          // +
+          // msgData
         );
         $("#messages").append(div);
         $("#msgbox").val("");

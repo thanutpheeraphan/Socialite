@@ -15,7 +15,7 @@ export const SVG = styled.img`
   max-width: 100%;
   width: calc(30% + 20vw);
   height: auto;
-  z-index: 7;
+  z-index: 1;
   animation: ${kframe} 2.5s ease infinite;
   @media only Screen and (max-width: 48em) {
     align-self: flex-start;
