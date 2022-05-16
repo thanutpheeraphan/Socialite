@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../MCURoom/style.css";
 import $ from "jquery";
 import otherJPG from "../../img/other.jpg";
+import { toast } from "react-toastify";
 const io = require("socket.io-client");
 
 var McuProcess = (function () {
@@ -139,7 +140,7 @@ var McuProcess = (function () {
 
       serverProcess(
         JSON.stringify({
-          Video_switch_off: "Video_switch_off",
+          Video_switch_off: "Video_switch_off", //couldbehere not here
         }),
         rtp_vid_senders
       );
@@ -316,7 +317,7 @@ var McuProcess = (function () {
         console.log(e);
       }
     } else if (message.Video_switch_off) {
-      document.querySelector("#v_" + from_connid + "").srcObject = null;
+      document.querySelector("#v_" + from_connid + "").srcObject = null; //couldbehere not here
     }
   }
 
@@ -480,6 +481,11 @@ export var Mcu = (function () {
       } else {
         $("#msgbox").val("");
       }
+    });
+
+    $("#divUsers").on("dblclick", "video", function () {
+      console.log("Double Click");
+      this.requestFullscreen();
     });
   }
 

@@ -3,6 +3,7 @@ const path = require("path");
 const cors = require("cors");
 var favicon = require("serve-favicon");
 const dotenv = require('dotenv');
+const axios = require('axios');
 dotenv.config();
 const port = process.env.PORT || 3000;
 var app = express();
@@ -75,30 +76,41 @@ io.on("connection", (socket) => {
   const leaveRoom = async (link) => {
 	let room_link = link;
     const action = "leave";
-    try {
-      const body = {
-        room_link,
-        action,
-      };
-	//   console.log(process.env.REACT_APP_API_URL);
-      const response = await fetch(
-        process.env.REACT_APP_API_URL + "/rooms/userjoined",
-        {
-          method: "PUT",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
-	  console.log(response.status);
-    //   if (response.status == 200) {
-    //     props.history.push({
-    //       pathname: `/room/?roomID=${link}`,
-    //       state: { name },
-    //     });
-    //   }
-    } catch (err) {
-      console.error(err.message);
-    }
+	axios({
+		method: 'put',
+		url: process.env.REACT_APP_API_URL + "/rooms/userjoined",
+		// timeout: 4000,    // 4 seconds timeout
+		data: {
+			room_link,
+			action,
+		}
+	  })
+	  .then(response => { console.log(response.status)})
+	  .catch(error => console.error(error.message))
+    // try {
+    //   const body = {
+    //     room_link,
+    //     action,
+    //   };
+	// //   console.log(process.env.REACT_APP_API_URL);
+    //   const response = await fetch(
+    //     process.env.REACT_APP_API_URL + "/rooms/userjoined",
+    //     {
+    //       method: "PUT",
+    //       headers: { "Content-type": "application/json" },
+    //       body: JSON.stringify(body),
+    //     }
+    //   );
+	//   console.log(response.status);
+    // //   if (response.status == 200) {
+    // //     props.history.push({
+    // //       pathname: `/room/?roomID=${link}`,
+    // //       state: { name },
+    // //     });
+    // //   }
+    // } catch (err) {
+    //   console.error(err.message);
+    // }
   };
 
   socket.on("disconnect", function () {

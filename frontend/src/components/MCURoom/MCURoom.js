@@ -309,7 +309,7 @@ const MCURoom = (props) => {
                 </div>
               </div>
               <div class="display-center cursor-pointer meeting-details-button">
-                Meeting Details
+                Room Details
                 <span class="material-icons">keyboard_arrow_down</span>
               </div>
             </div>
