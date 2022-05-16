@@ -28,8 +28,8 @@
     /* background: #000000; */ 
     /* border: #2D3436; */
     /* background:radial-gradient(circle at 3% 25%, rgb(51, 209, 183) 0%, rgb(105, 228, 142) 25%); */
-    background: #35353F;
-    border: #2D3436;
+    background: #114C60;
+    border: #114C60;
     border-radius: 0;
     margin-bottom: 0px;
     height: 70px;
@@ -101,7 +101,7 @@
     font-size: 18px;
     font-style: bold;
     font-family: 'Open Sans', sans-serif;
-    background: #35353F;
+    background: #114C60;
     padding-top: 10px;
     padding-bottom: 7.5px;
     vertical-align: middle;
@@ -262,7 +262,7 @@
         display: block;
     }
     .navbar-collapse {
-        background-color: #35353F;
+        background-color: #114C60;
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }

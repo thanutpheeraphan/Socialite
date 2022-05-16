@@ -13,7 +13,7 @@ const Item = styled.div`
   padding: 1.3vw;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0px 0px 20px -10px #35353f;
+  box-shadow: 0px 0px 20px -10px #114c60;
   background: aliceblue;
 `;
 const Title = styled.div`

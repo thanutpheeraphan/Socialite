@@ -15,7 +15,7 @@ const Chart = styled.div`
   background: aliceblue;
   margin: 20px;
   padding: 20px;
-  box-shadow: 0px 0px 20px -10px #35353f;
+  box-shadow: 0px 0px 20px -10px #114c60;
   height: 30vw;
 `;
 

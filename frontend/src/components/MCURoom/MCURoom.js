@@ -5,6 +5,7 @@ import otherJPG from "../../img/other.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import $ from "jquery";
+import { borderRadius } from "@mui/system";
 
 const MCURoom = (props) => {
   const location = useLocation();
@@ -42,7 +43,12 @@ const MCURoom = (props) => {
   return (
     <div>
       <body>
-        <main class=" d-flex flex-column home-wrap">
+        <main
+          class=" d-flex flex-column home-wrap"
+          style={{
+            backgroundColor: "white",
+          }}
+        >
           <div class="g-top text-light">
             <div class="top-remote-video-show-wrap d-flex">
               {/* style={{marginRight: spacing + 'em'}} */}
@@ -51,7 +57,7 @@ const MCURoom = (props) => {
                 class="w-75"
                 style={{ display: "none" }}
               >
-                <div class="call-wrap" style={{ backgroundColor: "black" }}>
+                <div class="call-wrap" style={{ backgroundColor: "#C7D9BF" }}>
                   <div
                     class="video-wrap"
                     id="divUsers"
@@ -60,7 +66,7 @@ const MCURoom = (props) => {
                     <div id="me" class="userbox display-center flex-column">
                       <h2
                         class="display-center"
-                        style={{ fontSize: 14 + "px" }}
+                        style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
                       <div class="display-center">
                         <video autoPlay muted id="locaVideoPlayer"></video>
@@ -102,7 +108,7 @@ const MCURoom = (props) => {
                   style={{
                     height: 10 + "vh",
                     color: "white",
-                    backgroundColor: "#35353F",
+                    backgroundColor: "#114C60",
                   }}
                 >
                   <div class="meeting-heading fw-bold ">Meeting Details</div>
@@ -239,7 +245,7 @@ const MCURoom = (props) => {
                       <div
                         class="chat-message-sent-action display-center"
                         id="btnsend"
-                        style={{ color: "#35353F", cursor: "pointer" }}
+                        style={{ color: "#114C60", cursor: "pointer" }}
                       >
                         <span class="material-icons">send</span>
                       </div>
@@ -249,28 +255,63 @@ const MCURoom = (props) => {
               </div>
             </div>
             <div
-              class="g-top-left text-secondary w-25 d-flex align-items-center justify-content-between ps-2 pe-2"
-              style={{ color: "white" }}
+              class="g-top-left text-secondary d-flex align-items-center justify-content-between ps-2 pe-2 mt-4"
+              style={{
+                color: "white",
+                borderRadius: "20px",
+                backgroundColor: "#1B9370",
+                width: "12vw",
+                right: "1vw",
+              }}
             >
-              <div class="top-left-participant-wrap pt-2 cursor-pointer">
-                <div class="top-left-participant-icon">
-                  <span class="material-icons">people</span>
+              <div class="top-left-participant-wrap pt-3 ps-5 ">
+                <div
+                  class="top-left-participant-icon"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
+                  <span
+                    class="material-icons ps-4"
+                    style={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    people
+                  </span>
+                  <div></div>
                 </div>
-                <div class="top-left-participant-count participant-count">
+                <div
+                  class="top-left-participant-count participant-count"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
                   1
                 </div>
               </div>
-              <div class="top-left-chat-wrap pt-2 cursor-pointer">
-                <span class="material-icons">message</span>
+              <div
+                class="top-left-chat-wrap pt-3 d-flex"
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <span class="material-icons ">message</span>
               </div>
               <div class="top-left-time-wrap"></div>
             </div>
           </div>
-          <div class="g-bottom m-0 d-flex justify-content-between align-items-center">
+          <div
+            class="g-bottom m-0 d-flex justify-content-between align-items-center"
+            style={{ backgroundColor: "#114C60" }}
+          >
             <div class="bottom-left d-flex" style={{ height: 10 + "vh" }}>
               <div
                 class="g-details border border-success mb-2"
-                style={{ display: "none", minHeight: 19.5 + "vh" }}
+                style={{
+                  display: "none",
+                  minHeight: 19.5 + "vh",
+                }}
               >
                 <div class="g-details-heading d-flex justify-content-between align-items-center border-bottom pb-1"></div>
                 <div class="g-details-heading-show-wrap">

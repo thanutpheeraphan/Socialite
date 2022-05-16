@@ -29,8 +29,8 @@ const FunContainer = styled.div`
   position: fixed;
   width: 100%;
   bottom: 0;
-  background: #35353F;
-`
+  background: #114c60;
+`;
 
 const StyledVideo = styled.video`
   height: auto;
@@ -74,9 +74,9 @@ const Room = (props) => {
       try {
         // const id = location.state.parseResponse.room_name;
         const params = location.state.parseResponse.room_link;
-		
+
         const closeRoom = await fetch(
-			process.env.REACT_APP_API_URL+"/rooms/close/${params}",
+          process.env.REACT_APP_API_URL + "/rooms/close/${params}",
           {
             method: "DELETE",
           }
@@ -88,10 +88,9 @@ const Room = (props) => {
         console.error(err.message);
         console.log(err.message);
       }
+    } else {
+      props.history.push(`/home`);
     }
-	else{
-		       props.history.push(`/home`);
-	}
   };
 
   const hideCam = () => {
@@ -264,7 +263,6 @@ const Room = (props) => {
       </Container>
 
       <FunContainer>
-      
         <div className="btn-container">
           <button className="close-room" onClick={closeRoom}>
             {/* Close Room */}
@@ -308,7 +306,6 @@ const Room = (props) => {
           )}
         </div>
       </FunContainer>
-      
     </div>
   );
 };

@@ -43,10 +43,10 @@
     font-size: 1vw;
     padding: .5vw 2.5vw;
 
-    border: 1px solid #35353F;
+    border: 1px solid #114C60;
     border-radius: 2em;
 
-    background-color: #35353F;
+    background-color: #114C60;
 
     color: #fff;
     text-decoration: none;
@@ -71,7 +71,7 @@ input{
 input[type=text],input[type=password],input[type=email]{
     padding: 15px 15px;
     margin: 0px;
-    color: #35353F;
+    color: #114C60;
     font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     font-size: 15px;

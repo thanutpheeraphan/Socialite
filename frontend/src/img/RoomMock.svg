@@ -1,6 +1,6 @@
 <svg width="1744" height="1528" viewBox="0 0 1744 1528" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect y="297" width="1744" height="1231" fill="white"/>
-<rect y="297" width="1744" height="120" fill="#35353F"/>
+<rect y="297" width="1744" height="120" fill="#114C60"/>
 <line x1="667" y1="490" x2="1075" y2="490" stroke="black" stroke-width="4"/>
 <line x1="668" y1="547" x2="1076" y2="547" stroke="black" stroke-width="4"/>
 <rect x="591" y="1342" width="125" height="125" fill="url(#pattern0)"/>
@@ -55,7 +55,7 @@
 <path d="M905 1118V1155" stroke="black" stroke-width="10"/>
 <path d="M826 1203V1203C845.947 1209.48 867.52 1209.56 887.495 1203.16L888 1203" stroke="black" stroke-width="8"/>
 <path d="M955.7 1097.5C923.7 1185.5 912.242 1084 853.7 1084C795.157 1084 772.5 1166.58 772.5 1134C734 1070.5 795.157 1025 853.7 1025C912.242 1025 955.7 1064.92 955.7 1097.5Z" fill="#5C3636"/>
-<rect x="1275" y="406" width="469" height="120" fill="#35353F"/>
+<rect x="1275" y="406" width="469" height="120" fill="#114C60"/>
 <circle cx="1337.42" cy="452.562" r="19.5615" fill="white"/>
 <path d="M1307 499.11C1307 482.794 1320.23 469.568 1336.54 469.568H1338.46C1354.77 469.568 1368 482.794 1368 499.11V499.11H1307V499.11Z" fill="white"/>
 <rect x="1641" y="428" width="98" height="58.3126" rx="29.1563" fill="white"/>

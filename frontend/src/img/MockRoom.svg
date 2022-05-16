@@ -9,7 +9,7 @@
 <path d="M253.591 49C253.591 61.2699 242.897 71.5 229.343 71.5C215.788 71.5 205.094 61.2699 205.094 49C205.094 36.7301 215.788 26.5 229.343 26.5C242.897 26.5 253.591 36.7301 253.591 49Z" fill="#79FF7E" stroke="#B5B5B5" stroke-width="5"/>
 <path d="M184.045 49C184.045 61.2699 173.35 71.5 159.796 71.5C146.242 71.5 135.547 61.2699 135.547 49C135.547 36.7301 146.242 26.5 159.796 26.5C173.35 26.5 184.045 36.7301 184.045 49Z" fill="#FAE579" stroke="#B5B5B5" stroke-width="5"/>
 <rect x="63.5" y="94" width="1744" height="1231" fill="white"/>
-<rect x="64.5" y="89" width="1744" height="120" fill="#35353F"/>
+<rect x="64.5" y="89" width="1744" height="120" fill="#114C60"/>
 <rect x="727" y="1155" width="114" height="114" fill="url(#pattern0)"/>
 <rect x="1042" y="1149" width="120" height="120" fill="url(#pattern1)"/>
 <rect x="1042" y="1149" width="120" height="120" fill="url(#pattern2)"/>
@@ -71,7 +71,7 @@
 <rect x="557" y="466" width="36" height="5" fill="black"/>
 <path d="M663.998 462.034L679 448.5L679.5 454.5L663.999 467L663.998 462.034Z" fill="black"/>
 <path d="M485.91 463.534L467 455.5L467 461.5L485.909 468.5L485.91 463.534Z" fill="black"/>
-<rect x="280" y="734" width="585" height="51" fill="#35353F"/>
+<rect x="280" y="734" width="585" height="51" fill="#114C60"/>
 <circle cx="308" cy="760" r="17" fill="#FF7272"/>
 <circle cx="398" cy="760" r="17" fill="#7CFF79"/>
 <circle cx="353" cy="760" r="17" fill="#FDFF89"/>
@@ -125,7 +125,7 @@
 <ellipse cx="1832.3" cy="471.198" rx="24.5676" ry="54.8046" transform="rotate(105 1832.3 471.198)" fill="#EFBA9B"/>
 <ellipse cx="1848.1" cy="348.915" rx="24.5676" ry="54.8046" transform="rotate(105 1848.1 348.915)" fill="#EFBA9B"/>
 <ellipse cx="1844.03" cy="427.388" rx="24.5676" ry="54.8046" transform="rotate(105 1844.03 427.388)" fill="#EFBA9B"/>
-<rect x="1340" y="205" width="469" height="120" fill="#35353F"/>
+<rect x="1340" y="205" width="469" height="120" fill="#114C60"/>
 <circle cx="1424.42" cy="251.562" r="19.5615" fill="white"/>
 <path d="M1394 298.11C1394 281.794 1407.23 268.568 1423.54 268.568H1425.46C1441.77 268.568 1455 281.794 1455 298.11V298.11H1394V298.11Z" fill="white"/>
 <rect x="1661" y="233" width="98" height="58.3126" rx="29.1563" fill="white"/>
