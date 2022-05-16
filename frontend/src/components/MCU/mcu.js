@@ -373,7 +373,7 @@ export var Mcu = (function () {
 
   function event_process_for_signaling_server() {
     socket = io.connect();
-	console.log(socket);
+    console.log(socket);
     var SDP_function = function (data, to_connid) {
       socket.emit("SDPProcess", {
         message: data,
@@ -446,24 +446,33 @@ export var Mcu = (function () {
   function eventHandling() {
     $("#btnsend").on("click", function () {
       var msgData = $("#msgbox").val();
-      socket.emit("sendMessage", msgData);
-      var time = new Date();
-      var lTime = time.toLocaleString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
+      //   if(!msgData?.trim()){
+      // 	//str is null, undefined, or contains only spaces
+      // 	//do nothing
+      // 	console.log("inside trim");
+      //  }
+      if (msgData?.trim()) {
+        socket.emit("sendMessage", msgData);
+        var time = new Date();
+        var lTime = time.toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
 
-      var div = $("<div>").html(
-        "<span class='font-weight-bold mr-3' style='color:black'>" +
-          user_id +
-          "</span>" +
-          lTime +
-          "</br>" +
-          msgData
-      );
-      $("#messages").append(div);
-      $("#msgbox").val("");
+        var div = $("<div>").html(
+          "<span class='font-weight-bold mr-3' style='color:black'>" +
+            user_id +
+            "</span>" + " " +
+            lTime +
+            "</br>" +
+            msgData
+        );
+        $("#messages").append(div);
+        $("#msgbox").val("");
+      } else {
+        $("#msgbox").val("");
+      }
     });
   }
 
@@ -500,15 +509,15 @@ export var Mcu = (function () {
     $(".g-right-details-wrap").hide(300);
   });
   $(document).on("click", ".top-left-participant-wrap", function () {
-	$(".people-heading").addClass("active");
-	$(".chat-heading").removeClass("active");
+    $(".people-heading").addClass("active");
+    $(".chat-heading").removeClass("active");
     $(".g-right-details-wrap").show(300);
     $(".in-call-wrap-up").show(300);
     $(".chat-show-wrap").hide(300);
   });
   $(document).on("click", ".top-left-chat-wrap", function () {
-	$(".people-heading").removeClass("active");
-	$(".chat-heading").addClass("active");
+    $(".people-heading").removeClass("active");
+    $(".chat-heading").addClass("active");
     $(".g-right-details-wrap").show(300);
     $(".in-call-wrap-up").hide(300);
     $(".chat-show-wrap").show(300);
@@ -519,7 +528,7 @@ export var Mcu = (function () {
         display: "block",
       })
       .html(
-		'<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h3> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <button class="call-leave-action btn btn-danger me-5" onClick=location.href="/home">Leave</button> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
+        '<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h3> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <button class="call-leave-action btn btn-danger me-5" onClick=location.href="/home">Leave</button> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
         // '<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h3> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <a href="/home"><button class="call-leave-action btn btn-danger me-5">Leave</button></a> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
       );
   });

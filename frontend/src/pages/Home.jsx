@@ -354,7 +354,7 @@ function Home(props) {
                   //   getRoomData(item);
                   //   joinRoom(item);
                   // }}
-                  onClick={() => console.log(item.room_name)}
+                  onClick={() => console.log(item.room_name)} //join room function
                 >
                   {/* Room Title */}
                   <div className={style.upperIndex}>
@@ -434,7 +434,7 @@ function Home(props) {
                       <Chip
                         label={<ClipisText>{item.tags[index]}</ClipisText>}
                         onClick={() =>
-                          console.log(item.tags[index] + item.room_name)
+                          console.log("item.tags[index]: ",item.tags[index])
                         }
                         color="primary"
                         style={{
