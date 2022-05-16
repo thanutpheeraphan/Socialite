@@ -64,16 +64,11 @@ function Home(props) {
       console.error(err.message);
     }
   };
-
-  const createRoomFunc = () => {
-    var eight_digit_value = Math.floor(Math.random() * 100000000);
-    props.history.push({ pathname: `/room/?roomID=${eight_digit_value}` });
-  };
-  const joinRoomFunc = () => {
-    var room_id = window.prompt("Enter the room ID");
+  const joinRoomFunc = (link) => {
+    // var room_id = window.prompt("Enter the room ID");
     // props.history.push({ pathname: `/room/?roomID=${room_id}` });
     props.history.push({
-      pathname: `/room/?roomID=${room_id}`,
+      pathname: `/room/?roomID=${link}`,
       state: { name },
     });
   };
@@ -354,7 +349,8 @@ function Home(props) {
                   //   getRoomData(item);
                   //   joinRoom(item);
                   // }}
-                  onClick={() => console.log(item.room_name)} //join room function
+				  onClick={()=>{joinRoomFunc(item.room_link)}}
+                //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
                 >
                   {/* Room Title */}
                   <div className={style.upperIndex}>
