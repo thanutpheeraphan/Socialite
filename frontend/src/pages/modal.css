@@ -141,7 +141,7 @@
   
   grid-area: head;
   justify-content: center;
-  /* background-color: #35353F; */
+
 }
 #container > item-b{
   grid-area: main;

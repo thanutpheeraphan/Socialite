@@ -49,7 +49,7 @@ const SloText = styled.h2`
   align-items: center;
   justfy-content: center;
   font-size: 5vw;
-  color: #35353f;
+  color: #114c60;
   font-weight: bold;
   font-style: italic;
   margin-left: 0.5vw;

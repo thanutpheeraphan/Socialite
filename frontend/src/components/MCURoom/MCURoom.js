@@ -245,7 +245,7 @@ const MCURoom = (props) => {
                       <div
                         class="chat-message-sent-action display-center"
                         id="btnsend"
-                        style={{ color: "#35353F", cursor: "pointer" }}
+                        style={{ color: "#114C60", cursor: "pointer" }}
                       >
                         <span class="material-icons">send</span>
                       </div>
@@ -264,16 +264,39 @@ const MCURoom = (props) => {
                 right: "1vw",
               }}
             >
-              <div class="top-left-participant-wrap pt-2 cursor-pointer">
-                <div class="top-left-participant-icon">
-                  <span class="material-icons">people</span>
+              <div class="top-left-participant-wrap pt-3 ps-5 ">
+                <div
+                  class="top-left-participant-icon"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
+                  <span
+                    class="material-icons ps-4"
+                    style={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    people
+                  </span>
+                  <div></div>
                 </div>
-                <div class="top-left-participant-count participant-count">
+                <div
+                  class="top-left-participant-count participant-count"
+                  style={{
+                    cursor: "pointer",
+                  }}
+                >
                   1
                 </div>
               </div>
-              <div class="top-left-chat-wrap pt-2 cursor-pointer">
-                <span class="material-icons">message</span>
+              <div
+                class="top-left-chat-wrap pt-3 d-flex"
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <span class="material-icons ">message</span>
               </div>
               <div class="top-left-time-wrap"></div>
             </div>
