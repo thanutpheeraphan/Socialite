@@ -434,7 +434,10 @@ export var Mcu = (function () {
 
       var div = $("<div>").html(
         "<span class='font-weight-bold mr-3' style='color:black'>" +
+          "<b>" +
           data.from +
+          "&nbsp;" +
+          "</b> " +
           "</span>" +
           lTime +
           "</br>" +
