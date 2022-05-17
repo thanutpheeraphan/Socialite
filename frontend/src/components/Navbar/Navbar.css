@@ -5,7 +5,7 @@
 }  
 
 .img_icon:hover{
-    /* background-color: rgb(255, 0, 0); */
+    background-color: #114C60;
 }
 
 /* form-size */
@@ -40,6 +40,9 @@
     position: relative;
 }
 
+a:hover{
+    background-color: transparent;
+}
 
 /* content spacing */
 .navbar .nav li a {
@@ -301,6 +304,7 @@
    height: 20%;
 }
 
-/* .nav .homelogo:hover{
+.nav .homelogo:hover{
     text-decoration: none;
-} */
+    background-color: transparent;
+}

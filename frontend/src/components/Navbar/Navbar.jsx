@@ -64,9 +64,15 @@ const Navbar = ({ setAuth, isAutheticated }) => {
     <Fragment>
       <nav className="navbar navbar-default navbar-expand-lg navbar-light">
         <div className="navbar-header">
-          {/* <a href="./home" className="homelogo"> */}
-          <img src={logo} alt="logo" className="img_icon" />
-          {/* </a> */}
+          <a
+            href="./home"
+            className="homelogo"
+            style={{
+              hover: "",
+            }}
+          >
+            <img src={logo} alt="logo" className="img_icon" />
+          </a>
           <button
             type="button"
             data-target=".navbar-collapse"
