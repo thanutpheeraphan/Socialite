@@ -502,15 +502,17 @@ function Home(props) {
               variant="middle"
               style={{ color: "#1B9370" }}
             />
+            <div class="d-flex"></div>
             <div
               class="d-flex justify-content-end mt-4 "
               style={{
                 color: "#114C60",
-                fontSize: "2vw",
+                fontSize: "1.3vw",
                 fontWeight: "bold",
                 marginRight: ".5vw",
               }}
             >
+              {/* Add time */}
               {lTime}
             </div>
           </div>
