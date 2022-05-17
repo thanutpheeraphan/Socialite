@@ -5,7 +5,7 @@
 }
 
 .modal-style{
-	background-color: #2f3136;
+	background-color: #114C60;
 	color: #fff;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .create-button{
-	background-color: #2f3136;
+	background-color: #114C60;
 	color: #fff;
 	font-size: 20px;
 	border: none;
@@ -150,6 +150,7 @@
 #container > item-c{
   grid-area: sidebar;
   background-color: #c7ffe8;
+  
 }
 
 /* grid room container */

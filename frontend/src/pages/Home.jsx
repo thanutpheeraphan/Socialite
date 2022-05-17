@@ -17,6 +17,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import Chip from "@mui/material/Chip";
 import { styled } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
+import iconPanel from "../img/iconPanel.svg";
+import Divider from "@mui/material/Divider";
 
 import {
   BsFillChatDotsFill,
@@ -46,6 +48,13 @@ function Home(props) {
   const [searchInput, setSearchInput] = useState("");
   const [tags, setTags] = useState([]);
   const [room, setRoomOffset] = useState(0);
+
+  var time = new Date();
+  var lTime = time.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -475,6 +484,37 @@ function Home(props) {
       </item-b>
 
       <item-c>
+        <div class=" " style={{ position: "sticky", top: ".5vw" }}>
+          <div class="d-flex justify-content-center mt-4" style={{}}>
+            <img
+              src={iconPanel}
+              alt=""
+              class=""
+              style={{
+                width: "12vw",
+              }}
+            />
+          </div>
+          <div>
+            <Divider
+              sx={{ borderBottom: 3 }}
+              class="mt-2"
+              variant="middle"
+              style={{ color: "#1B9370" }}
+            />
+            <div
+              class="d-flex justify-content-end mt-4 "
+              style={{
+                color: "#114C60",
+                fontSize: "2vw",
+                fontWeight: "bold",
+                marginRight: ".5vw",
+              }}
+            >
+              {lTime}
+            </div>
+          </div>
+        </div>
         {/* <Fab
           onClick={joinRoomFunc}
           variant="extended"
@@ -499,7 +539,7 @@ function Home(props) {
             position: "fixed",
             right: 10,
             bottom: 10,
-            background: "rgba(45, 52, 54, 1)",
+            background: "#114C60",
             color: "#fff",
             fontSize: 15,
           }}
@@ -508,6 +548,7 @@ function Home(props) {
           Create Room
         </Fab>
 
+        {/* Create Room Box */}
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header className="modal-style" closeButton>
             <Modal.Title>Create Room</Modal.Title>
