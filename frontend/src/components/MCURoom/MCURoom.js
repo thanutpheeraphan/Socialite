@@ -108,7 +108,7 @@ const MCURoom = (props) => {
                 <div
                   class="meeting-heading-wrap d-flex justify-content-between align-items-center pe-3 ps-3"
                   style={{
-                    height: 10 + "vh",
+                    height: 6 + "vh",
                     color: "white",
                     backgroundColor: "#114C60",
                   }}
@@ -122,7 +122,7 @@ const MCURoom = (props) => {
                 <div
                   class="people-chat-wrap d-flex justify-content-between align-items-center ms-3 me-3 pe-3 ps-3"
                   style={{
-                    height: 10 + "vh",
+                    height: 7 + "vh",
                     fontSize: 14 + "px",
                   }}
                 >
