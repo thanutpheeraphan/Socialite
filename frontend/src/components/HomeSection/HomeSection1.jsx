@@ -68,7 +68,7 @@ export const LS = styled.div`
   line-height: 1.5;
   color: var(--white);
   position: relative;
-  z-index: 15;
+  z-index: 1;
   margin-right: 5vw;
   @media only Screen and (max-width: 48em) {
     width: 80%;

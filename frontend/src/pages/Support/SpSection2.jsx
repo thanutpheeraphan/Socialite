@@ -92,7 +92,7 @@ export const SpBlock = styled.div`
   line-height: 1;
   color: var(--white);
   position: relative;
-  z-index: 15;
+  z-index: 5;
   @media only Screen and (max-width: 48em) {
     width: 80%;
     text-align: center;

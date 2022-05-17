@@ -32,7 +32,7 @@ const Banner = styled.img`
   height: auto;
   margin-left: 10vw;
   margin-right: 8vw;
-  z-index: 7;
+  z-index: 1;
   animation: ${move} 3s ease-in-out infinite;
   @media only Screen and (max-width: 48em) {
     // align-self: flex-start;
@@ -51,7 +51,7 @@ const Banner2 = styled.img`
   max-width: 100%;
   width: calc(20% + 30vw);
   height: auto;
-  z-index: 7;
+  z-index: 1;
   margin-right: 100px;
   animation: ${move} 3s ease-in-out infinite;
   @media only Screen and (max-width: 48em) {
