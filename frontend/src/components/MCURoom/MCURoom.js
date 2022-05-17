@@ -34,7 +34,7 @@ const MCURoom = (props) => {
     }
     // document.getElementById("meetingContainer").st
     $("meetingContainer").show();
-	// console.log(typeof Mcu);
+    // console.log(typeof Mcu);
     Mcu._init(user_id, meeting_id);
   });
 
@@ -47,6 +47,8 @@ const MCURoom = (props) => {
           class=" d-flex flex-column home-wrap"
           style={{
             backgroundColor: "white",
+            // test height
+            height: "92vh",
           }}
         >
           <div class="g-top text-light">
