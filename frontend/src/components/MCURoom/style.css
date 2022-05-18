@@ -53,6 +53,7 @@ textarea:focus, input:focus{
 }
 .g-top{
     height: 89vh;
+    
     position:relative;
 }
 .video-wrap{
@@ -65,7 +66,8 @@ height: 600px;
 }
 .g-top-left{
     position: absolute;
-    right:0;
+    width: 10vw;
+    right:1vw;
     height: 8vh;
     top:0;
     border-bottom-left-radius: 10px;
@@ -105,6 +107,7 @@ height: 600px;
     background-color: #114C60;
     box-shadow: 0 0 5px #114C60;
     z-index: 2;
+    
 }
 .bottom-left{
     position: relative;
@@ -187,4 +190,41 @@ video{
     position: absolute;
     margin-bottom: 132px;
     display: none;
+}
+.material-icons{
+    padding-left: 1vw;
+}
+
+.g-top-left{
+    display: none;
+}
+@media only Screen and (max-width: 420px){
+    .g-top-left{
+        position: absolute;
+        top:0;
+        width:30vw;
+        right: 10vw;
+        
+    }
+    .top-left-participant-wrap{
+        margin-right: 10vw;
+        padding-left: 10vw;
+        
+    }
+    .material-icons{
+        padding-left:0 ;
+    }
+    .g-right-details-wrap{
+        margin-right: 26.5vw;
+       
+    }
+    .people-headin-text{
+        display:none;
+    }
+    .people-chat-wrap{
+        width:48vw;
+    }
+    .chat-heading-text{
+        display: none;
+    }
 }

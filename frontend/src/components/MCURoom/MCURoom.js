@@ -262,11 +262,9 @@ const MCURoom = (props) => {
                 color: "white",
                 borderRadius: "20px",
                 backgroundColor: "#1B9370",
-                width: "12vw",
-                right: "1vw",
               }}
             >
-              <div class="top-left-participant-wrap pt-3 ps-5 ">
+              <div class="top-left-participant-wrap pt-3 ps-4 ">
                 <div
                   class="top-left-participant-icon"
                   style={{
@@ -274,7 +272,7 @@ const MCURoom = (props) => {
                   }}
                 >
                   <span
-                    class="material-icons ps-4"
+                    class="material-icons"
                     style={{
                       cursor: "pointer",
                     }}

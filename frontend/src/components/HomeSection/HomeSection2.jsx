@@ -63,7 +63,7 @@ const Basesection = styled.section`
     display: block;
   }
   @media only Screen and (max-width: 420px) {
-    display: none;
+    // display: none;
   }
 `;
 
