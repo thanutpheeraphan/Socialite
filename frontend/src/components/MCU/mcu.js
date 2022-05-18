@@ -52,6 +52,7 @@ var McuProcess = (function () {
           "<span class='material-icons' style='width:100%;'>mic_off</span>"
         );
         removeMediaSenders(rtp_aud_senders);
+		audio.stop();
       }
       isAudioMute = !isAudioMute;
     });
@@ -486,6 +487,9 @@ export var Mcu = (function () {
       }
     });
 
+	var url = window.location.href;
+	$(".meeting_url").text(url);
+
     $("#divUsers").on("dblclick", "video", function () {
       console.log("Double Click");
       this.requestFullscreen();
@@ -570,6 +574,27 @@ export var Mcu = (function () {
   $(document).on("click", ".call-cancel-action", function () {
     $(".top-box-show").html("");
   });
+
+  $(document).on("click", ".copy_info", function () {
+	console.log($(".meeting_url").text());
+	var roomlink = $(".meeting_url").text();
+	navigator.clipboard.writeText(roomlink);
+	   $(".link-conf").show();
+    setTimeout(function () {
+      $(".link-conf").hide();
+    }, 3000);
+  }); 
+
+  $(document).on("click", ".meeting-details-button", function () {
+    $(".g-details").toggle();
+  });
+
+  $(document).on("click", ".option-wrap", function () {
+    $(".a-v-details").toggle();
+  });
+  
+
+ 
 
   return {
     _init: function (uid, mid) {

@@ -110,6 +110,10 @@ height: 600px;
     position: relative;
     padding: 5px;
 }
+.bottom-right{
+    position: relative;
+    padding: 5px;
+}
 .action-icon-style{
     font-size: 8px !important;
     height: 40px;
@@ -127,6 +131,7 @@ height: 600px;
 .top-remote-video-show-wrap {
     /* display: flex; */
     justify-content: center;
+	/* flex-wrap: nowrap; */
     align-items: center;
     height: 100%;
     /* background-image: url(../images/bg.png) !important; */
@@ -155,6 +160,14 @@ video{
 }
 .bottom-left{
     position: relative;
+    padding: 5px;
+}
+.a-v-details{
+	position: absolute;
+    width: 18vw;
+    background-color: #114C60;
+    margin-top: -250px;
+    border-radius: 5px;
     padding: 5px;
 }
 .g-details{

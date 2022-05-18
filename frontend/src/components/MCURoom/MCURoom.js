@@ -315,32 +315,54 @@ const MCURoom = (props) => {
                   minHeight: 19.5 + "vh",
                 }}
               >
-                <div class="g-details-heading d-flex justify-content-between align-items-center border-bottom pb-1"></div>
+                <div class="g-details-heading d-flex justify-content-between align-items-center border-bottom pb-1">
+                  <div class="g-details-heading-detail d-flex align-items-center">
+                    {/* <span
+                      class="material-icons"
+                      style={{ fontSize: 14 + "px", color: "white" }}
+                    >
+                      error
+                      <span style={{ marginTop: "-10px" }}>
+                        Details
+                      </span>
+                    </span> */}
+                    <span style={{ marginTop: "-5px", color: "white" }}>
+                      Details
+                    </span>
+                  </div>
+                </div>
                 <div class="g-details-heading-show-wrap">
                   <div class="g-details-heading-show">
-                    <div style={{ fontWeight: 600, color: "gray" }}>
-                      Joining Info
+                    <div style={{ fontWeight: 600, color: "whitesmoke" }}>
+                      Room Link:
                     </div>
                     <div
                       class="meeting_url"
-                      style={{ padding: 5 + "px 0" }}
+                      style={{ padding: 5 + "px 0", color: "white" }}
                       data-toggle="tooltip"
                       data-placement="top"
                     ></div>
-                    <div style={{ cursor: "pointer" }}>
+                    <div class="cursor-pointer" style={{ cursor: "pointer" }}>
                       <span
                         class="material-icons"
-                        style={{ fontSize: 14 + "px" }}
+                        style={{ fontSize: 14 + "px" , color: "white"}}
                       >
                         content_copy
                       </span>
-                      <span class="copy_info fw-bold">
-                        Copy Joining Info{" "}
+                      <span
+                        class="copy_info fw-bold "
+                        style={{
+                          color: "white",
+                        }}
+                      >
+                        Copy Joining Info
                         <span
                           style={{
                             display: "none",
+                            color: "white",
                             backgroundColor: "aquamarine",
                             borderRadius: 5 + "px",
+                            marginLeft: 0.5 + "vw",
                           }}
                           class="link-conf fw-bold p-1"
                         >
@@ -388,6 +410,19 @@ const MCURoom = (props) => {
               id="screenShare-wrap"
               style={{ height: 10 + "vh" }}
             >
+              <div class="a-v-details border border-success mb-2"  style={{
+                  display: "none",
+                  minHeight: 19.5 + "vh",
+                }}>
+                <div class="a-v-details-heading d-flex justify-content-between align-items-center border-bottom">
+                  <div class="a-v-details-heading-detail d-flex align-items-center cursor-pointer">
+                    <span style={{ marginTop: "-5px", color: "white" }}>
+                      Adjust Preference
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               <div
                 class="present-now-wrap d-flex just-content-center flex-column align-items-center me-5 cursor-pointer"
                 id="ScreenShareOnOf"
