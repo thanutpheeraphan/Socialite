@@ -32,6 +32,7 @@ var McuProcess = (function () {
   }
 
   function eventProcess() {
+
     $("#miceMuteUnmute").on("click", async function () {
       if (!audio) {
         await loadAudio();
@@ -592,8 +593,6 @@ export var Mcu = (function () {
   $(document).on("click", ".option-wrap", function () {
     $(".a-v-details").toggle();
   });
-  
-
  
 
   return {

@@ -35,13 +35,13 @@ const MCURoom = (props) => {
     // document.getElementById("meetingContainer").st
     $("meetingContainer").show();
     // console.log(typeof Mcu);
-    Mcu._init(user_id, meeting_id);
+    Mcu._init(user_id, meeting_id);	
   });
 
   //   }
 
   return (
-    <div>
+    <div id="room-page">
       <body>
         <main
           class=" d-flex flex-column home-wrap"
@@ -422,6 +422,30 @@ const MCURoom = (props) => {
                     </span>
                   </div>
                 </div>
+                <div class="a-v-details-heading-show-wrap">
+                  <div class="g-details-heading-show">
+                    <div class="select">
+                      <label for="audioSource" style={{ color: "white" }}>
+                        Audio input source:{" "}
+                      </label>
+                      <select id="audioSource"></select>
+                    </div>
+
+                    <div class="select">
+                      <label for="audioOutput" style={{ color: "white" }}>
+                        Audio output destination:{" "}
+                      </label>
+                      <select id="audioOutput"></select>
+                    </div>
+
+                    <div class="select">
+                      <label for="videoSource" style={{ color: "white" }}>
+                        Video source:{" "}
+                      </label>
+                      <select id="videoSource"></select>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div
@@ -451,6 +475,7 @@ const MCURoom = (props) => {
           <div class="top-box-show" style={{ display: "none" }}></div>
         </main>
       </body>
+	{/* <script type = "text/javascript" src="../js/audioVideoControls.js" async></script> */}
     </div>
   );
 };
