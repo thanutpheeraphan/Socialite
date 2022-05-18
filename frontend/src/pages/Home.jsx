@@ -19,6 +19,7 @@ import { styled } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
 import iconPanel from "../img/iconPanel.svg";
 import Divider from "@mui/material/Divider";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import {
   BsFillChatDotsFill,
@@ -477,7 +478,8 @@ function Home(props) {
           </div>
         ) : (
           <div className="NoRoom">
-            <p>No rooms found</p>
+            <CircularProgress color="primary" thickness="4" size="3.5vw" />
+            {/* <p>No rooms found</p> */}
             {/* <button>test</button> */}
           </div>
         )}
@@ -502,7 +504,16 @@ function Home(props) {
               variant="middle"
               style={{ color: "#1B9370" }}
             />
-            <div class="d-flex"></div>
+            <div
+              class="d-flex justify-content-center"
+              style={{
+                color: "#114C60",
+                fontSize: "1.6vw",
+                fontWeight: "bold",
+              }}
+            >
+              {"Hi, " + name}
+            </div>
             <div
               class="d-flex justify-content-end mt-4 "
               style={{
