@@ -343,7 +343,7 @@ const MCURoom = (props) => {
                     <div class="cursor-pointer" style={{ cursor: "pointer" }}>
                       <span
                         class="material-icons"
-                        style={{ fontSize: 14 + "px" , color: "white"}}
+                        style={{ fontSize: 14 + "px", color: "white" }}
                       >
                         content_copy
                       </span>
@@ -408,10 +408,13 @@ const MCURoom = (props) => {
               id="screenShare-wrap"
               style={{ height: 10 + "vh" }}
             >
-              <div class="a-v-details border border-success mb-2"  style={{
+              <div
+                class="a-v-details border border-success mb-2"
+                style={{
                   display: "none",
                   minHeight: 19.5 + "vh",
-                }}>
+                }}
+              >
                 <div class="a-v-details-heading d-flex justify-content-between align-items-center border-bottom">
                   <div class="a-v-details-heading-detail d-flex align-items-center cursor-pointer">
                     <span style={{ marginTop: "-5px", color: "white" }}>

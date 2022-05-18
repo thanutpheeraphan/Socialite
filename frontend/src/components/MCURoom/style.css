@@ -166,12 +166,14 @@ video{
     padding: 5px;
 }
 .a-v-details{
-	position: absolute;
-    width: 18vw;
+	position: fixed;
+    width: 20vw;
     background-color: #114C60;
-    margin-top: -250px;
+    margin-top: -30vh;
     border-radius: 5px;
-    padding: 5px;
+    padding: 0.5vw;
+    right: 1vw;
+    
 }
 .g-details{
     position: absolute;
@@ -192,8 +194,10 @@ video{
     display: none;
 }
 .material-icons{
-    padding-left: 1vw;
+    
 }
+
+
 
 .g-top-left{
     display: none;
