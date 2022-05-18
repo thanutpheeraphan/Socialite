@@ -275,6 +275,7 @@ const MCURoom = (props) => {
                     class="material-icons"
                     style={{
                       cursor: "pointer",
+                      paddingLeft: "1vw",
                     }}
                   >
                     people
@@ -296,7 +297,7 @@ const MCURoom = (props) => {
                   cursor: "pointer",
                 }}
               >
-                <span class="material-icons ">message</span>
+                <span class="material-icons">message</span>
               </div>
               <div class="top-left-time-wrap"></div>
             </div>
