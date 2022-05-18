@@ -150,6 +150,8 @@
 #container > item-c{
   grid-area: sidebar;
   background-color: #c7ffe8;
+
+  
   
 }
 
@@ -171,4 +173,30 @@
   /* margin-top: 1.5vw; */
   border-color: #DADCE0;
   border-radius: 10px;
+}
+
+@media only Screen and (max-width: 420px) {
+  #container > item-c{
+    display: none;
+  }
+  #container > item-b{
+    grid-area: main;
+    width: 120%;
+  }
+  #container{
+    display: grid;
+    width: 100%;
+    height: auto;
+    grid-template-areas:
+    "head"
+    "main";
+  }
+  .grid-container{
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 20vw 20vw;
+    gap: 2vw;
+    padding: 2vw;
+    padding-right: 16vw;
+  }
 }
