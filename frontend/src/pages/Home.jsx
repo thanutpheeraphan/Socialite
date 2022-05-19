@@ -586,7 +586,7 @@ function Home(props) {
                 style={{
                   marginLeft: "1.0vw",
                   marginRight: ".5vw",
-                  paddingBottom: ".5vw",
+                  paddingBottom: "1vw",
                   fontSize: "1vw",
                   alignItems: "center",
                   textAlign: "center",
@@ -594,7 +594,7 @@ function Home(props) {
                   justifyContent: "center",
                 }}
               >
-                Use the searchbar to search for a room by tags or name.
+                Use the searchbar to search for a room.
               </div>
             </div>
             <Divider
