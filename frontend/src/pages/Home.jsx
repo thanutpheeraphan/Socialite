@@ -493,7 +493,7 @@ function Home(props) {
       </item-b>
 
       <item-c>
-        <div class=" " style={{ position: "sticky", top: "5vw" }}>
+        <div class=" " style={{ position: "sticky", top: "3vw" }}>
           <div class="d-flex justify-content-center mt-4" style={{}}>
             <img
               src={iconPanel}
@@ -602,7 +602,7 @@ function Home(props) {
               variant="middle"
               style={{ color: "#65E291" }}
             />
-            <div class="d-flex justify-content-center mt-5 mb-4">
+            <div class="d-flex justify-content-center mt-1 mb-4">
               <div
                 style={{
                   paddingBottom: ".5vw",
