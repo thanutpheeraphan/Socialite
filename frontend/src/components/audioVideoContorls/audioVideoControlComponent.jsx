@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import $ from "jquery";
 
 const AudioVideoControlComponent = () => {
-//   const videoElement = document.querySelector("locaVideoPlayer");
+  //   const videoElement = document.querySelector("locaVideoPlayer");
   const videoElement = document.getElementById("locaVideoPlayer");
   const audioInputSelect = $(".select#audioSource");
   const audioOutputSelect = $(".select#audioOutput");
@@ -15,13 +15,11 @@ const AudioVideoControlComponent = () => {
   const [listOfAudioOutput, setListOfAudioOutput] = useState({});
   const [listOfVideo, setListOfVideo] = useState({});
 
-
-
   //   navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
   // Attach audio output device to video element using device/sink ID.
   function attachSinkId(element, sinkId) {
-	console.log(element.sinkId, sinkId);
+    console.log(element.sinkId, sinkId);
     if (typeof element.sinkId !== "undefined") {
       element
         .setSinkId(sinkId)
@@ -43,8 +41,8 @@ const AudioVideoControlComponent = () => {
   }
 
   function changeAudioDestination(event) {
-	const audioDestination = event.target.value;
-	console.log(audioDestination);
+    const audioDestination = event.target.value;
+    console.log(audioDestination);
     attachSinkId(videoElement, audioDestination);
   }
 
@@ -63,49 +61,45 @@ const AudioVideoControlComponent = () => {
     );
   }
 
+  function handleChangeAudioInput(event) {
+    // console.log("event", event);
+    if (window.stream) {
+      window.stream.getTracks().forEach((track) => {
+        track.stop();
+      });
+    }
+    // const audioSource = {value: event.target.value};
+    // const videoSource = {value: event.target.value};
+    const audioSource = event.target.value;
+    // const videoSource = videoSelect.value;
 
-  function handleChangeAudioInput(event){
-	// console.log("event", event);
-	if (window.stream) {
-		window.stream.getTracks().forEach((track) => {
-		  track.stop();
-		});
-	  }
-	// const audioSource = {value: event.target.value};
-	// const videoSource = {value: event.target.value};
-	const audioSource = event.target.value
-	// const videoSource = videoSelect.value;
-
-	
-	const constraints = {
-		audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
-	  };
-	  navigator.mediaDevices
-		.getUserMedia(constraints)
-		.then(gotStream)
-		.then(logFunction)
-		.catch(handleError);
-	
+    const constraints = {
+      audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
+    };
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then(gotStream)
+      .then(logFunction)
+      .catch(handleError);
   }
-  function handleChangeVideoOutput(event){
-	if (window.stream) {
-		window.stream.getTracks().forEach((track) => {
-		  track.stop();
-		});
-	  }
-	// const videoSource = {value: event.target.value};
-	const videoSource = event.target.value;
+  function handleChangeVideoOutput(event) {
+    if (window.stream) {
+      window.stream.getTracks().forEach((track) => {
+        track.stop();
+      });
+    }
+    // const videoSource = {value: event.target.value};
+    const videoSource = event.target.value;
 
-	// console.log(videoSource);
-	const constraints = {
-		video: { deviceId: videoSource ? { exact: videoSource } : undefined },
-	};
-	  navigator.mediaDevices
-		.getUserMedia(constraints)
-		.then(gotStream)
-		.then(logFunction)
-		.catch(handleError);
-	
+    // console.log(videoSource);
+    const constraints = {
+      video: { deviceId: videoSource ? { exact: videoSource } : undefined },
+    };
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then(gotStream)
+      .then(logFunction)
+      .catch(handleError);
   }
   //   useEffect(() => {
   // try {
@@ -131,39 +125,40 @@ const AudioVideoControlComponent = () => {
         }));
       } else if (deviceInfo.kind === "audiooutput") {
         // setListOfAudioOutput(listOfAudioOutput => [...listOfAudioOutput, deviceInfo.label]);
-		updatedValue = { [deviceInfo.label]: deviceInfo.deviceId };
-		setListOfAudioOutput((listOfAudioOutput) => ({
-			...listOfAudioOutput,
-			...updatedValue,
-		  }));
+        updatedValue = { [deviceInfo.label]: deviceInfo.deviceId };
+        setListOfAudioOutput((listOfAudioOutput) => ({
+          ...listOfAudioOutput,
+          ...updatedValue,
+        }));
       } else if (deviceInfo.kind === "videoinput") {
         //   setListOfVideo(listOfVideo => [...listOfVideo, deviceInfo.label]);
-		updatedValue = { [deviceInfo.label]: deviceInfo.deviceId };
-		setListOfVideo((listOfVideo) => ({
-			...listOfVideo,
-			...updatedValue,
-		  }));
+        updatedValue = { [deviceInfo.label]: deviceInfo.deviceId };
+        setListOfVideo((listOfVideo) => ({
+          ...listOfVideo,
+          ...updatedValue,
+        }));
       } else {
         console.log("Some other kind of source/device: ", deviceInfo);
       }
     }
   }
 
-//   function logDataFunction() {
-//     console.log(listOfAudioInput);
-//   }
+  //   function logDataFunction() {
+  //     console.log(listOfAudioInput);
+  //   }
 
-//   useEffect(() => {
-//     console.log(listOfAudioInput);
-//   }, [listOfAudioInput]);
+  //   useEffect(() => {
+  //     console.log(listOfAudioInput);
+  //   }, [listOfAudioInput]);
 
   useEffect(() => {
-	console.log(audioOutputSelect);
-	audioOutputSelect.disabled = !("sinkId" in HTMLMediaElement.prototype);
+    console.log(audioOutputSelect);
+    audioOutputSelect.disabled = !("sinkId" in HTMLMediaElement.prototype);
     navigator.mediaDevices
       .enumerateDevices()
-      .then(logFunction).catch(handleError);
-	// start();
+      .then(logFunction)
+      .catch(handleError);
+    // start();
   }, []);
 
   // navigator.mediaDevices
@@ -186,12 +181,15 @@ const AudioVideoControlComponent = () => {
         <label for="audioSource" style={{ color: "white" }}>
           Audio input source:{" "}
         </label>
-        <select id="audioSource" onChange={handleChangeAudioInput}>
+        <select
+          id="audioSource"
+          onChange={handleChangeAudioInput}
+          style={{ width: "17.5vw" }}
+        >
           {Object.entries(listOfAudioInput).map(([key, val], i) => (
-           
-			<option key={i} value={val}>
-			{key}
-		  </option>
+            <option key={i} value={val}>
+              {key}
+            </option>
           ))}
         </select>
       </div>
@@ -200,28 +198,34 @@ const AudioVideoControlComponent = () => {
         <label for="audioOutput" style={{ color: "white" }}>
           Audio output destination:{" "}
         </label>
-        <select id="audioOutput" onChange={changeAudioDestination}>
-		{Object.entries(listOfAudioOutput).map(([key, val], i) => (
-           
-		   <option key={i} value={val}>
-		   {key}
-		 </option>
-		 ))}
-		</select>
+        <select
+          id="audioOutput"
+          onChange={changeAudioDestination}
+          style={{ width: "17.5vw" }}
+        >
+          {Object.entries(listOfAudioOutput).map(([key, val], i) => (
+            <option key={i} value={val} style={{ maxWidth: "17.5vw" }}>
+              {key}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div class="select">
         <label for="videoSource" style={{ color: "white" }}>
           Video source:{" "}
         </label>
-        <select id="videoSource" onChange={handleChangeVideoOutput}>
-		{Object.entries(listOfVideo).map(([key, val], i) => (
-           
-		   <option name="" key={i} value={val}>
-		   {key}
-		 </option>
-		 ))}
-		</select>
+        <select
+          id="videoSource"
+          onChange={handleChangeVideoOutput}
+          style={{ width: "17.5vw" }}
+        >
+          {Object.entries(listOfVideo).map(([key, val], i) => (
+            <option name="" key={i} value={val}>
+              {key}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
