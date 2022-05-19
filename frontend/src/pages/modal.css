@@ -128,6 +128,25 @@
   opacity: .75;
   background-color: red;
 }
+@keyframes down {
+  0% {transform: translateY(-1vw);}
+  
+  50% {transform: translateY( 1vw);}
+  
+  100% {transform: translateY(-1vw);}
+}
+.beatdown{
+  position: relative;
+  animation: down;
+  animation-duration: 3s; 
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-top: .5vw;
+  position: "sticky";
+  width: 4vw;
+  margin-left: 1vw;
+  
+}
 
 #container{
   display: grid;
