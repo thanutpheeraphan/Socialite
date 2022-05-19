@@ -548,7 +548,10 @@ export var Mcu = (function () {
         display: "block",
       })
       .html(
-        '<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h3> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <button class="call-leave-action btn btn-danger me-5" onClick=location.href="/home">Leave</button> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
+        '<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;font-size: 2vw ">Leave Meeting</h3> ' +
+          '<hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100">' +
+          '<button class="call-leave-action btn btn-danger mt-4 me-5 w-25 " onClick=location.href="/home" style="font-size: 1.5vw" }>Leave</button> ' +
+          '<button class="call-cancel-action btn btn-secondary mt-4 w-25 " style="font-size: 1.5vw">Cancel</button> </div> </div>'
         // '<div class="top-box align-vertical-middle profile-dialogue-show"> <h3 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h3> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <a href="/home"><button class="call-leave-action btn btn-danger me-5">Leave</button></a> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
       );
   });
@@ -590,7 +593,7 @@ export var Mcu = (function () {
   });
 
   $(document).on("click", ".option-wrap", function () {
-	console.log("option-wrap");
+    console.log("option-wrap");
     $(".a-v-details").toggle();
   });
 
