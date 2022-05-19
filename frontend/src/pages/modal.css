@@ -53,7 +53,10 @@
 }
 
 .NoRoom{
-  margin-top: 7.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
   text-align: center;
   font-weight: bold;
   font-size: 50px;
@@ -149,10 +152,7 @@
 }
 #container > item-c{
   grid-area: sidebar;
-  background-color: #c7ffe8;
-
-  
-  
+  background-color: #c7ffe8;  
 }
 
 /* grid room container */

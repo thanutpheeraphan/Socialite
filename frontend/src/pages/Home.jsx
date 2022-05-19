@@ -449,6 +449,7 @@ function Home(props) {
                             position: "relative",
                             maxWidth: "10vw",
                             padding: ".1vw",
+                            maxHeight: "3vw",
                             // marginBottom: "0vw",
                             // paddingLeft: 15,
                             // paddingRight: 15,
@@ -463,7 +464,7 @@ function Home(props) {
               ))}
             </ul>
             <div class="d-flex justify-content-center mt-5">
-              <Pagination
+              {/* <Pagination
                 count={Math.ceil(data.length / 10)}
                 color="primary"
                 style={{
@@ -473,7 +474,7 @@ function Home(props) {
                 }}
                 size="large"
                 // onChange={handlePageClick}
-              />
+              /> */}
             </div>
           </div>
         ) : (
