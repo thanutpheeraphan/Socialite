@@ -594,15 +594,15 @@ export var Mcu = (function () {
     $(".a-v-details").toggle();
   });
 
-  $(document).on("change", "select#audioSource", function () {
-    console.log("audioSource");
-  });
-  $(document).on("change", "select#audioOutput", function () {
-    console.log("audioOutput");
-  });
-  $(document).on("change", "select#videoSource", function () {
-    console.log("videoSource");
-  });
+//   $(document).on("change", "select#audioSource", function () {
+//     console.log("audioSource");
+//   });
+//   $(document).on("change", "select#audioOutput", function () {
+//     console.log("audioOutput");
+//   });
+//   $(document).on("change", "select#videoSource", function () {
+//     console.log("videoSource");
+//   });
 
   return {
     _init: function (uid, mid) {

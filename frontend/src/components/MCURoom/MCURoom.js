@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import $ from "jquery";
 import { borderRadius } from "@mui/system";
+import AudioVideoControlComponent from "../audioVideoContorls/audioVideoControlComponent";
+
 
 const MCURoom = (props) => {
   const location = useLocation();
@@ -425,26 +427,9 @@ const MCURoom = (props) => {
                 </div>
                 <div class="a-v-details-heading-show-wrap">
                   <div class="g-details-heading-show">
-                    <div class="select">
-                      <label for="audioSource" style={{ color: "white" }}>
-                        Audio input source:{" "}
-                      </label>
-                      <select id="audioSource"></select>
-                    </div>
+                  <AudioVideoControlComponent></AudioVideoControlComponent>
 
-                    <div class="select">
-                      <label for="audioOutput" style={{ color: "white" }}>
-                        Audio output destination:{" "}
-                      </label>
-                      <select id="audioOutput"></select>
-                    </div>
-
-                    <div class="select">
-                      <label for="videoSource" style={{ color: "white" }}>
-                        Video source:{" "}
-                      </label>
-                      <select id="videoSource"></select>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
