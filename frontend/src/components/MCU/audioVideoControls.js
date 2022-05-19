@@ -81,7 +81,6 @@ function handleError(error) {
 }
 
 function start() {
-console.log("start audioVideoControls");
   if (window.stream) {
     window.stream.getTracks().forEach(track => {
       track.stop();

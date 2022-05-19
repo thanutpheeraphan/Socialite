@@ -32,7 +32,6 @@ var McuProcess = (function () {
   }
 
   function eventProcess() {
-
     $("#miceMuteUnmute").on("click", async function () {
       if (!audio) {
         await loadAudio();
@@ -53,7 +52,7 @@ var McuProcess = (function () {
           "<span class='material-icons' style='width:100%;'>mic_off</span>"
         );
         removeMediaSenders(rtp_aud_senders);
-		audio.stop();
+        audio.stop();
       }
       isAudioMute = !isAudioMute;
     });
@@ -488,8 +487,8 @@ export var Mcu = (function () {
       }
     });
 
-	var url = window.location.href;
-	$(".meeting_url").text(url);
+    var url = window.location.href;
+    $(".meeting_url").text(url);
 
     $("#divUsers").on("dblclick", "video", function () {
       console.log("Double Click");
@@ -577,23 +576,33 @@ export var Mcu = (function () {
   });
 
   $(document).on("click", ".copy_info", function () {
-	console.log($(".meeting_url").text());
-	var roomlink = $(".meeting_url").text();
-	navigator.clipboard.writeText(roomlink);
-	   $(".link-conf").show();
+    console.log($(".meeting_url").text());
+    var roomlink = $(".meeting_url").text();
+    navigator.clipboard.writeText(roomlink);
+    $(".link-conf").show();
     setTimeout(function () {
       $(".link-conf").hide();
     }, 3000);
-  }); 
+  });
 
   $(document).on("click", ".meeting-details-button", function () {
     $(".g-details").toggle();
   });
 
   $(document).on("click", ".option-wrap", function () {
+	console.log("option-wrap");
     $(".a-v-details").toggle();
   });
- 
+
+  $(document).on("change", "select#audioSource", function () {
+    console.log("audioSource");
+  });
+  $(document).on("change", "select#audioOutput", function () {
+    console.log("audioOutput");
+  });
+  $(document).on("change", "select#videoSource", function () {
+    console.log("videoSource");
+  });
 
   return {
     _init: function (uid, mid) {
