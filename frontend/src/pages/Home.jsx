@@ -32,6 +32,7 @@ import {
   BsChatDots,
   BsFillPersonFill,
   BsChatDotsFill,
+  BsFillLockFill,
 } from "react-icons/bs";
 import logo from "../img/socialiteicon.svg";
 import user1 from "../img/user1.jpg";
@@ -374,15 +375,19 @@ function Home(props) {
                       <div
                         style={{
                           fontSize: "1.8vw",
-                          paddingBottom: ".5vw",
+                          marginBottom: ".5vw",
                           fontWeight: "600",
                           fontFamily: "'Open Sans', sans-serif",
+                          display: "flex",
+                          justifyContent: "space-between",
                         }}
                       >
                         {item.room_name}
+                        {/* LockRoom */}
+                        <BsFillLockFill
+                          style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                        />
                       </div>
-                      {/* <span>                     
-                  </span> */}
                     </div>
 
                     <div className={style.roomMembers}>
@@ -676,7 +681,7 @@ function Home(props) {
                     onChange={(e) => onChange(e)}
                   />
                 </div>
-                {/* <div className="form-group">
+                <div className="form-group">
                   <input
                     type="password"
                     name="password"
@@ -686,7 +691,7 @@ function Home(props) {
                     value={password}
                     onChange={(e) => onChange(e)}
                   />
-                </div> */}
+                </div>
 
                 <div className="tag-container">
                   {tags.map((tag, index) => {
