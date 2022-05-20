@@ -383,6 +383,14 @@ function Home(props) {
                         }}
                       >
                         {item.room_name}
+                        {/* LockRoom condition? */}
+                        {item.password != "" ? (
+                          <BsFillLockFill
+                            style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                          />
+                        ) : (
+                          <></>
+                        )}
                         {/* LockRoom */}
                         <BsFillLockFill
                           style={{ marginRight: "1vw", marginTop: ".5vw" }}
