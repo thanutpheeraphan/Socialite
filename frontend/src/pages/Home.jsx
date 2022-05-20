@@ -629,7 +629,7 @@ function Home(props) {
               >
                 Create room here.
               </div>
-              <img className="beatdown" src={spiralDown} />
+              <img className="beatdown" src={spiralDown} onClick={handleShow} />
             </div>
           </div>
         </div>
