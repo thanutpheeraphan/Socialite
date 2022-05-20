@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import $ from "jquery";
 import { borderRadius } from "@mui/system";
-import AudioVideoControlComponent from "../audioVideoContorls/audioVideoControlComponent";
+// import AudioVideoControlComponent from "../audioVideoContorls/audioVideoControlComponent";
 
 
 const MCURoom = (props) => {
@@ -427,7 +427,7 @@ const MCURoom = (props) => {
                 </div>
                 <div class="a-v-details-heading-show-wrap">
                   <div class="g-details-heading-show">
-                  <AudioVideoControlComponent></AudioVideoControlComponent>
+                  {/* <AudioVideoControlComponent></AudioVideoControlComponent> */}
 
                     
                   </div>

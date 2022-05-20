@@ -116,10 +116,9 @@ io.on("connection", (socket) => {
   socket.on("disconnect", function () {
     console.log("Disconnected");
     var disUser = userConnections.find((p) => p.connectionId == socket.id);
-    console.log(disUser.meeting_id);
-	leaveRoom(disUser.meeting_id);
     if (disUser) {
       var meetingid = disUser.meeting_id;
+	  leaveRoom(disUser.meeting_id);
       userConnections = userConnections.filter(
         (p) => p.connectionId != socket.id
       );
