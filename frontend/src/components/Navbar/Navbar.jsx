@@ -71,13 +71,19 @@ const Navbar = ({ setAuth, isAutheticated }) => {
               hover: "",
             }}
           >
-            <img src={logo} alt="logo" className="img_icon" />
+            <img
+              src={logo}
+              alt="logo"
+              className="img_icon"
+              style={{ width: "15vw", minWidth: "200px", maxWidth: "300px" }}
+            />
           </a>
           <button
             type="button"
             data-target=".navbar-collapse"
             data-toggle="collapse"
             className="navbar-toggle"
+
             // onClick={} when clicking logo goto /home page
           >
             <span class="navbar-toggler-icon"></span>

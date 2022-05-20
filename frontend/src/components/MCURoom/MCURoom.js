@@ -8,7 +8,6 @@ import $ from "jquery";
 import { borderRadius } from "@mui/system";
 // import AudioVideoControlComponent from "../audioVideoContorls/audioVideoControlComponent";
 
-
 const MCURoom = (props) => {
   const location = useLocation();
   const userName = location.state.name;
@@ -37,7 +36,7 @@ const MCURoom = (props) => {
     // document.getElementById("meetingContainer").st
     $("meetingContainer").show();
     // console.log(typeof Mcu);
-    Mcu._init(user_id, meeting_id);	
+    Mcu._init(user_id, meeting_id);
   });
 
   //   }
@@ -72,7 +71,7 @@ const MCURoom = (props) => {
                         class="display-center"
                         style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
-                      <div class="display-center">
+                      <div class="display-center" style={{ maxHeight: "" }}>
                         <video autoPlay muted id="locaVideoPlayer"></video>
                       </div>
                     </div>
@@ -83,9 +82,9 @@ const MCURoom = (props) => {
                     >
                       <h2
                         class="display-center"
-                        style={{ fontSize: 14 + "px" }}
+                        style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
-                      <div class="display-center">
+                      <div class="display-center" style={{ maxHeight: "" }}>
                         <video autoPlay muted></video>
                         <audio
                           autoPlay
@@ -461,7 +460,7 @@ const MCURoom = (props) => {
           <div class="top-box-show" style={{ display: "none" }}></div>
         </main>
       </body>
-	{/* <script type = "text/javascript" src="../js/audioVideoControls.js" async></script> */}
+      {/* <script type = "text/javascript" src="../js/audioVideoControls.js" async></script> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 // import data from "../data/roomCard.json";
 import style from "../style/roomCard.module.css";
 import "../pages/modal.css";
@@ -20,12 +20,19 @@ import Pagination from "@mui/material/Pagination";
 import iconPanel from "../img/iconPanel.svg";
 import Divider from "@mui/material/Divider";
 import CircularProgress from "@mui/material/CircularProgress";
+import joinPic from "../img/Join.svg";
+import searchPic from "../img/searchpic.svg";
+import spiralDown from "../img/spiralDown.svg";
+
+import Clock from "react-live-clock";
+import clockpic from "../img/clock.svg";
 
 import {
   BsFillChatDotsFill,
   BsChatDots,
   BsFillPersonFill,
   BsChatDotsFill,
+  BsFillLockFill,
 } from "react-icons/bs";
 import logo from "../img/socialiteicon.svg";
 import user1 from "../img/user1.jpg";
@@ -368,15 +375,27 @@ function Home(props) {
                       <div
                         style={{
                           fontSize: "1.8vw",
-                          paddingBottom: ".5vw",
+                          marginBottom: ".5vw",
                           fontWeight: "600",
                           fontFamily: "'Open Sans', sans-serif",
+                          display: "flex",
+                          justifyContent: "space-between",
                         }}
                       >
                         {item.room_name}
+                        {/* LockRoom condition? */}
+                        {item.password != "" ? (
+                          <BsFillLockFill
+                            style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                          />
+                        ) : (
+                          <></>
+                        )}
+                        {/* LockRoom */}
+                        <BsFillLockFill
+                          style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                        />
                       </div>
-                      {/* <span>                     
-                  </span> */}
                     </div>
 
                     <div className={style.roomMembers}>
@@ -487,7 +506,7 @@ function Home(props) {
       </item-b>
 
       <item-c>
-        <div class=" " style={{ position: "sticky", top: ".5vw" }}>
+        <div class=" " style={{ position: "sticky", top: "3vw" }}>
           <div class="d-flex justify-content-center mt-4" style={{}}>
             <img
               src={iconPanel}
@@ -500,10 +519,9 @@ function Home(props) {
           </div>
           <div>
             <Divider
-              sx={{ borderBottom: 3 }}
               class="mt-2"
               variant="middle"
-              style={{ color: "#1B9370" }}
+              style={{ color: "#65E291" }}
             />
             <div
               class="d-flex justify-content-center"
@@ -515,17 +533,102 @@ function Home(props) {
             >
               {"Hi, " + name}
             </div>
+            <img
+              src={clockpic}
+              style={{
+                width: "2.5vw",
+                marginTop: "1vw",
+                marginLeft: "6.7vw",
+              }}
+            />
             <div
-              class="d-flex justify-content-end mt-4 "
+              class="d-flex justify-content-center mt-4 "
               style={{
                 color: "#114C60",
                 fontSize: "1.3vw",
                 fontWeight: "bold",
-                marginRight: ".5vw",
               }}
             >
-              {/* Add time */}
-              {lTime}
+              <Clock
+                format={"HH:mm:ss"}
+                ticking={true}
+                timezone={"Asia/Bangkok"}
+              />
+            </div>
+            <Divider
+              class="mt-4 "
+              variant="middle"
+              style={{ color: "#65E291" }}
+            />
+            <div class="d-flex justify-content-center mt-5 mb-4">
+              <img
+                src={joinPic}
+                style={{
+                  width: "3.5vw",
+                  marginLeft: "1vw",
+                }}
+              />
+              <div
+                style={{
+                  marginLeft: "1.0vw",
+                  marginRight: ".5vw",
+                  fontSize: "1vw",
+                  alignItems: "center",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                Join room by tapping on the room card.
+              </div>
+            </div>
+            <Divider
+              class="mt-2"
+              variant="middle"
+              style={{ color: "#65E291" }}
+            />
+            <div class="d-flex justify-content-center mt-5 mb-4">
+              <img
+                src={searchPic}
+                style={{
+                  width: "3.5vw",
+                  marginLeft: "1vw",
+                }}
+              />
+              <div
+                style={{
+                  marginLeft: "1.0vw",
+                  marginRight: ".5vw",
+                  paddingBottom: "1vw",
+                  fontSize: "1vw",
+                  alignItems: "center",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                Use the searchbar to search for a room.
+              </div>
+            </div>
+            <Divider
+              class="mt-4"
+              variant="middle"
+              style={{ color: "#65E291" }}
+            />
+            <div class="d-flex justify-content-center mt-1 mb-4">
+              <div
+                style={{
+                  paddingBottom: ".5vw",
+                  fontSize: "1vw",
+                  alignItems: "center",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                Create room here.
+              </div>
+              <img className="beatdown" src={spiralDown} />
             </div>
           </div>
         </div>
@@ -544,6 +647,8 @@ function Home(props) {
         >
           Join Room
         </Fab> */}
+        {/* build icon */}
+
         <Fab
           //   onClick={handleShow}
           onClick={handleShow}
@@ -584,7 +689,7 @@ function Home(props) {
                     onChange={(e) => onChange(e)}
                   />
                 </div>
-                {/* <div className="form-group">
+                <div className="form-group">
                   <input
                     type="password"
                     name="password"
@@ -594,7 +699,7 @@ function Home(props) {
                     value={password}
                     onChange={(e) => onChange(e)}
                   />
-                </div> */}
+                </div>
 
                 <div className="tag-container">
                   {tags.map((tag, index) => {
