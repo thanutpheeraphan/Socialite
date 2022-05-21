@@ -163,15 +163,18 @@
   
   grid-area: head;
   justify-content: center;
+  background-color: #F4E7D4;
+  z-index: 2;
 
 }
 #container > item-b{
   grid-area: main;
   /* background-color: #ab71f8; */
+  background-color: #F4E7D4
 }
 #container > item-c{
   grid-area: sidebar;
-  background-color: #c7ffe8;  
+  background-color: #C7D9BF;  
 }
 
 /* grid room container */
@@ -188,7 +191,7 @@
   /* background-color: red; */
   position: relative;
   border: 1px solid ;
-  background-color: #F4E7D4;
+  background-color: #ffffff;
   /* margin-left: 2.9vw; */
   /* margin-top: 1.5vw; */
   border-color: #DADCE0;
@@ -198,10 +201,12 @@
 @media only Screen and (max-width: 420px) {
   #container > item-c{
     display: none;
+    
   }
   #container > item-b{
     grid-area: main;
     width: 120%;
+    
   }
   #container{
     display: grid;

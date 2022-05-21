@@ -513,7 +513,10 @@ function Home(props) {
       </item-b>
 
       <item-c>
-        <div class=" " style={{ position: "sticky", top: "3vw" }}>
+        <div
+          class=" "
+          style={{ position: "sticky", top: "3vw", color: "#114C60" }}
+        >
           <div class="d-flex justify-content-center mt-4" style={{}}>
             <img
               src={iconPanel}
