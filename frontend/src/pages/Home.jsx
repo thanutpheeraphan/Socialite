@@ -684,7 +684,7 @@ function Home(props) {
             <div>
               {/* //onSubmit={create} */}
 
-              <form>
+              <form autoComplete="new-password">
                 <div className="form-group">
                   <input
                     type="text"
@@ -692,6 +692,9 @@ function Home(props) {
                     className="form-control"
                     placeholder="Room name"
                     required="required"
+                    //
+                    autoComplete="off"
+                    //
                     value={room_name}
                     onChange={(e) => onChange(e)}
                   />
@@ -703,6 +706,9 @@ function Home(props) {
                     className="form-control"
                     placeholder="Password"
                     required="required"
+                    //
+                    autoComplete="off"
+                    //
                     value={password}
                     onChange={(e) => onChange(e)}
                   />
