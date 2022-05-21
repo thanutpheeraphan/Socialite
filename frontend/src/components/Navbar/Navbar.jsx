@@ -34,7 +34,6 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 
       const parseResponse = await response.json();
       console.log(parseResponse);
-      alert(parseResponse);
 
       if (parseResponse.jwtToken) {
         localStorage.setItem("token", parseResponse.jwtToken);
@@ -43,6 +42,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
         // toast.success("Login Successfully!")
       } else {
         setAuth(false);
+        alert(parseResponse);
         //   toast.error(parseResponse);
       }
     } catch (err) {
