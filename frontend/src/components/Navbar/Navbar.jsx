@@ -62,7 +62,12 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 
   return (
     <Fragment>
-      <nav className="navbar navbar-default navbar-expand-lg navbar-light">
+      <nav
+        className="navbar navbar-default navbar-expand-lg navbar-light"
+        style={{
+          zIndex: "5",
+        }}
+      >
         <div className="navbar-header">
           <a
             href="./home"
