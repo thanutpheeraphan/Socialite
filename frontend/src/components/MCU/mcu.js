@@ -23,12 +23,23 @@ var McuProcess = (function () {
   var video_st = video_states.None;
   var videoCamTrack;
   var rtp_vid_senders = [];
+  var default_audio;
+  var default_video;
+  var default_output = 0;
   async function _init(SDP_function, my_connid) {
     serverProcess = SDP_function;
 
     let my_connection_id = my_connid;
     eventProcess();
     local_div = document.getElementById("locaVideoPlayer");
+  }
+
+  async function setAudio(id){
+	default_audio = id;
+  }
+
+  async function setVideo(id){
+	  default_video = id;
   }
 
   function eventProcess() {
@@ -53,6 +64,7 @@ var McuProcess = (function () {
         );
         removeMediaSenders(rtp_aud_senders);
         audio.stop();
+		audio = null;
       }
       isAudioMute = !isAudioMute;
     });
@@ -76,9 +88,13 @@ var McuProcess = (function () {
     try {
       var astream = await navigator.mediaDevices.getUserMedia({
         video: false,
-        audio: true,
+        audio: {
+			deviceId: default_audio ? { exact: default_audio } : undefined
+		},
       });
+	  
       audio = astream.getAudioTracks()[0];
+      console.log("audio: " ,audio);
       audio.enabled = false;
     } catch (e) {
       console.log(e);
@@ -156,10 +172,12 @@ var McuProcess = (function () {
     try {
       var vstream = null;
       if (newVideoState == video_states.Camera) {
+		console.log("defaul_video: " , default_video);
         vstream = await navigator.mediaDevices.getUserMedia({
           video: {
             width: 1920,
             height: 1080,
+			deviceId: default_video ? { exact: default_video } : undefined ,
           },
           audio: false,
         });
@@ -179,9 +197,15 @@ var McuProcess = (function () {
         };
       }
       if (vstream && vstream.getVideoTracks().length > 0) {
-        videoCamTrack = vstream.getVideoTracks()[0];
+		console.log("vstream: ",vstream);
+        // videoCamTrack = vstream.getVideoTracks()[default_video];
+		videoCamTrack = vstream.getVideoTracks()[0];
+
+        console.log("videoTracks: ", vstream.getVideoTracks()); //fix here probably
         if (videoCamTrack) {
           local_div.srcObject = new MediaStream([videoCamTrack]);
+		  console.log("videoCamTrack: " , videoCamTrack);
+		  console.log(rtp_vid_senders);
           updateMediaSenders(videoCamTrack, rtp_vid_senders);
         }
       }
@@ -220,11 +244,16 @@ var McuProcess = (function () {
 
   async function setConnection(connid) {
     var connection = new RTCPeerConnection(iceConfiguration);
+    console.log(connection);
 
     connection.onnegotiationneeded = async function (event) {
+      console.log("setting offer");
+
       await setOffer(connid);
     };
     connection.onicecandidate = function (event) {
+      console.log("oneicecandidate");
+
       if (event.candidate) {
         serverProcess(
           JSON.stringify({ icecandidate: event.candidate }),
@@ -233,6 +262,8 @@ var McuProcess = (function () {
       }
     };
     connection.ontrack = function (event) {
+      console.log("ontrack");
+
       if (!remote_vid_stream[connid]) {
         remote_vid_stream[connid] = new MediaStream();
       }
@@ -287,12 +318,16 @@ var McuProcess = (function () {
   }
   async function SDPProcess(message, from_connid) {
     message = JSON.parse(message);
+    console.log(message);
     if (message.answer) {
+      console.log("message is answer");
       await peers_connection[from_connid].setRemoteDescription(
         new RTCSessionDescription(message.answer)
       );
     } else if (message.offer) {
+      console.log("message is offer");
       if (!peers_connection[from_connid]) {
+        console.log("!peers_connection[from_connid]");
         await setConnection(from_connid);
       }
       await peers_connection[from_connid].setRemoteDescription(
@@ -307,7 +342,11 @@ var McuProcess = (function () {
         from_connid
       );
     } else if (message.icecandidate) {
+      console.log("message.icecandidate");
+
       if (!peers_connection[from_connid]) {
+        console.log("!peers_connection[from_connid]");
+
         await setConnection(from_connid);
       }
       try {
@@ -355,6 +394,12 @@ var McuProcess = (function () {
     closeConnectionCall: async function (connid) {
       await closeConnection(connid);
     },
+	setAudio: async function (index) {
+		await setAudio(index);
+	},
+	setVideo: async function (id) {
+		await setVideo(id);
+	},
   };
 })();
 
@@ -366,6 +411,8 @@ export var Mcu = (function () {
   function init(uid, mid) {
     user_id = uid;
     meeting_id = mid;
+    console.log("uid: ", uid);
+    console.log("mid: ", mid);
     $("#meetingContainer").show();
     $("#me h2").text(user_id + "(Me)");
 
@@ -377,6 +424,8 @@ export var Mcu = (function () {
     socket = io.connect();
     console.log(socket);
     var SDP_function = function (data, to_connid) {
+      //   console.log("data then message: " , data);
+      console.log("to_connid: ", to_connid);
       socket.emit("SDPProcess", {
         message: data,
         to_connid: to_connid,
@@ -597,6 +646,16 @@ export var Mcu = (function () {
   $(document).on("click", ".option-wrap", function () {
     console.log("option-wrap");
     $(".a-v-details").toggle();
+  });
+
+  $(document).on("click", "#setChanges", function () {
+    console.log($("#videoSource").find(":selected").val());
+	// console.log($("#videoSource").find(":selected").val());
+	var videoSourceIndex = $("#videoSource").find(":selected").val();
+	var audioSourceIndex = $("#audioSource").find(":selected").val();
+	McuProcess.setVideo(videoSourceIndex);
+	McuProcess.setAudio(audioSourceIndex);
+    console.log("setChanges");
   });
 
   //   $(document).on("change", "select#audioSource", function () {
