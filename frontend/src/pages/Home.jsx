@@ -498,7 +498,13 @@ function Home(props) {
           <div className="NoRoom">
             {/* <p>{progress}</p> */}
             {progress <= 50 ? (
-              <p>No rooms found</p>
+              <p
+                style={{
+                  fontSize: "3vw",
+                }}
+              >
+                No rooms found
+              </p>
             ) : (
               <CircularProgress color="primary" thickness="4" size="3.5vw" />
             )}
