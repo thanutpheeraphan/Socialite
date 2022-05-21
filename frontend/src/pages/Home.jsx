@@ -33,6 +33,7 @@ import {
   BsFillPersonFill,
   BsChatDotsFill,
   BsFillLockFill,
+  BsFolderPlus,
 } from "react-icons/bs";
 import logo from "../img/socialiteicon.svg";
 import user1 from "../img/user1.jpg";
@@ -56,13 +57,6 @@ function Home(props) {
   const [searchInput, setSearchInput] = useState("");
   const [tags, setTags] = useState([]);
   const [room, setRoomOffset] = useState(0);
-
-  var time = new Date();
-  var lTime = time.toLocaleString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -290,15 +284,6 @@ function Home(props) {
 
   // test tag input
   const addTag = (e) => {
-    // if (e.key === "Enter") {
-    //   if (e.target.value.length > 0) {
-    //     setTags(oldArray => [...oldArray, e.target.value]);
-
-    //     // setTags([...tags, e.target.value]);
-    //     // setTags([...tags, e.target.value]);
-    //     // e.target.value = "";
-    //   }
-    // }
     if (e.key !== "Enter") return;
     const value = e.target.value;
     if (!value.trim()) return;
@@ -314,6 +299,19 @@ function Home(props) {
   //   const newPage = (page - 1) * roomsInPage;
   //   setRoomOffset(newPage);
   // };
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 0 : prevProgress + 10
+      );
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <section id="container">
@@ -392,9 +390,9 @@ function Home(props) {
                           <></>
                         )}
                         {/* LockRoom */}
-                        <BsFillLockFill
+                        {/* <BsFillLockFill
                           style={{ marginRight: "1vw", marginTop: ".5vw" }}
-                        />
+                        /> */}
                       </div>
                     </div>
 
@@ -498,9 +496,12 @@ function Home(props) {
           </div>
         ) : (
           <div className="NoRoom">
-            <CircularProgress color="primary" thickness="4" size="3.5vw" />
-            {/* <p>No rooms found</p> */}
-            {/* <button>test</button> */}
+            {/* <p>{progress}</p> */}
+            {progress <= 50 ? (
+              <p>No rooms found</p>
+            ) : (
+              <CircularProgress color="primary" thickness="4" size="3.5vw" />
+            )}
           </div>
         )}
       </item-b>
@@ -628,7 +629,7 @@ function Home(props) {
               >
                 Create room here.
               </div>
-              <img className="beatdown" src={spiralDown} />
+              <img className="beatdown" src={spiralDown} onClick={handleShow} />
             </div>
           </div>
         </div>
