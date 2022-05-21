@@ -34,6 +34,7 @@ const Navbar = ({ setAuth, isAutheticated }) => {
 
       const parseResponse = await response.json();
       console.log(parseResponse);
+      alert(parseResponse);
 
       if (parseResponse.jwtToken) {
         localStorage.setItem("token", parseResponse.jwtToken);
