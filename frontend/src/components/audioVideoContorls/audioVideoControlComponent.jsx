@@ -47,8 +47,8 @@ const AudioVideoControlComponent = () => {
   }
 
   function gotStream(stream) {
-    window.stream = stream; // make stream available to console
-    videoElement.srcObject = stream;
+    // window.stream = stream; // make stream available to console
+    // videoElement.srcObject = stream; //this opens the video stream
     // Refresh button list in case labels have become available
     return navigator.mediaDevices.enumerateDevices();
   }
@@ -76,11 +76,11 @@ const AudioVideoControlComponent = () => {
     const constraints = {
       audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
     };
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(gotStream)
-      .then(logFunction)
-      .catch(handleError);
+    // navigator.mediaDevices
+    //   .getUserMedia(constraints)
+    //   .then(gotStream)
+    //   .then(logFunction)
+    //   .catch(handleError);
   }
   function handleChangeVideoOutput(event) {
     if (window.stream) {
@@ -88,18 +88,21 @@ const AudioVideoControlComponent = () => {
         track.stop();
       });
     }
-    // const videoSource = {value: event.target.value};
+	
     const videoSource = event.target.value;
-
-    // console.log(videoSource);
+	const videoIndex = event.target.selectedIndex;
+	// console.log((videoSource));
+	// console.log((videoIndex));
+	// console.log(event.target);
     const constraints = {
       video: { deviceId: videoSource ? { exact: videoSource } : undefined },
     };
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(gotStream)
-      .then(logFunction)
-      .catch(handleError);
+
+    // navigator.mediaDevices //remove to stop the video from showing on but nothing pops up
+    //   .getUserMedia(constraints)
+    //   .then(gotStream)
+    //   .then(logFunction)
+    //   .catch(handleError);
   }
   //   useEffect(() => {
   // try {
@@ -161,6 +164,10 @@ const AudioVideoControlComponent = () => {
     // start();
   }, []);
 
+  const testClickOptions = (index) => {
+	  console.log("index: ", index);
+  }
+
   // navigator.mediaDevices
   //   .enumerateDevices()
   //   .then(gotDevices)
@@ -221,12 +228,13 @@ const AudioVideoControlComponent = () => {
           style={{ width: "17.5vw" }}
         >
           {Object.entries(listOfVideo).map(([key, val], i) => (
-            <option name="" key={i} value={val}>
+            <option name="" id={i} key={i} value={val} index={i}>
               {key}
             </option>
           ))}
         </select>
       </div>
+	  <button id="setChanges"> Set Changes </button>
     </div>
   );
 };
