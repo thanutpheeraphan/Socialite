@@ -72,7 +72,12 @@ const MCURoom = (props) => {
                         style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
                       <div class="display-center" style={{ maxHeight: "" }}>
-                        <video autoPlay muted id="locaVideoPlayer"></video>
+                        <video
+                          autoPlay
+                          muted
+                          id="locaVideoPlayer"
+                          style={{ maxHeight: "40vw" }}
+                        ></video>
                       </div>
                     </div>
                     <div
@@ -89,7 +94,7 @@ const MCURoom = (props) => {
                           autoPlay
                           muted
                           style={{
-                            maxHeight: "170px",
+                            maxHeight: "40vw",
                           }}
                         ></video>
                         <audio
