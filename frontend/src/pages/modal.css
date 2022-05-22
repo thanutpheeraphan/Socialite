@@ -202,6 +202,8 @@
   /* margin-top: 1.5vw; */
   /* border-color: #DADCE0; */
   border-radius: 10px;
+  height: 15.5vw;
+  width: 22vw;
 }
 
 @media only Screen and (max-width: 420px) {
@@ -235,5 +237,10 @@
     gap: 2vw;
     padding: 2vw;
     padding-right: 16vw;
+  }
+  .Box_Layout{
+    margin-top: .8vh;
+    width: 30vw;
+    height: 20vw;
   }
 }

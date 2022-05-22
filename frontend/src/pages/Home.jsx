@@ -342,8 +342,6 @@ function Home(props) {
                 <div
                   className="Box_Layout"
                   style={{
-                    height: "15.5vw",
-                    width: "22vw",
                     top: "3vw",
                     left: "5vw",
                     // marginLeft: "4vw",

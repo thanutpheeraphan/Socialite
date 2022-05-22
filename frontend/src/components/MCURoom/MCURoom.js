@@ -66,7 +66,11 @@ const MCURoom = (props) => {
                     id="divUsers"
                     style={{ display: "flex", flexWrap: "wrap" }}
                   >
-                    <div id="me" class="userbox display-center flex-column">
+                    <div
+                      id="me"
+                      class="userbox display-center flex-column"
+                      style={{ border: "1px solid #C7D9BF" }}
+                    >
                       <h2
                         class="display-center"
                         style={{ fontSize: 14 + "px", color: "black" }}
@@ -83,7 +87,7 @@ const MCURoom = (props) => {
                     <div
                       id="otherTemplate"
                       class="userbox display-center flex-column"
-                      style={{ display: "none" }}
+                      style={{ display: "none", border: "1px solid #C7D9BF" }}
                     >
                       <h2
                         class="display-center"
@@ -95,6 +99,7 @@ const MCURoom = (props) => {
                           muted
                           style={{
                             maxHeight: "40vw",
+                            backgroundColor: "black",
                           }}
                         ></video>
                         <audio
