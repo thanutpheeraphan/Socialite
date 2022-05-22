@@ -86,7 +86,7 @@ const MCURoom = (props) => {
                           muted
                           id="locaVideoPlayer"
                           style={{
-                            maxHeight: "40vw",
+                            maxHeight: "11.5vw",
                             backgroundColor: "black",
                           }}
                         ></video>
@@ -106,7 +106,7 @@ const MCURoom = (props) => {
                           autoPlay
                           muted
                           style={{
-                            maxHeight: "40vw",
+                            maxHeight: "11.5vw",
                             backgroundColor: "black",
                           }}
                         ></video>
