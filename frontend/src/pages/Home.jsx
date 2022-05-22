@@ -574,6 +574,7 @@ function Home(props) {
             </div>
             <img
               src={clockpic}
+              alt=""
               style={{
                 width: "2.5vw",
                 marginTop: "1vw",
@@ -602,6 +603,7 @@ function Home(props) {
             <div class="d-flex justify-content-center mt-5 mb-4">
               <img
                 src={joinPic}
+                alt=""
                 style={{
                   width: "3.5vw",
                   marginLeft: "1vw",
@@ -628,6 +630,7 @@ function Home(props) {
             />
             <div class="d-flex justify-content-center mt-5 mb-4">
               <img
+                alt=""
                 src={searchPic}
                 style={{
                   width: "3.5vw",
@@ -667,7 +670,12 @@ function Home(props) {
               >
                 Create room here.
               </div>
-              <img className="beatdown" src={spiralDown} onClick={handleShow} />
+              <img
+                className="beatdown"
+                src={spiralDown}
+                alt=""
+                onClick={handleShow}
+              />
             </div>
           </div>
         </div>

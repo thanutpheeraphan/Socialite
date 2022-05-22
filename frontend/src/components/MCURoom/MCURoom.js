@@ -408,7 +408,7 @@ const MCURoom = (props) => {
               style={{ height: 10 + "vh" }}
             >
               <div
-                class="mic-toggle-wrap action-icon-style display-center me-2 cursor-pointer"
+                class="mic-toggle-wrap action-icon-style display-center d-flex justify-content-center cursor-pointer"
                 id="miceMuteUnmute"
               >
                 <span
@@ -424,7 +424,7 @@ const MCURoom = (props) => {
               </div>
 
               <div
-                class="video-toggle-wrap action-icon-style display-center cursor-pointer"
+                class="video-toggle-wrap action-icon-style display-center d-flex justify-content-center cursor-pointer"
                 id="videoCamOnOff"
               >
                 <span
