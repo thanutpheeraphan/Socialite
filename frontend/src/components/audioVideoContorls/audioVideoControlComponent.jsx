@@ -190,7 +190,7 @@ const AudioVideoControlComponent = () => {
         </label>
         <select
           id="audioSource"
-          onChange={handleChangeAudioInput}
+        //   onChange={handleChangeAudioInput}
           style={{ width: "17.5vw" }}
         >
           {Object.entries(listOfAudioInput).map(([key, val], i) => (
@@ -207,7 +207,7 @@ const AudioVideoControlComponent = () => {
         </label>
         <select
           id="audioOutput"
-          onChange={changeAudioDestination}
+        //   onChange={changeAudioDestination}
           style={{ width: "17.5vw" }}
         >
           {Object.entries(listOfAudioOutput).map(([key, val], i) => (
@@ -224,7 +224,7 @@ const AudioVideoControlComponent = () => {
         </label>
         <select
           id="videoSource"
-          onChange={handleChangeVideoOutput}
+        //   onChange={handleChangeVideoOutput}
           style={{ width: "17.5vw" }}
         >
           {Object.entries(listOfVideo).map(([key, val], i) => (
@@ -234,7 +234,7 @@ const AudioVideoControlComponent = () => {
           ))}
         </select>
       </div>
-      <button
+      {/* <button
         id="setChanges"
         class="mt-3"
         style={{
@@ -247,7 +247,7 @@ const AudioVideoControlComponent = () => {
       >
         {" "}
         Set Changes{" "}
-      </button>
+      </button> */}
     </div>
   );
 };

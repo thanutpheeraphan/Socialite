@@ -35,56 +35,76 @@ var McuProcess = (function () {
     local_div = document.getElementById("locaVideoPlayer");
   }
 
-  async function setAudio(id){
-	default_audio = id;
+  async function setAudio(id) {
+	await miceMute();
+    default_audio = id;
   }
 
-  async function setVideo(id){
-	  default_video = id;
+  async function setVideo(id) {
+	await videoProcess(video_states.None);
+    default_video = id;
   }
-  
-  async function changeOutputDevice(id){
-	  default_output = id;
-	  //change output device here by creating loop for each remote_aud_stream then set it like below 
-	  //var remoteAudioPlayer = document.getElementById("a_" + connid);
-	  //then attachsinkid to each item using code from audioVideoControlComponent
-	//   console.log("remote_aud_stream: ",remote_aud_stream)
-	//   console.log("my_connection_id: ",my_connection_id);
 
-	  for (const [key, value] of Object.entries(remote_aud_stream)) {
-		// console.log(`${key}: ${value}`);
-		var remoteAudioPlayer = document.getElementById("a_" + key);
-		if (typeof remoteAudioPlayer.sinkId !== "undefined") {
-			console.log("inside if");
-			remoteAudioPlayer
-			  .setSinkId(default_output)
-			  .then(() => {
-				console.log(`Success, audio output device attached: ${default_output}`);
-			  })
-			  .catch((error) => {
-				let errorMessage = error;
-				if (error.name === "SecurityError") {
-				  errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
-				}
-				console.error(errorMessage);
-				// Jump back to first output device in the list as it's the default.
-				// audioOutputSelect.selectedIndex = 0;
-			  });
-		  } else {
-			console.warn("Browser does not support output device selection.");
-		  }
+  async function changeOutputDevice(id) {
+    default_output = id;
+    //change output device here by creating loop for each remote_aud_stream then set it like below
+    //var remoteAudioPlayer = document.getElementById("a_" + connid);
+    //then attachsinkid to each item using code from audioVideoControlComponent
+    //   console.log("remote_aud_stream: ",remote_aud_stream)
+    //   console.log("my_connection_id: ",my_connection_id);
 
-	  }
-	//   remote_aud_stream.forEach((r_stream)=>{
-	// 	  console.log("stream: ", r_stream);
+    for (const [key, value] of Object.entries(remote_aud_stream)) {
+      // console.log(`${key}: ${value}`);
+      var remoteAudioPlayer = document.getElementById("a_" + key);
+      if (typeof remoteAudioPlayer.sinkId !== "undefined") {
+        console.log("inside if");
+        remoteAudioPlayer
+          .setSinkId(default_output)
+          .then(() => {
+            console.log(
+              `Success, audio output device attached: ${default_output}`
+            );
+          })
+          .catch((error) => {
+            let errorMessage = error;
+            if (error.name === "SecurityError") {
+              errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+            }
+            console.error(errorMessage);
+            // Jump back to first output device in the list as it's the default.
+            // audioOutputSelect.selectedIndex = 0;
+          });
+      } else {
+        console.warn("Browser does not support output device selection.");
+      }
+    }
+    //   remote_aud_stream.forEach((r_stream)=>{
+    // 	  console.log("stream: ", r_stream);
 
-	//   });
-	//   console.log(typeof(remote_aud_stream));
-	//   console.log("peers_connection_ids: ",peers_connection_ids);
-	//   console.log("my_connection_id: ",my_connection_id);
-	//   console.log("remote_aud_stream: ",remote_aud_stream)
-	//   console.log("id: ", default_output);
+    //   });
+    //   console.log(typeof(remote_aud_stream));
+    //   console.log("peers_connection_ids: ",peers_connection_ids);
+    //   console.log("my_connection_id: ",my_connection_id);
+    //   console.log("remote_aud_stream: ",remote_aud_stream)
+    //   console.log("id: ", default_output);
+  }
 
+  async function miceMute(){
+	if (!audio) {
+        await loadAudio();
+      }
+      if (!audio) {
+        alert("Audio permission has not granted");
+        return;
+      }
+	audio.enabled = false;
+	$("#miceMuteUnmute").html(
+	  "<span class='material-icons' style='width:100%;'>mic_off</span>"
+	);
+	removeMediaSenders(rtp_aud_senders);
+	audio.stop();
+	audio = null;
+	isAudioMute = true;
   }
 
   function eventProcess() {
@@ -96,22 +116,24 @@ var McuProcess = (function () {
         alert("Audio permission has not granted");
         return;
       }
-      if (isAudioMute) {
+      if (isAudioMute) { //true
         audio.enabled = true;
         $(this).html(
           "<span class='material-icons' style='width:100%;'>mic</span>"
         );
+        console.log(audio);
+        console.log(rtp_aud_senders);
         updateMediaSenders(audio, rtp_aud_senders);
-      } else {
+      } else { //false
         audio.enabled = false;
         $(this).html(
           "<span class='material-icons' style='width:100%;'>mic_off</span>"
         );
         removeMediaSenders(rtp_aud_senders);
         audio.stop();
-		audio = null;
+        audio = null;
       }
-      isAudioMute = !isAudioMute;
+      isAudioMute = !isAudioMute; //!true
     });
     $("#videoCamOnOff").on("click", async function () {
       if (video_st == video_states.Camera) {
@@ -120,6 +142,13 @@ var McuProcess = (function () {
         await videoProcess(video_states.Camera);
       }
     });
+    // $(document).on("click", ".participant-action-dot", function (this) {
+
+    // 	console.log($(this).attr('id'));
+    // 	console.log("Clicked: ", initconID);
+    // 	console.log(sdp);
+    // });
+
     $("#ScreenShareOnOf").on("click", async function () {
       if (video_st == video_states.ScreenShare) {
         await videoProcess(video_states.None);
@@ -134,12 +163,12 @@ var McuProcess = (function () {
       var astream = await navigator.mediaDevices.getUserMedia({
         video: false,
         audio: {
-			deviceId: default_audio ? { exact: default_audio } : undefined
-		},
+          deviceId: default_audio ? { exact: default_audio } : undefined,
+        },
       });
-	  
+
       audio = astream.getAudioTracks()[0];
-      console.log("audio: " ,audio);
+      console.log("audio: ", audio);
       audio.enabled = false;
     } catch (e) {
       console.log(e);
@@ -217,12 +246,12 @@ var McuProcess = (function () {
     try {
       var vstream = null;
       if (newVideoState == video_states.Camera) {
-		console.log("defaul_video: " , default_video);
+        console.log("defaul_video: ", default_video);
         vstream = await navigator.mediaDevices.getUserMedia({
           video: {
             width: 1920,
             height: 1080,
-			deviceId: default_video ? { exact: default_video } : undefined ,
+            deviceId: default_video ? { exact: default_video } : undefined,
           },
           audio: false,
         });
@@ -242,15 +271,15 @@ var McuProcess = (function () {
         };
       }
       if (vstream && vstream.getVideoTracks().length > 0) {
-		console.log("vstream: ",vstream);
+        console.log("vstream: ", vstream);
         // videoCamTrack = vstream.getVideoTracks()[default_video];
-		videoCamTrack = vstream.getVideoTracks()[0];
+        videoCamTrack = vstream.getVideoTracks()[0];
 
         console.log("videoTracks: ", vstream.getVideoTracks()); //fix here probably
         if (videoCamTrack) {
           local_div.srcObject = new MediaStream([videoCamTrack]);
-		  console.log("videoCamTrack: " , videoCamTrack);
-		  console.log(rtp_vid_senders);
+          console.log("videoCamTrack: ", videoCamTrack);
+          console.log(rtp_vid_senders);
           updateMediaSenders(videoCamTrack, rtp_vid_senders);
         }
       }
@@ -288,9 +317,9 @@ var McuProcess = (function () {
   };
 
   async function setConnection(connid) {
-	console.log("setConnection");
+    console.log("setConnection");
     var connection = new RTCPeerConnection(iceConfiguration);
-	console.log("connection: " , connection);
+    console.log("connection: ", connection);
 
     connection.onnegotiationneeded = async function (event) {
       console.log("setting offer");
@@ -311,16 +340,16 @@ var McuProcess = (function () {
       console.log("ontrack");
 
       if (!remote_vid_stream[connid]) {
-		console.log("!remote_vid_stream[connid]");
+        console.log("!remote_vid_stream[connid]");
         remote_vid_stream[connid] = new MediaStream();
       }
       if (!remote_aud_stream[connid]) {
-		console.log("!remote_aud_stream[connid]");
+        console.log("!remote_aud_stream[connid]");
         remote_aud_stream[connid] = new MediaStream();
       }
 
       if (event.track.kind == "video") {
-		console.log("event.track.kind == video");
+        console.log("event.track.kind == video");
         remote_vid_stream[connid]
           .getVideoTracks()
           .forEach((t) => remote_vid_stream[connid].removeTrack(t));
@@ -330,27 +359,28 @@ var McuProcess = (function () {
         remoteVideoPlayer.srcObject = remote_vid_stream[connid];
         remoteVideoPlayer.load();
       } else if (event.track.kind == "audio") {
-		console.log("event.track.kind == audio");
-		console.log( "remote_aud_stream[connid].getAudioTracks :",remote_aud_stream[connid].getAudioTracks());
+        console.log("event.track.kind == audio");
+        console.log(
+          "remote_aud_stream[connid].getAudioTracks :",
+          remote_aud_stream[connid].getAudioTracks()
+        );
         remote_aud_stream[connid]
           .getAudioTracks()
           .forEach((t) => remote_aud_stream[connid].removeTrack(t));
         remote_aud_stream[connid].addTrack(event.track);
-		console.log("event.track: ", event.track);
-		console.log("remote_aud_stream[connid]: " , remote_aud_stream[connid]);
+        console.log("event.track: ", event.track);
+        console.log("remote_aud_stream[connid]: ", remote_aud_stream[connid]);
         var remoteAudioPlayer = document.getElementById("a_" + connid);
         remoteAudioPlayer.srcObject = null;
         remoteAudioPlayer.srcObject = remote_aud_stream[connid];
-		var tempSinkId = "d8ee9b45b85dd0bf36bc09a80a523d5922704f71c614995031dfadb9e37053e4";
-		if (typeof remoteAudioPlayer.sinkId !== "undefined") {
-			console.log("sinkId 1",remoteAudioPlayer.sinkId);
-			
-
-		}
-		else{
-			console.log("sinkId not working");
-		}
-		//probably set sink id here 
+        var tempSinkId =
+          "d8ee9b45b85dd0bf36bc09a80a523d5922704f71c614995031dfadb9e37053e4";
+        if (typeof remoteAudioPlayer.sinkId !== "undefined") {
+          console.log("sinkId 1", remoteAudioPlayer.sinkId);
+        } else {
+          console.log("sinkId not working");
+        }
+        //probably set sink id here
         remoteAudioPlayer.load();
       }
     };
@@ -362,7 +392,7 @@ var McuProcess = (function () {
       video_st == video_states.ScreenShare
     ) {
       if (videoCamTrack) {
-		console.log("updateMediaSenders");  
+        console.log("updateMediaSenders");
         updateMediaSenders(videoCamTrack, rtp_vid_senders);
       }
     }
@@ -458,15 +488,15 @@ var McuProcess = (function () {
     closeConnectionCall: async function (connid) {
       await closeConnection(connid);
     },
-	setAudio: async function (index) {
-		await setAudio(index);
-	},
-	setVideo: async function (id) {
-		await setVideo(id);
-	},
-	changeOutputDevice: async function(id){
-		await changeOutputDevice(id);
-	}
+    setAudio: async function (index) {
+      await setAudio(index);
+    },
+    setVideo: async function (id) {
+      await setVideo(id);
+    },
+    changeOutputDevice: async function (id) {
+      await changeOutputDevice(id);
+    },
   };
 })();
 
@@ -511,7 +541,16 @@ export var Mcu = (function () {
       }
     });
 
+    socket.on("inform_other_about_kicked_user", function (data) {
+      console.log("inform in client side kick");
+      $("#" + data.connId).remove();
+      $(".participant-count").text(data.uNumber);
+      $("#participant_" + data.connId + "").remove();
+      McuProcess.closeConnectionCall(data.connId);
+    });
+
     socket.on("inform_other_about_disconnected_user", function (data) {
+      console.log("inform in client side disconnect");
       $("#" + data.connId).remove();
       $(".participant-count").text(data.uNumber);
       $("#participant_" + data.connId + "").remove();
@@ -520,28 +559,28 @@ export var Mcu = (function () {
 
     socket.on("inform_others_about_me", function (data) {
       addUser(data.other_user_id, data.connId, data.userNumber);
-	  console.log("setNewConnection: ", data.connId);
+      console.log("setNewConnection: ", data.connId);
       McuProcess.setNewConnection(data.connId);
       // console.log("addUser");
     }); //inform others about me
     socket.on("inform_me_about_other_user", function (other_users) {
       var userNumber = other_users.length;
       var userNumb = userNumber + 1;
-	  console.log("other_users in mcu.js: " , other_users);
+      console.log("other_users in mcu.js: ", other_users);
       if (other_users) {
-		console.log("in if condition");
+        console.log("in if condition");
         for (var i = 0; i < other_users.length; i++) {
-		  console.log("running in for loop function");
+          console.log("running in for loop function");
           addUser(
             other_users[i].user_id,
             other_users[i].connectionId,
             userNumb
           );
           McuProcess.setNewConnection(other_users[i].connectionId);
-		  console.log("setNewConnection");
+          console.log("setNewConnection");
         }
       }
-	  console.log("not in condition");
+      console.log("not in condition");
     });
     socket.on("SDPProcess", async function (data) {
       await McuProcess.processClientFunc(data.message, data.from_connid);
@@ -616,10 +655,32 @@ export var Mcu = (function () {
       console.log("Double Click");
       this.requestFullscreen();
     });
+
+    $(document).on("click", ".participant-action-dot", function (e) {
+      // console.log("test");
+      // var currentAnchor = $(this);
+      // console.log(currentAnchor.text());
+      var disUser = $(this).data("panel");
+      console.log(disUser);
+      // disconnectUser(disUser);
+      // socket.emit("kick", disUser);
+      // console.log(io.Socket.sockets.get(socket.id))
+      // io.sockets.sockets.forEach((socket) => {
+      // 	// If given socket id is exist in list of all sockets, kill it
+      // 	if(socket.id === disUser)
+      // 		socket.disconnect(true);
+      // });
+      // socket.disconnect(true);
+      // disconnectUser(disUser);
+      // var $panel = $('#panel' + $(this).data('panel'));
+      // console.log($panel);
+      // $("[title*='" + currentAnchor.text() + "']").collapse('show');
+      // $('#collapseTwo').collapse('hide');
+    });
   }
 
   function addUser(other_user_id, connId, userNum) {
-	console.log("addUser");
+    console.log("addUser");
     var newDivId = $("#otherTemplate").clone();
     newDivId = newDivId.attr("id", connId).addClass("other");
     newDivId.find("h2").text(other_user_id);
@@ -638,6 +699,17 @@ export var Mcu = (function () {
     );
     $(".participant-count").text(userNum);
   }
+  function getIDs() {
+    var id,
+      divs = document.getElementsByTagName("div");
+    for (var i = 0; i < divs.length; i++) {
+      id = divs[i].id; //  .id is a method
+      if (i == 13 || i == 14 || i == 15) {
+        console.log(id);
+      }
+    }
+  }
+
   $(document).on("click", ".people-heading", function () {
     $(".in-call-wrap-up").show(300);
     $(".chat-show-wrap").hide(300);
@@ -722,29 +794,37 @@ export var Mcu = (function () {
     $(".a-v-details").toggle();
   });
 
-  $(document).on("click", "#setChanges", function () {
-    console.log($("#videoSource").find(":selected").val());
-	// console.log($("#videoSource").find(":selected").val());
-	var videoSourceIndex = $("#videoSource").find(":selected").val();
-	var audioSourceIndex = $("#audioSource").find(":selected").val();
-	var audioOutputIndex = $("#audioOutput").find(":selected").val();
+  //   $(document).on("click", "#setChanges", function () {
+  //     // console.log($("#videoSource").find(":selected").val());
+  // 	// console.log($("#videoSource").find(":selected").val());
+  // 	var videoSourceIndex = $("#videoSource").find(":selected").val();
+  // 	var audioSourceIndex = $("#audioSource").find(":selected").val();
+  // 	var audioOutputIndex = $("#audioOutput").find(":selected").val();
 
-	McuProcess.setVideo(videoSourceIndex);
-	McuProcess.setAudio(audioSourceIndex);
-	McuProcess.changeOutputDevice(audioOutputIndex);
+  // 	McuProcess.setVideo(videoSourceIndex);
+  // 	McuProcess.setAudio(audioSourceIndex);
+  // 	McuProcess.changeOutputDevice(audioOutputIndex);
 
-    console.log("setChanges");
+  //     console.log("setChanges");
+  //   });
+
+  $(document).on("change", "select#audioSource", function () {
+    var audioSourceIndex = $("#audioSource").find(":selected").val();
+    McuProcess.setAudio(audioSourceIndex);
+
+    console.log("audioSource");
   });
+  $(document).on("change", "select#audioOutput", function () {
+    var audioOutputIndex = $("#audioOutput").find(":selected").val();
+    McuProcess.changeOutputDevice(audioOutputIndex);
+    console.log("audioOutput");
+  });
+  $(document).on("change", "select#videoSource", function () {
+    var videoSourceIndex = $("#videoSource").find(":selected").val();
+    McuProcess.setVideo(videoSourceIndex);
 
-  //   $(document).on("change", "select#audioSource", function () {
-  //     console.log("audioSource");
-  //   });
-  //   $(document).on("change", "select#audioOutput", function () {
-  //     console.log("audioOutput");
-  //   });
-  //   $(document).on("change", "select#videoSource", function () {
-  //     console.log("videoSource");
-  //   });
+    console.log("videoSource");
+  });
 
   return {
     _init: function (uid, mid) {

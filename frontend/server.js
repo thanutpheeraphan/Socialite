@@ -114,6 +114,33 @@ io.on("connection", (socket) => {
     //   console.error(err.message);
     // }
   };
+  socket.on("kick", (data) => {
+    console.log("kick");
+    var disUser = userConnections.find((p) => p.connectionId == data);
+    // console.log(disUser.meeting_id);
+	// leaveRoom(disUser.meeting_id); //probably have to move to inside if
+    if (disUser) {
+	  console.log("found");
+	  leaveRoom(disUser.meeting_id); //probably have to move to inside if
+      var meetingid = disUser.meeting_id;
+      userConnections = userConnections.filter(
+        (p) => p.connectionId != data
+      );
+      var list = userConnections.filter((p) => p.meeting_id == meetingid);
+      list.forEach((v) => {
+        var userNumberAffUserLeave = userConnections.length;
+		console.log("v.connectionId: " , v.connectionId);
+		console.log("data: ", data );
+		console.log("userNumberAffUserLeave: ", userNumberAffUserLeave);
+        socket.to(v.connectionId).emit("inform_other_about_kicked_user", {
+          connId: data,
+          uNumber: userNumberAffUserLeave,
+        });
+		console.log("emitted to: " , v.connectionId);
+      });
+      console.log(userConnections); //need to check each meeting id or find another way
+    }
+  });
 
   socket.on("disconnect", function () {
     console.log("Disconnected");
