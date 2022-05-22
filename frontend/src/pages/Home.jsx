@@ -726,7 +726,7 @@ function Home(props) {
                   placeholder="Room name"
                   required="required"
                   //
-                  autoComplete="off"
+                  autoComplete="false"
                   //
                   value={room_name}
                   onChange={(e) => onChange(e)}
@@ -740,7 +740,7 @@ function Home(props) {
                   placeholder="Password"
                   required="required"
                   //
-                  autoComplete="off"
+                  autoComplete="false"
                   //
                   value={password}
                   onChange={(e) => onChange(e)}
