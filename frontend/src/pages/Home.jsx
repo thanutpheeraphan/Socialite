@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import SearchBar from "../components/SearchBar/SearchBar";
 import RooMockData from "../data/MockData.json";
 import "../components/SearchBar/SearchBar.css";
-import SearchIcon from "@material-ui/icons/Search";
+import CancelIcon from "@material-ui/icons/Cancel";
 import Chip from "@mui/material/Chip";
 import { styled } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
@@ -76,6 +76,21 @@ function Home(props) {
     } catch (err) {
       console.error(err.message);
     }
+  };
+
+  const clearSearch = async (e) => {
+    e.preventDefault();
+    let queryInput = searchInput;
+    queryInput = "";
+
+    setSearchInput(queryInput);
+    const response = await fetch(
+      process.env.REACT_APP_API_URL + `/rooms/searchroom/?name=${queryInput}`
+    );
+    const parseResponse = await response.json();
+    setData(parseResponse);
+
+    console.error(searchInput);
   };
   const joinRoomFunc = async (link) => {
     // var room_id = window.prompt("Enter the room ID");
@@ -328,13 +343,14 @@ function Home(props) {
             />
             {/* <button className="btn btn-success">Search</button> */}
             <div className="searchIcon">
-              <SearchIcon onClick={onSubmitForm} />
+              <CancelIcon onClick={clearSearch} />
             </div>
           </form>
         </div>
       </item-a>
 
       <item-b>
+        {/* <CircularProgress color="primary" thickness="4" size="3.5vw" /> */}
         {data.length != 0 ? (
           <div>
             <ul class="grid-container">
@@ -501,7 +517,7 @@ function Home(props) {
         ) : (
           <div className="NoRoom">
             {/* <p>{progress}</p> */}
-            {progress <= 50 ? (
+            {/* {progress <= 50 ? (
               <p
                 style={{
                   fontSize: "3vw",
@@ -511,7 +527,14 @@ function Home(props) {
               </p>
             ) : (
               <CircularProgress color="primary" thickness="4" size="3.5vw" />
-            )}
+            )} */}
+            <p
+              style={{
+                fontSize: "3vw",
+              }}
+            >
+              No rooms found
+            </p>
           </div>
         )}
       </item-b>
