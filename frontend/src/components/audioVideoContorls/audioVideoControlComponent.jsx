@@ -88,12 +88,12 @@ const AudioVideoControlComponent = () => {
         track.stop();
       });
     }
-	
+
     const videoSource = event.target.value;
-	const videoIndex = event.target.selectedIndex;
-	// console.log((videoSource));
-	// console.log((videoIndex));
-	// console.log(event.target);
+    const videoIndex = event.target.selectedIndex;
+    // console.log((videoSource));
+    // console.log((videoIndex));
+    // console.log(event.target);
     const constraints = {
       video: { deviceId: videoSource ? { exact: videoSource } : undefined },
     };
@@ -165,8 +165,8 @@ const AudioVideoControlComponent = () => {
   }, []);
 
   const testClickOptions = (index) => {
-	  console.log("index: ", index);
-  }
+    console.log("index: ", index);
+  };
 
   // navigator.mediaDevices
   //   .enumerateDevices()
@@ -234,7 +234,20 @@ const AudioVideoControlComponent = () => {
           ))}
         </select>
       </div>
-	  <button id="setChanges"> Set Changes </button>
+      <button
+        id="setChanges"
+        class="mt-3"
+        style={{
+          backgroundColor: "#1B9370",
+          border: "none",
+          color: "white",
+          borderRadius: "20px",
+          fontSize: "1.5vw",
+        }}
+      >
+        {" "}
+        Set Changes{" "}
+      </button>
     </div>
   );
 };

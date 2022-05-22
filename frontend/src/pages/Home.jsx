@@ -342,8 +342,6 @@ function Home(props) {
                 <div
                   className="Box_Layout"
                   style={{
-                    height: "15.5vw",
-                    width: "22vw",
                     top: "3vw",
                     left: "5vw",
                     // marginLeft: "4vw",
@@ -384,7 +382,10 @@ function Home(props) {
                         {/* LockRoom condition? */}
                         {item.password != "" ? (
                           <BsFillLockFill
-                            style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                            style={{
+                              marginRight: "1vw",
+                              marginTop: ".5vw",
+                            }}
                           />
                         ) : (
                           <></>
@@ -446,59 +447,60 @@ function Home(props) {
                     }}
                     className="d-flex align-items-center"
                   >
-                    {item.tags.map((data, index) => (
-                      <li
-                        style={{
-                          // marginTop: "1vw",
-                          fontSize: "2vw",
-                          paddingLeft: "1vw",
-                          display: "list-item",
-                        }}
-                      >
-                        <Chip
-                          label={<ClipisText>{item.tags[index]}</ClipisText>}
-                          onClick={() =>
-                            console.log("item.tags[index]: ", item.tags[index])
-                          }
-                          color="primary"
-                          style={{
-                            // marginLeft: "-3.0vw",
-                            position: "relative",
-                            maxWidth: "10vw",
-                            padding: ".1vw",
-                            maxHeight: "3vw",
-                            // marginBottom: "0vw",
-                            // paddingLeft: 15,
-                            // paddingRight: 15,
-                            // paddingBottom: 3,
-                            backgroundColor: "#114C60",
-                          }}
-                        />
-                      </li>
-                    ))}
+                    {item.tags.map(
+                      (data, index) =>
+                        index < 3 && (
+                          <li
+                            style={{
+                              // marginTop: "1vw",
+                              fontSize: "2vw",
+                              paddingLeft: "1vw",
+                              display: "list-item",
+                            }}
+                          >
+                            <Chip
+                              label={
+                                <ClipisText>{item.tags[index]}</ClipisText>
+                              }
+                              onClick={() =>
+                                console.log(
+                                  "item.tags[index]: ",
+                                  item.tags[index]
+                                )
+                              }
+                              color="primary"
+                              style={{
+                                // marginLeft: "-3.0vw",
+                                position: "relative",
+                                maxWidth: "10vw",
+                                padding: ".1vw",
+                                maxHeight: "3vw",
+                                // marginBottom: "0vw",
+                                // paddingLeft: 15,
+                                // paddingRight: 15,
+                                // paddingBottom: 3,
+                                backgroundColor: "#114C60",
+                              }}
+                            />
+                          </li>
+                        )
+                    )}
                   </div>
                 </div>
               ))}
             </ul>
-            <div class="d-flex justify-content-center mt-5">
-              {/* <Pagination
-                count={Math.ceil(data.length / 10)}
-                color="primary"
-                style={{
-                  marginTop: "2vw",
-                  width: "auto",
-                  height: "4vw",
-                }}
-                size="large"
-                // onChange={handlePageClick}
-              /> */}
-            </div>
           </div>
         ) : (
           <div className="NoRoom">
             {/* <p>{progress}</p> */}
             {progress <= 50 ? (
-              <p>No rooms found</p>
+              <p
+                style={{
+                  fontSize: "3vw",
+                }}
+              >
+                No rooms found
+              </p>
             ) : (
               <CircularProgress color="primary" thickness="4" size="3.5vw" />
             )}
@@ -507,7 +509,10 @@ function Home(props) {
       </item-b>
 
       <item-c>
-        <div class=" " style={{ position: "sticky", top: "3vw" }}>
+        <div
+          class=" "
+          style={{ position: "sticky", top: "3vw", color: "#114C60" }}
+        >
           <div class="d-flex justify-content-center mt-4" style={{}}>
             <img
               src={iconPanel}
@@ -633,7 +638,8 @@ function Home(props) {
             </div>
           </div>
         </div>
-        {/* <Fab
+      </item-c>
+      {/* <Fab
           onClick={joinRoomFunc}
           variant="extended"
           aria-label="add"
@@ -648,82 +654,88 @@ function Home(props) {
         >
           Join Room
         </Fab> */}
-        {/* build icon */}
+      {/* build icon */}
 
-        <Fab
-          //   onClick={handleShow}
-          onClick={handleShow}
-          variant="extended"
-          aria-label="add"
-          style={{
-            position: "fixed",
-            right: 10,
-            bottom: 10,
-            background: "#114C60",
-            color: "#fff",
-            fontSize: 15,
-          }}
-        >
-          <AddIcon sx={{ mr: 1 }} />
-          Create Room
-        </Fab>
+      <Fab
+        //   onClick={handleShow}
+        onClick={handleShow}
+        variant="extended"
+        aria-label="add"
+        style={{
+          position: "fixed",
+          right: 10,
+          bottom: 10,
+          background: "#114C60",
+          color: "#fff",
+          fontSize: 15,
+        }}
+      >
+        <AddIcon sx={{ mr: 1 }} />
+        Create Room
+      </Fab>
 
-        {/* Create Room Box */}
-        <Modal show={show} onHide={handleClose} animation={false}>
-          <Modal.Header className="modal-style" closeButton>
-            <Modal.Title>Create Room</Modal.Title>
-          </Modal.Header>
+      {/* Create Room Box */}
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header className="modal-style" closeButton>
+          <Modal.Title>Create Room</Modal.Title>
+        </Modal.Header>
 
-          <Modal.Body>
-            <div>
-              {/* //onSubmit={create} */}
+        <Modal.Body>
+          <div>
+            {/* //onSubmit={create} */}
 
-              <form>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="room_name"
-                    className="form-control"
-                    placeholder="Room name"
-                    required="required"
-                    value={room_name}
-                    onChange={(e) => onChange(e)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    placeholder="Password"
-                    required="required"
-                    value={password}
-                    onChange={(e) => onChange(e)}
-                  />
-                </div>
+            <form autoComplete="new-password">
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="room_name"
+                  className="form-control"
+                  placeholder="Room name"
+                  required="required"
+                  //
+                  autoComplete="off"
+                  //
+                  value={room_name}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="Password"
+                  required="required"
+                  //
+                  autoComplete="off"
+                  //
+                  value={password}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
 
-                <div className="tag-container">
-                  {tags.map((tag, index) => {
-                    return (
-                      <div key={index} className="tag">
-                        <span className="text">{tag} </span>
-                        <span className="close" onClick={() => removeTag(tag)}>
-                          &times;
-                        </span>
-                      </div>
-                    );
-                  })}
-                  <input
-                    type="tag"
-                    name="tag"
-                    className="tags-input"
-                    placeholder="Enter tags"
-                    onKeyDown={addTag}
-                    // value={tag}
-                    onChange={(e) => onChange(e)}
-                  />
-                </div>
-                {/* <div className="form-group">
+              <div className="tag-container">
+                {tags.map((tag, index) => {
+                  return (
+                    <div key={index} className="tag">
+                      <span className="text">{tag} </span>
+                      <span className="close" onClick={() => removeTag(tag)}>
+                        &times;
+                      </span>
+                    </div>
+                  );
+                })}
+                <input
+                  type="tag"
+                  name="tag"
+                  className="tags-input"
+                  placeholder="Enter tags"
+                  onKeyDown={addTag}
+                  // value={tag}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+              {/* <div className="form-group">
 				<input
                   type="submit"
                   className="form-control btn btn-success btn-primary btn-block"
@@ -737,13 +749,13 @@ function Home(props) {
                 />
 				</div> */}
 
-                {/* <div>
+              {/* <div>
                       <Button variant="secondary" onClick={handleClose}>
                         Cancel
                       </Button>
                     </div> */}
 
-                {/* <div>
+              {/* <div>
                       <input
                         onClick={create} //onclick to create room
                         variant="primary"
@@ -752,7 +764,7 @@ function Home(props) {
                         value="Create Room"
                       />
                     </div> */}
-                {/* <Modal.Footer>
+              {/* <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Cancel
                   </Button>
@@ -760,16 +772,16 @@ function Home(props) {
                     Create Room
                   </Button>
                 </Modal.Footer> */}
-                {/* <TagsInput /> */}
-              </form>
-              <div>
-                <button className="create-button" onClick={create}>
-                  Create
-                </button>
-              </div>
+              {/* <TagsInput /> */}
+            </form>
+            <div>
+              <button className="create-button" onClick={create}>
+                Create
+              </button>
             </div>
-          </Modal.Body>
-          {/* <Modal.Footer>
+          </div>
+        </Modal.Body>
+        {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
@@ -777,8 +789,7 @@ function Home(props) {
               Save Changes
             </Button>
           </Modal.Footer> */}
-        </Modal>
-      </item-c>
+      </Modal>
     </section>
     //   <section id="container">
     //     <item-a/>

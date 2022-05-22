@@ -52,7 +52,12 @@ const MCURoom = (props) => {
             height: "92vh",
           }}
         >
-          <div class="g-top text-light">
+          <div
+            class="g-top text-light"
+            style={{
+              backgroundColor: "#C7D9BF",
+            }}
+          >
             <div class="top-remote-video-show-wrap d-flex">
               {/* style={{marginRight: spacing + 'em'}} */}
               <div
@@ -66,19 +71,31 @@ const MCURoom = (props) => {
                     id="divUsers"
                     style={{ display: "flex", flexWrap: "wrap" }}
                   >
-                    <div id="me" class="userbox display-center flex-column">
+                    <div
+                      id="me"
+                      class="userbox display-center flex-column"
+                      style={{ border: "1px solid #C7D9BF" }}
+                    >
                       <h2
                         class="display-center"
                         style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
                       <div class="display-center" style={{ maxHeight: "" }}>
-                        <video autoPlay muted id="locaVideoPlayer"></video>
+                        <video
+                          autoPlay
+                          muted
+                          id="locaVideoPlayer"
+                          style={{
+                            maxHeight: "40vw",
+                            backgroundColor: "black",
+                          }}
+                        ></video>
                       </div>
                     </div>
                     <div
                       id="otherTemplate"
                       class="userbox display-center flex-column"
-                      style={{ display: "none" }}
+                      style={{ display: "none", border: "1px solid #C7D9BF" }}
                     >
                       <h2
                         class="display-center"
@@ -89,7 +106,8 @@ const MCURoom = (props) => {
                           autoPlay
                           muted
                           style={{
-                            maxHeight: "170px",
+                            maxHeight: "40vw",
+                            backgroundColor: "black",
                           }}
                         ></video>
                         <audio
@@ -393,7 +411,10 @@ const MCURoom = (props) => {
                 class="mic-toggle-wrap action-icon-style display-center me-2 cursor-pointer"
                 id="miceMuteUnmute"
               >
-                <span class="material-icons" style={{ width: 100 + "%" }}>
+                <span
+                  class="material-icons d-flex justify-content-center"
+                  style={{ width: 100 + "%" }}
+                >
                   mic_off
                 </span>
               </div>
@@ -406,7 +427,10 @@ const MCURoom = (props) => {
                 class="video-toggle-wrap action-icon-style display-center cursor-pointer"
                 id="videoCamOnOff"
               >
-                <span class="material-icons" style={{ width: 100 + "%" }}>
+                <span
+                  class="material-icons d-flex justify-content-center"
+                  style={{ width: 100 + "%" }}
+                >
                   videocam_off
                 </span>
               </div>
@@ -432,9 +456,7 @@ const MCURoom = (props) => {
                 </div>
                 <div class="a-v-details-heading-show-wrap">
                   <div class="g-details-heading-show">
-                  <AudioVideoControlComponent></AudioVideoControlComponent>
-
-                    
+                    <AudioVideoControlComponent></AudioVideoControlComponent>
                   </div>
                 </div>
               </div>

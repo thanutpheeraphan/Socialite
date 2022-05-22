@@ -1,10 +1,10 @@
-<svg width="602" height="664" viewBox="0 0 602 664" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_548_68" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="594" height="656">
-<circle cx="255.5" cy="255.5" r="230.5" stroke="black" stroke-width="50"/>
-<line x1="385.316" y1="432.985" x2="568.4" y2="630.067" stroke="black" stroke-width="50"/>
-<circle cx="568.02" cy="630.02" r="25.5" transform="rotate(-21.297 568.02 630.02)" fill="black"/>
+<svg width="363" height="401" viewBox="0 0 363 401" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_831_214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="369" height="396">
+<circle cx="154.154" cy="154.154" r="129.154" stroke="black" stroke-width="50"/>
+<line x1="239.743" y1="254.489" x2="350.205" y2="373.397" stroke="black" stroke-width="50"/>
+<circle cx="342.711" cy="380.118" r="15.3852" transform="rotate(-21.297 342.711 380.118)" fill="black"/>
 </mask>
-<g mask="url(#mask0_548_68)">
-<rect width="601.04" height="663.04" fill="#69E48E"/>
+<g mask="url(#mask0_831_214)">
+<rect width="362.633" height="400.04" rx="70" fill="#65E291"/>
 </g>
 </svg>

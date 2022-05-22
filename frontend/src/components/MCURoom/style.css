@@ -125,9 +125,7 @@ height: 600px;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 50%;
 }
-.action-icon-style span.material-icons{
-    /* font-size: 18px; */
-}
+
 .end-call-wrap{
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
@@ -194,9 +192,7 @@ video{
     margin-bottom: 132px;
     display: none;
 }
-.material-icons{
-   
-}
+
 @media all and (max-width: 1100px){
     .top-left-participant-wrap{
         right: 2vw;
