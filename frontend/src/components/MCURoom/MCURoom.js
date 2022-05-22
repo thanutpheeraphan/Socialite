@@ -408,7 +408,10 @@ const MCURoom = (props) => {
                 class="mic-toggle-wrap action-icon-style display-center me-2 cursor-pointer"
                 id="miceMuteUnmute"
               >
-                <span class="material-icons ms-1" style={{ width: 100 + "%" }}>
+                <span
+                  class="material-icons d-flex justify-content-center"
+                  style={{ width: 100 + "%" }}
+                >
                   mic_off
                 </span>
               </div>
@@ -421,7 +424,10 @@ const MCURoom = (props) => {
                 class="video-toggle-wrap action-icon-style display-center cursor-pointer"
                 id="videoCamOnOff"
               >
-                <span class="material-icons ms-1" style={{ width: 100 + "%" }}>
+                <span
+                  class="material-icons d-flex justify-content-center"
+                  style={{ width: 100 + "%" }}
+                >
                   videocam_off
                 </span>
               </div>
