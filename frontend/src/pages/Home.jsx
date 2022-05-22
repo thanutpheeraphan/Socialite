@@ -328,6 +328,8 @@ function Home(props) {
     };
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <section id="container">
       <item-a>
@@ -715,7 +717,7 @@ function Home(props) {
           <div>
             {/* //onSubmit={create} */}
 
-            <form autoComplete="new-password">
+            <form autoComplete="off">
               <div className="form-group">
                 <input
                   type="text"
