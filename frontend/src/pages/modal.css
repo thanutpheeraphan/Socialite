@@ -155,7 +155,7 @@
 #container{
   display: grid;
   width: 100%;
-  height: auto;
+  height: 100%;
   grid-auto-rows: 5vw minmax(41vw,auto);
   grid-template-columns: 1fr 16vw;
   grid-template-areas:
@@ -175,7 +175,7 @@
   grid-area: main;
   /* background-color: #ab71f8; */
   background-color: #F4E7D4;
-  height: 100vh;
+  height: 100%;
 }
 #container > item-c{
   grid-area: sidebar;
@@ -185,12 +185,15 @@
 
 /* grid room container */
 .grid-container{
+  background-color: #F4E7D4;
+  height: auto;
   display: grid;
   justify-content: space-around;
   grid-template-columns: 20vw 20vw;
   gap: 2vw;
   padding: 2vw;
   padding-right: 16vw;
+  margin-bottom: 3vh;
 }
 
 .Box_Layout{
@@ -204,6 +207,7 @@
   border-radius: 10px;
   height: 15.5vw;
   width: 22vw;
+  
 }
 
 @media only Screen and (max-width: 420px) {
@@ -211,16 +215,19 @@
     margin-left: 10vw;
     width:100%;
   }
-  #container > item-c{
-    display: none;
-    
-  }
+
   #container > item-b{
     margin-top: 2vh;
     grid-area: main;
     width: 120%;
     
+    
   }
+  #container > item-c{
+    display: none;
+    
+  }
+  
   #container{
     background-color: #F4E7D4;
     display: grid;

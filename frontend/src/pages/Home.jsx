@@ -382,7 +382,10 @@ function Home(props) {
                         {/* LockRoom condition? */}
                         {item.password != "" ? (
                           <BsFillLockFill
-                            style={{ marginRight: "1vw", marginTop: ".5vw" }}
+                            style={{
+                              marginRight: "1vw",
+                              marginTop: ".5vw",
+                            }}
                           />
                         ) : (
                           <></>
@@ -486,19 +489,6 @@ function Home(props) {
                 </div>
               ))}
             </ul>
-            <div class="d-flex justify-content-center mt-5">
-              {/* <Pagination
-                count={Math.ceil(data.length / 10)}
-                color="primary"
-                style={{
-                  marginTop: "2vw",
-                  width: "auto",
-                  height: "4vw",
-                }}
-                size="large"
-                // onChange={handlePageClick}
-              /> */}
-            </div>
           </div>
         ) : (
           <div className="NoRoom">

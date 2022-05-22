@@ -104,5 +104,8 @@
 
 
 @media only Screen and (max-width: 420px) {
-	
+	.roomCardContainer{
+		height: 7vh;
+		margin-bottom: .3vh;
+	}
 }
