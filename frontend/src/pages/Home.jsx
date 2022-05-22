@@ -446,36 +446,44 @@ function Home(props) {
                     }}
                     className="d-flex align-items-center"
                   >
-                    {item.tags.map((data, index) => (
-                      <li
-                        style={{
-                          // marginTop: "1vw",
-                          fontSize: "2vw",
-                          paddingLeft: "1vw",
-                          display: "list-item",
-                        }}
-                      >
-                        <Chip
-                          label={<ClipisText>{item.tags[index]}</ClipisText>}
-                          onClick={() =>
-                            console.log("item.tags[index]: ", item.tags[index])
-                          }
-                          color="primary"
-                          style={{
-                            // marginLeft: "-3.0vw",
-                            position: "relative",
-                            maxWidth: "10vw",
-                            padding: ".1vw",
-                            maxHeight: "3vw",
-                            // marginBottom: "0vw",
-                            // paddingLeft: 15,
-                            // paddingRight: 15,
-                            // paddingBottom: 3,
-                            backgroundColor: "#114C60",
-                          }}
-                        />
-                      </li>
-                    ))}
+                    {item.tags.map(
+                      (data, index) =>
+                        index < 3 && (
+                          <li
+                            style={{
+                              // marginTop: "1vw",
+                              fontSize: "2vw",
+                              paddingLeft: "1vw",
+                              display: "list-item",
+                            }}
+                          >
+                            <Chip
+                              label={
+                                <ClipisText>{item.tags[index]}</ClipisText>
+                              }
+                              onClick={() =>
+                                console.log(
+                                  "item.tags[index]: ",
+                                  item.tags[index]
+                                )
+                              }
+                              color="primary"
+                              style={{
+                                // marginLeft: "-3.0vw",
+                                position: "relative",
+                                maxWidth: "10vw",
+                                padding: ".1vw",
+                                maxHeight: "3vw",
+                                // marginBottom: "0vw",
+                                // paddingLeft: 15,
+                                // paddingRight: 15,
+                                // paddingBottom: 3,
+                                backgroundColor: "#114C60",
+                              }}
+                            />
+                          </li>
+                        )
+                    )}
                   </div>
                 </div>
               ))}
