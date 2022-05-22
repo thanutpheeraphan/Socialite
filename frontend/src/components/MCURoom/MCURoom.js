@@ -52,7 +52,12 @@ const MCURoom = (props) => {
             height: "92vh",
           }}
         >
-          <div class="g-top text-light">
+          <div
+            class="g-top text-light"
+            style={{
+              backgroundColor: "#C7D9BF",
+            }}
+          >
             <div class="top-remote-video-show-wrap d-flex">
               {/* style={{marginRight: spacing + 'em'}} */}
               <div
