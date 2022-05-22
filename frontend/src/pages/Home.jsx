@@ -345,7 +345,7 @@ function Home(props) {
             />
             {/* <button className="btn btn-success">Search</button> */}
             <div className="searchIcon">
-              <CancelIcon onClick={clearSearch} />
+              <CancelIcon onClick={clearSearch} style={{ fontSize: "2vw" }} />
             </div>
           </form>
         </div>
