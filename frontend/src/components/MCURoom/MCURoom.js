@@ -454,16 +454,16 @@ const MCURoom = (props) => {
             </div>
             {/* bottomBar */}
             <div
-              class="bottom-middle d-flex just-content-center align-items-center"
+              class="bottom-middle d-flex justify-content-center align-items-center"
               style={{ height: 10 + "vh" }}
             >
               <div
-                class="mic-toggle-wrap action-icon-style display-center d-flex justify-content-center cursor-pointer"
+                class="mic-toggle-wrap action-icon-style display-center d-flex justify-content-center me-2 cursor-pointer"
                 id="miceMuteUnmute"
               >
                 <span
                   class="material-icons d-flex justify-content-center"
-                  style={{ width: 100 + "%" }}
+                  style={{ width: 100 + "%", margin: "auto" }}
                 >
                   mic_off
                 </span>
@@ -479,7 +479,7 @@ const MCURoom = (props) => {
               >
                 <span
                   class="material-icons d-flex justify-content-center"
-                  style={{ width: 100 + "%" }}
+                  style={{ width: 100 + "%", margin: "auto" }}
                 >
                   videocam_off
                 </span>

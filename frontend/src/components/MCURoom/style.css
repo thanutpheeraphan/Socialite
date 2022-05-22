@@ -193,6 +193,10 @@ video{
     display: none;
 }
 
+.material-icons{
+    display: flex;
+}
+
 @media all and (max-width: 1100px){
     .top-left-participant-wrap{
         right: 2vw;

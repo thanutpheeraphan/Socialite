@@ -36,12 +36,12 @@ var McuProcess = (function () {
   }
 
   async function setAudio(id) {
-	await miceMute();
+    await miceMute();
     default_audio = id;
   }
 
   async function setVideo(id) {
-	await videoProcess(video_states.None);
+    await videoProcess(video_states.None);
     default_video = id;
   }
 
@@ -89,22 +89,22 @@ var McuProcess = (function () {
     //   console.log("id: ", default_output);
   }
 
-  async function miceMute(){
-	if (!audio) {
-        await loadAudio();
-      }
-      if (!audio) {
-        alert("Audio permission has not granted");
-        return;
-      }
-	audio.enabled = false;
-	$("#miceMuteUnmute").html(
-	  "<span class='material-icons' style='width:100%;'>mic_off</span>"
-	);
-	removeMediaSenders(rtp_aud_senders);
-	audio.stop();
-	audio = null;
-	isAudioMute = true;
+  async function miceMute() {
+    if (!audio) {
+      await loadAudio();
+    }
+    if (!audio) {
+      alert("Audio permission has not granted");
+      return;
+    }
+    audio.enabled = false;
+    $("#miceMuteUnmute").html(
+      "<span class='material-icons' style='width:100%; display: flex; justify-content: center;'>mic_off</span>"
+    );
+    removeMediaSenders(rtp_aud_senders);
+    audio.stop();
+    audio = null;
+    isAudioMute = true;
   }
 
   function eventProcess() {
@@ -116,18 +116,20 @@ var McuProcess = (function () {
         alert("Audio permission has not granted");
         return;
       }
-      if (isAudioMute) { //true
+      if (isAudioMute) {
+        //true
         audio.enabled = true;
         $(this).html(
-          "<span class='material-icons' style='width:100%;'>mic</span>"
+          "<span class='material-icons' style='width:100%; display: flex; justify-content: center;'>mic</span>"
         );
         console.log(audio);
         console.log(rtp_aud_senders);
         updateMediaSenders(audio, rtp_aud_senders);
-      } else { //false
+      } else {
+        //false
         audio.enabled = false;
         $(this).html(
-          "<span class='material-icons' style='width:100%;'>mic_off</span>"
+          "<span class='material-icons' style='width:100%; display: flex; justify-content: center;'>mic_off</span>"
         );
         removeMediaSenders(rtp_aud_senders);
         audio.stop();
@@ -220,7 +222,7 @@ var McuProcess = (function () {
   async function videoProcess(newVideoState) {
     if (newVideoState == video_states.None) {
       $("#videoCamOnOff").html(
-        "<span class='material-icons' style='width:100%;'>videocam_off</span>"
+        "<span class='material-icons' style='width:100%; display: flex; justify-content: center;'>videocam_off</span>"
       );
       $("#ScreenShareOnOf").html(
         '<span class="material-icons">present_to_all</span><div>Present Now</div>'
@@ -240,7 +242,7 @@ var McuProcess = (function () {
     }
     if (newVideoState == video_states.Camera) {
       $("#videoCamOnOff").html(
-        "<span class='material-icons' style='width:100%;'>videocam_on</span>"
+        "<span class='material-icons' style='width:100%; '>videocam_on</span>"
       );
     }
     try {
@@ -290,14 +292,14 @@ var McuProcess = (function () {
     video_st = newVideoState;
     if (newVideoState == video_states.Camera) {
       $("#videoCamOnOff").html(
-        '<span class="material-icons" style="width: 100%;">videocam</span>'
+        '<span class="material-icons" style="width: 100%; display: flex; justify-content: center;">videocam</span>'
       );
       $("#ScreenShareOnOf").html(
         '<span class="material-icons ">present_to_all</span><div >Present Now</div>'
       );
     } else if (newVideoState == video_states.ScreenShare) {
       $("#videoCamOnOff").html(
-        '<span class="material-icons" style="width: 100%;">videocam_off</span>'
+        '<span class="material-icons" style="width: 100%; display: flex; justify-content: center;">videocam_off</span>'
       );
       $("#ScreenShareOnOf").html(
         '<span class="material-icons text-success">present_to_all</span><div class="text-success">Stop Present Now</div>'
