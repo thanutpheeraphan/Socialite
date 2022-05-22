@@ -7,6 +7,12 @@ import "./style.css";
 import $ from "jquery";
 import { borderRadius } from "@mui/system";
 import AudioVideoControlComponent from "../audioVideoContorls/audioVideoControlComponent";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 
 const MCURoom = (props) => {
   const location = useLocation();
@@ -81,15 +87,37 @@ const MCURoom = (props) => {
                         style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
                       <div class="display-center" style={{ maxHeight: "" }}>
-                        <video
-                          autoPlay
-                          muted
-                          id="locaVideoPlayer"
-                          style={{
-                            maxHeight: "40vw",
-                            backgroundColor: "black",
-                          }}
-                        ></video>
+                        <BrowserView>
+                          <video
+                            autoPlay
+                            muted
+                            id="locaVideoPlayer"
+                            style={{
+                              height: "12vw",
+                              backgroundColor: "black",
+                            }}
+                          ></video>
+                        </BrowserView>
+                        <MobileView>
+                          <video
+                            autoPlay
+                            muted
+                            id="locaVideoPlayer"
+                            style={{
+                              maxHeight: "12vw",
+                              backgroundColor: "black",
+                            }}
+                          ></video>
+                        </MobileView>
+                        {/* <video
+                            autoPlay
+                            muted
+                            id="locaVideoPlayer"
+                            style={{
+                              maxHeight: "12vw",
+                              backgroundColor: "black",
+                            }}
+                          ></video> */}
                       </div>
                     </div>
                     <div
@@ -102,14 +130,36 @@ const MCURoom = (props) => {
                         style={{ fontSize: 14 + "px", color: "black" }}
                       ></h2>
                       <div class="display-center" style={{ maxHeight: "" }}>
-                        <video
+                        {/* <video
                           autoPlay
                           muted
                           style={{
-                            maxHeight: "40vw",
+                            height: "12vw",
                             backgroundColor: "black",
                           }}
-                        ></video>
+                        ></video> */}
+                        <BrowserView>
+                          <video
+                            autoPlay
+                            muted
+                            id="locaVideoPlayer"
+                            style={{
+                              height: "12vw",
+                              backgroundColor: "black",
+                            }}
+                          ></video>
+                        </BrowserView>
+                        <MobileView>
+                          <video
+                            autoPlay
+                            muted
+                            id="locaVideoPlayer"
+                            style={{
+                              maxHeight: "12vw",
+                              backgroundColor: "black",
+                            }}
+                          ></video>
+                        </MobileView>
                         <audio
                           autoPlay
                           controls
@@ -408,7 +458,7 @@ const MCURoom = (props) => {
               style={{ height: 10 + "vh" }}
             >
               <div
-                class="mic-toggle-wrap action-icon-style display-center me-2 cursor-pointer"
+                class="mic-toggle-wrap action-icon-style display-center d-flex justify-content-center cursor-pointer"
                 id="miceMuteUnmute"
               >
                 <span
@@ -424,7 +474,7 @@ const MCURoom = (props) => {
               </div>
 
               <div
-                class="video-toggle-wrap action-icon-style display-center cursor-pointer"
+                class="video-toggle-wrap action-icon-style display-center d-flex justify-content-center cursor-pointer"
                 id="videoCamOnOff"
               >
                 <span

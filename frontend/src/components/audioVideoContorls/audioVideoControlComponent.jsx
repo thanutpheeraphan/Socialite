@@ -242,7 +242,7 @@ const AudioVideoControlComponent = () => {
           border: "none",
           color: "white",
           borderRadius: "20px",
-          fontSize: "1.5vw",
+          fontSize: "1.2vw",
         }}
       >
         {" "}
