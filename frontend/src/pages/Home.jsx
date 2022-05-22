@@ -397,7 +397,12 @@ function Home(props) {
                       </div>
                     </div>
 
-                    <div className={style.roomMembers}>
+                    <div
+                      className={style.roomMembers}
+                      style={{
+                        color: "black",
+                      }}
+                    >
                       {/* <div>
                   <img src={logo} alt="" />
                   <img src={logo} alt="" />
@@ -417,6 +422,8 @@ function Home(props) {
                             style={{
                               paddingRight: ".5vw",
                               paddingTop: "2vw",
+                              color: "black",
+                              fontWeight: "bold",
                             }}
                           >
                             {item.room_member}
@@ -427,6 +434,7 @@ function Home(props) {
                               paddingRight: ".5vw",
                               paddingTop: "1.6vw",
                               fontSize: "2vw",
+                              color: "black",
                             }}
                           >
                             <BsFillPersonFill />
