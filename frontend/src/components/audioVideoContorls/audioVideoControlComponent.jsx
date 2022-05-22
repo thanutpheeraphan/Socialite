@@ -43,7 +43,7 @@ const AudioVideoControlComponent = () => {
   function changeAudioDestination(event) {
     const audioDestination = event.target.value;
     console.log(audioDestination);
-    attachSinkId(videoElement, audioDestination);
+    // attachSinkId(videoElement, audioDestination);
   }
 
   function gotStream(stream) {
