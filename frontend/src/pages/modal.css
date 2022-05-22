@@ -128,6 +128,10 @@
   opacity: .75;
   background-color: red;
 }
+.search{
+  background-color: #F4E7D4;
+}
+
 @keyframes down {
   0% {transform: translateY(-1vw);}
   
@@ -170,11 +174,13 @@
 #container > item-b{
   grid-area: main;
   /* background-color: #ab71f8; */
-  background-color: #F4E7D4
+  background-color: #F4E7D4;
+  height: 100vh;
 }
 #container > item-c{
   grid-area: sidebar;
   background-color: #C7D9BF;  
+  height: 100%;
 }
 
 /* grid room container */
@@ -199,16 +205,22 @@
 }
 
 @media only Screen and (max-width: 420px) {
+  #container > item-a{
+    margin-left: 10vw;
+    width:100%;
+  }
   #container > item-c{
     display: none;
     
   }
   #container > item-b{
+    margin-top: 2vh;
     grid-area: main;
     width: 120%;
     
   }
   #container{
+    background-color: #F4E7D4;
     display: grid;
     width: 100%;
     height: auto;
