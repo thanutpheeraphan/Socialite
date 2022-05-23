@@ -30,7 +30,7 @@ const SafeSVG = styled.img`
   max-width: 100%;
   width: calc(20% + 25vw);
   height: auto;
-  z-index: 5;
+  z-index: 1;
   animation: ${beat} 3s ease infinite;
   margin-right: 5vw;
   @media only Screen and (max-width: 48em) {
