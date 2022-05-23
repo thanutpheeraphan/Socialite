@@ -42,7 +42,12 @@ const Dashboard2 = ({ setAuth }) => {
   return (
     <Container>
       <DSection />
-      <DSection2 data={data_count} title="Members" grid dataKey="room_member" />
+      <DSection2
+        data={data_count}
+        title="Members in rooms"
+        grid
+        dataKey="room_member"
+      />
     </Container>
   );
 };
