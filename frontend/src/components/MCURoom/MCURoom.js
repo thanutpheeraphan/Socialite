@@ -50,14 +50,7 @@ const MCURoom = (props) => {
   return (
     <div id="room-page">
       <body>
-        <main
-          class=" d-flex flex-column home-wrap"
-          style={{
-            backgroundColor: "white",
-            // test height
-            height: "92vh",
-          }}
-        >
+        <main class="home-wrap d-flex flex-column">
           <div
             class="g-top text-light"
             style={{
@@ -504,7 +497,7 @@ const MCURoom = (props) => {
                 class="a-v-details border border-success mb-2"
                 style={{
                   display: "none",
-                  minHeight: 19.5 + "vh",
+                  minHeight: 15 + "vh",
                 }}
               >
                 <div class="a-v-details-heading d-flex justify-content-between align-items-center border-bottom">
@@ -527,7 +520,7 @@ const MCURoom = (props) => {
                 style={{ color: "white" }}
               >
                 <span class="material-icons">present_to_all</span>
-                <div>Present Now</div>
+                <div className="present_text">Present Now</div>
               </div>
 
               <div
