@@ -696,8 +696,8 @@ export var Mcu = (function () {
         `"> <div class="participant-img-name-wrap display-center cursor-pointer"> <div class="participant-img"> <img src=${otherJPG} alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2" style="color:black;"> ` +
         other_user_id +
         '</div> </div> <div class="participant-action-wrap display-center" style="color:black;"> <div class="participant-action-dot display-center me-2 cursor-pointer" style="color:black;"> ' +
-        '<span class="material-icons" style="color:black;"> more_vert </span> </div>' +
-        ' <div class="participant-action-pin display-center me-2 cursor-pointer" style="color:black;"> <span class="material-icons"> push_pin </span> </div> </div> </div>'
+        '<span class="material-icons" style="color:black;"> more_vert </span> </div> </div> </div>'
+      // ' <div class="participant-action-pin display-center me-2 cursor-pointer" style="color:black;"> <span class="material-icons"> push_pin </span> </div>' +
     );
     $(".participant-count").text(userNum);
   }

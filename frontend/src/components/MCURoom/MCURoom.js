@@ -273,17 +273,17 @@ const MCURoom = (props) => {
                             class="material-icons"
                             style={{ color: "black" }}
                           >
-                            more_vert
+                            personremove
                           </span>
                         </div>
-                        <div class="participant-action-pin display-center me-2 cursor-pointer">
+                        {/* <div class="participant-action-pin display-center me-2 cursor-pointer">
                           <span
                             class="material-icons"
                             style={{ color: "black" }}
                           >
                             push_pin
                           </span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
