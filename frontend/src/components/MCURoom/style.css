@@ -234,6 +234,11 @@ video{
         
        
     }
+
+    .home-wrap{
+        max-height: 92vh;
+    }
+
     .people-headin-text{
         display:none;
     }
