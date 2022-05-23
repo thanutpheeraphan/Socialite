@@ -148,7 +148,7 @@ const MCURoom = (props) => {
                             style={{
                               height: "12vw",
                               maxHeight: "170px",
-                              width: auto,
+                              width: "auto",
                               backgroundColor: "black",
                             }}
                           ></video>
@@ -161,7 +161,7 @@ const MCURoom = (props) => {
                             style={{
                               height: "10vw",
                               maxHeight: "12vw",
-                              width: auto,
+                              width: "auto",
                               backgroundColor: "black",
                             }}
                           ></video>
