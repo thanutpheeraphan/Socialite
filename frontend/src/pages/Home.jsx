@@ -342,10 +342,16 @@ function Home(props) {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && onSubmitForm}
+              style={{
+                fontSize: "1.8vw",
+              }}
             />
             {/* <button className="btn btn-success">Search</button> */}
             <div className="searchIcon">
-              <CancelIcon onClick={clearSearch} style={{ fontSize: "2vw" }} />
+              <CancelIcon
+                onClick={clearSearch}
+                style={{ fontSize: "max(1.8vw, 15px)", paddingRight: ".25vw" }}
+              />
             </div>
           </form>
         </div>

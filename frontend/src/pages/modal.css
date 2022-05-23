@@ -241,10 +241,10 @@
   .grid-container{
     display: grid;
     justify-content: space-around;
-    grid-template-columns: 20vw 20vw;
+    grid-template-columns: 25vw 40vw;
     gap: 2vw;
     padding: 2vw;
-    padding-right: 16vw;
+    
   }
   .Box_Layout{
     margin-top: .8vh;
