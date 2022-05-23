@@ -25,12 +25,6 @@ const Title = styled.h3`
 `;
 
 export default function DSection2({ title, data, dataKey, grid }) {
-  const [tags_count, setTagsCount] = useState(0);
-  const getTagsCount = async (e) => {
-    try {
-    } catch (err) {}
-  };
-
   return (
     <Container>
       <Chart>
