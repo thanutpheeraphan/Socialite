@@ -94,6 +94,8 @@ const MCURoom = (props) => {
                             id="locaVideoPlayer"
                             style={{
                               height: "12vw",
+                              maxHeight: "170px",
+                              width: "auto",
                               backgroundColor: "black",
                             }}
                           ></video>
@@ -104,7 +106,9 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              maxHeight: "12vw",
+                              height: "12vh",
+                              maxHeight: "170px",
+                              width: "auto",
                               backgroundColor: "black",
                             }}
                           ></video>
@@ -159,8 +163,8 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              height: "10vw",
-                              maxHeight: "12vw",
+                              height: "12vh",
+                              maxHeight: "170px",
                               width: "auto",
                               backgroundColor: "black",
                             }}
