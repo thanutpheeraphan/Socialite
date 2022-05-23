@@ -94,7 +94,8 @@ height: 600px;
     cursor: pointer;
     padding: 5px;
     background-color: #C7D9BF;
-    border-radius: 5px;
+    border-radius: 100px;
+
 }
 .top-left-participant-count{
     color: #ffffff;
@@ -128,8 +129,8 @@ height: 600px;
 }
 
 .end-call-wrap{
-    -ms-transform: rotate(135deg);
-    transform: rotate(135deg);
+    /* -ms-transform: rotate(135deg);
+    transform: rotate(135deg); */
 }
 .top-remote-video-show-wrap {
     /* display: flex; */

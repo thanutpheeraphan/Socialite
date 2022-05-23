@@ -473,7 +473,7 @@ const MCURoom = (props) => {
               </div>
 
               <div class="end-call-wrap action-icon-style display-center me-2 cursor-pointer">
-                <span class="material-icons text-danger">call</span>
+                <span class="material-icons text-danger">call_end</span>
               </div>
 
               <div
