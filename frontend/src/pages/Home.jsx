@@ -57,6 +57,7 @@ function Home(props) {
   const [searchInput, setSearchInput] = useState("");
   const [tags, setTags] = useState([]);
   const [room, setRoomOffset] = useState(0);
+  const [userEnterRoomPassword, setUserEnterRoomPassword] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -142,6 +143,42 @@ function Home(props) {
     console.log(tags);
 
     addToDb();
+  };
+
+  const joinRoomWPassword = async (link, pass, name) => {
+    console.log("userEnterRoomPassword: ", userEnterRoomPassword);
+    console.log("room_id: " , link);
+	console.log("room_pass: " , pass);
+	console.log("room_name: " , name);
+
+	try {
+		let room_link = link;
+		let password = userEnterRoomPassword;
+		const body = { room_link, password };
+  		const response = await fetch(
+		  process.env.REACT_APP_API_URL + "/rooms/checkpassroom",
+		  {
+			method: "POST",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(body),
+		  }
+		);
+  
+		const parseResponse = await response.json();
+		console.log(parseResponse);
+  
+		if (response.status == 200) {
+			console.log("Joined Room");
+			joinRoomFunc(room_link);
+		 
+		} else {
+		  toast("Password is Invalid");
+		  //   toast.error(parseResponse);
+		}
+	  } catch (err) {
+		console.error(err.message);
+	  }
+
   };
 
   const ClipisText = (props) => {
@@ -245,9 +282,27 @@ function Home(props) {
   const handleShow = () => setShow(true);
 
   const [enterPass, setEnterPass] = useState(false);
+  const [linkForUserToUse, setLinkForUserToUse] = useState("");
+  const [passForUserToUse, setPassForUserToUse] = useState("");
+  const [nameForUserToUse, setNameForUserToUse] = useState("");
 
-  const handleClosePass = () => setEnterPass(false);
-  const handleShowPass = () => setEnterPass(true);
+//   let linkForUserToUse;
+//   let passForUserToUse;
+//   let nameForUserToUse;
+
+  const handleClosePass = () => {
+	  setEnterPass(false)
+	  setLinkForUserToUse("");
+      setPassForUserToUse("");
+      setNameForUserToUse("");
+	
+	};
+  const handleShowPass = (link, pass, name) => {
+	setLinkForUserToUse(link);
+	setPassForUserToUse(pass);
+	setNameForUserToUse(name);
+    setEnterPass(true);	
+  };
 
   //   const [createRoomInputs, setRoomInputs] = useState({
   //     roomName: "",
@@ -288,6 +343,12 @@ function Home(props) {
 
   const onChange = (e) => {
     setRoomInputs({ ...createRoomInputs, [e.target.name]: e.target.value });
+  };
+  const passwordOnChange = (e) => {
+    setUserEnterRoomPassword({
+      ...userEnterRoomPassword,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const onGetData = async (e) => {
@@ -410,7 +471,7 @@ function Home(props) {
                       () =>
                         item.password == ""
                           ? joinRoomFunc(item.room_link)
-                          : handleShowPass()
+                          : handleShowPass(item.room_link, item.password, item.room_name)
 
                       // handleShowPass
                     }
@@ -882,13 +943,15 @@ function Home(props) {
                   placeholder="Enter password"
                   required="required"
                   autoComplete="false"
-                  // value={password}
-                  onChange={(e) => onChange(e)}
+                  value={userEnterRoomPassword}
+                  onChange={(e) => setUserEnterRoomPassword(e.target.value)}
                 />
               </div>
             </form>
             <div>
-              <button className="confirm-button">Confirm</button>
+              <button className="confirm-button" onClick={()=> joinRoomWPassword(linkForUserToUse,passForUserToUse,nameForUserToUse)}>
+                Confirm
+              </button>
             </div>
           </div>
         </Modal.Body>
