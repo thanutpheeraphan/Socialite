@@ -405,10 +405,13 @@ function Home(props) {
                     //   getRoomData(item);
                     //   joinRoom(item);
                     // }}
+
                     onClick={
-                      () => {
-                        joinRoomFunc(item.room_link);
-                      }
+                      () =>
+                        item.password == ""
+                          ? joinRoomFunc(item.room_link)
+                          : handleShowPass()
+
                       // handleShowPass
                     }
                     //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
@@ -885,12 +888,7 @@ function Home(props) {
               </div>
             </form>
             <div>
-              <button
-                className="confirm-button"
-                onClick={console.log("checked")}
-              >
-                Confirm
-              </button>
+              <button className="confirm-button">Confirm</button>
             </div>
           </div>
         </Modal.Body>
