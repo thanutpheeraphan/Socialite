@@ -66,9 +66,9 @@ const DSection = () => {
       );
 
       const parseResponse = await response.json();
-      console.log(parseResponse["count"]);
+      // console.log(parseResponse["count"]);
       setUserCount(parseResponse["count"]);
-      //   console.log(parseResponse);
+      // console.log(parseResponse);
     } catch (err) {
       console.error(err.message);
     }
