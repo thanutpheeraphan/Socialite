@@ -247,7 +247,7 @@ function Home(props) {
   const [enterPass, setEnterPass] = useState(false);
 
   const handleClosePass = () => setEnterPass(false);
-  const handleShowPass = () => setEnterPass(false);
+  const handleShowPass = () => setEnterPass(true);
 
   //   const [createRoomInputs, setRoomInputs] = useState({
   //     roomName: "",
@@ -864,7 +864,7 @@ function Home(props) {
 
       {/* Enter pass */}
       <Modal show={enterPass} onHide={handleClosePass} animation={false}>
-        <Modal.Header className="" closeButton>
+        <Modal.Header className="modal-style" closeButton>
           <Modal.Title>Enter Password</Modal.Title>
         </Modal.Header>
 
@@ -884,6 +884,14 @@ function Home(props) {
                 />
               </div>
             </form>
+            <div>
+              <button
+                className="confirm-button"
+                onClick={console.log("checked")}
+              >
+                Confirm
+              </button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>

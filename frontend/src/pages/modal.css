@@ -75,6 +75,18 @@
 	display: inline-block;
 }
 
+.confirm-button{
+	background-color: #114C60;
+	color: #fff;
+	font-size: 20px;
+	border: none;
+	border-radius: 30px;
+	padding: 4px 15px 5px 15px;
+	text-align: center;
+  	text-decoration: none;
+	display: inline-block;
+}
+
 .tag-container {
   position: relative;
   /* tag input bar */
