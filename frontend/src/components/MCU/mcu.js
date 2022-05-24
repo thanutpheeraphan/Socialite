@@ -506,10 +506,12 @@ export var Mcu = (function () {
   var socket = null;
   var user_id = "";
   let meeting_id;
+  let host;
 
   function init(uid, mid) {
     user_id = uid;
     meeting_id = mid;
+	host = uid;
     console.log("uid: ", uid);
     console.log("mid: ", mid);
     $("#meetingContainer").show();
@@ -609,6 +611,17 @@ export var Mcu = (function () {
       );
       $("#messages").append(div);
     });
+
+    socket.on("you_have_been_kicked", function (data) {
+	  console.log("host is ", host);
+      console.log("you have been kicked: ", data.connId);
+      var newUrl = window.location.origin+"/home";
+	  window.location.replace(newUrl);
+	  toast("You have been kicked!");
+    //   console.log(window.location.origin);
+    //   console.log(window.location.origin+"/home");
+	//   console.log(window.location.host);
+    });
   }
 
   function eventHandling() {
@@ -659,13 +672,22 @@ export var Mcu = (function () {
     });
 
     $(document).on("click", ".participant-action-dot", function (e) {
+      console.log("userId: ", user_id);
       // console.log("test");
-      // var currentAnchor = $(this);
-      // console.log(currentAnchor.text());
-      var disUser = $(this).data("panel");
+      var currentAnchor = $(this);
+      console.log("currentAnchor.text: ", currentAnchor.text());
+      var disUser = $(this).parent().parent()[0].id;
+      //   var disUser1 = $(this).parent();
+      //   var disUser2 = disUser1.parent()[0].id;
+      var disUserConnectionId = disUser.slice(12);
+
       console.log(disUser);
+      //   console.log(disUser1);
+      //   console.log(disUser2);
+      console.log(disUserConnectionId);
+
       // disconnectUser(disUser);
-      // socket.emit("kick", disUser);
+      socket.emit("kick", disUserConnectionId);
       // console.log(io.Socket.sockets.get(socket.id))
       // io.sockets.sockets.forEach((socket) => {
       // 	// If given socket id is exist in list of all sockets, kill it
@@ -700,6 +722,8 @@ export var Mcu = (function () {
         ' <div class="participant-action-pin display-center me-2 cursor-pointer" style="color:black;"> <span class="material-icons"> push_pin </span> </div> </div> </div>'
     );
     $(".participant-count").text(userNum);
+    console.log("connId: ", connId);
+    console.log("other_user_id: ", other_user_id);
   }
   function getIDs() {
     var id,
