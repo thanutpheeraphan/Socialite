@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import SearchBar from "../components/SearchBar/SearchBar";
 import RooMockData from "../data/MockData.json";
 import "../components/SearchBar/SearchBar.css";
-import CancelIcon from "@material-ui/icons/Cancel";
+import CancelIcon from "@material-ui/icons/DeleteForever";
 import Chip from "@mui/material/Chip";
 import { styled } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
@@ -92,16 +92,28 @@ function Home(props) {
 
     console.error(searchInput);
   };
+
   const joinRoomFunc = async (link) => {
     // var room_id = window.prompt("Enter the room ID");
     // props.history.push({ pathname: `/room/?roomID=${room_id}` });
     room_link = link;
     const action = "join";
+
     try {
       const body = {
         room_link,
         action,
       };
+
+      const getpass = await fetch(
+        process.env.REACT_APP_API_URL + "/rooms/getrooms",
+        {
+          method: "GET",
+        }
+      );
+      const parsePass = await getpass.json();
+      console.log("check", parsePass["user_id"]);
+
       const response = await fetch(
         process.env.REACT_APP_API_URL + "/rooms/userjoined",
         {
@@ -110,6 +122,7 @@ function Home(props) {
           body: JSON.stringify(body),
         }
       );
+
       if (response.status == 200) {
         props.history.push({
           pathname: `/room/?roomID=${link}`,
@@ -202,6 +215,7 @@ function Home(props) {
   const getRoomData = (item) => {
     console.log(item);
   };
+
   const getName = async (e) => {
     try {
       const response = await fetch(
@@ -229,6 +243,11 @@ function Home(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [enterPass, setEnterPass] = useState(false);
+
+  const handleClosePass = () => setEnterPass(false);
+  const handleShowPass = () => setEnterPass(false);
 
   //   const [createRoomInputs, setRoomInputs] = useState({
   //     roomName: "",
@@ -314,6 +333,7 @@ function Home(props) {
   //   const newPage = (page - 1) * roomsInPage;
   //   setRoomOffset(newPage);
   // };
+
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -359,7 +379,7 @@ function Home(props) {
 
       <item-b>
         {/* <CircularProgress color="primary" thickness="4" size="3.5vw" /> */}
-        {data.length != 0 ? (
+        {data.length !== 0 ? (
           <div>
             <ul class="grid-container">
               {data.map((item, index) => (
@@ -385,9 +405,12 @@ function Home(props) {
                     //   getRoomData(item);
                     //   joinRoom(item);
                     // }}
-                    onClick={() => {
-                      joinRoomFunc(item.room_link);
-                    }}
+                    onClick={
+                      () => {
+                        joinRoomFunc(item.room_link);
+                      }
+                      // handleShowPass
+                    }
                     //   onClick={() => console.log(item.room_name +"  "+item.room_link)} //join room function
                   >
                     {/* Room Title */}
@@ -404,7 +427,7 @@ function Home(props) {
                       >
                         {item.room_name}
                         {/* LockRoom condition? */}
-                        {item.password != "" ? (
+                        {item.password !== "" ? (
                           <BsFillLockFill
                             style={{
                               marginRight: "1vw",
@@ -782,6 +805,7 @@ function Home(props) {
                   onChange={(e) => onChange(e)}
                 />
               </div>
+
               {/* <div className="form-group">
 				<input
                   type="submit"
@@ -836,6 +860,32 @@ function Home(props) {
               Save Changes
             </Button>
           </Modal.Footer> */}
+      </Modal>
+
+      {/* Enter pass */}
+      <Modal show={enterPass} onHide={handleClosePass} animation={false}>
+        <Modal.Header className="" closeButton>
+          <Modal.Title>Enter Password</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <div>
+            <form>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="Enter password"
+                  required="required"
+                  autoComplete="false"
+                  // value={password}
+                  onChange={(e) => onChange(e)}
+                />
+              </div>
+            </form>
+          </div>
+        </Modal.Body>
       </Modal>
     </section>
     //   <section id="container">
