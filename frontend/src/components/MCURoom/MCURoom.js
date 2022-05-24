@@ -268,14 +268,14 @@ const MCURoom = (props) => {
                         </div>
                       </div>
                       <div class="participant-action-wrap display-center">
-                        <div class="participant-action-dot display-center me-2 cursor-pointer">
+                        {/* <div class="participant-action-dot display-center me-2 cursor-pointer">
                           <span
                             class="material-icons"
                             style={{ color: "black" }}
                           >
                             highlight_off
                           </span>
-                        </div>
+                        </div> */}
                         {/* <div class="participant-action-pin display-center me-2 cursor-pointer">
                           <span
                             class="material-icons"
