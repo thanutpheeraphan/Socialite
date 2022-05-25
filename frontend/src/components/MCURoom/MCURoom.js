@@ -86,7 +86,7 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              height: "12vw",
+                              height: "15vw",
                               maxHeight: "170px",
                               width: "auto",
                               backgroundColor: "black",
@@ -99,7 +99,7 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              height: "12vh",
+                              height: "15vh",
                               maxHeight: "170px",
                               width: "auto",
                               backgroundColor: "black",
@@ -143,7 +143,7 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              height: "12vw",
+                              height: "15vw",
                               maxHeight: "170px",
                               width: "auto",
                               backgroundColor: "black",
@@ -156,7 +156,7 @@ const MCURoom = (props) => {
                             muted
                             id="locaVideoPlayer"
                             style={{
-                              height: "12vh",
+                              height: "15vh",
                               maxHeight: "170px",
                               width: "auto",
                               backgroundColor: "black",
