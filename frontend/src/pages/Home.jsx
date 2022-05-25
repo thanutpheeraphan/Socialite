@@ -147,38 +147,36 @@ function Home(props) {
 
   const joinRoomWPassword = async (link, pass, name) => {
     console.log("userEnterRoomPassword: ", userEnterRoomPassword);
-    console.log("room_id: " , link);
-	console.log("room_pass: " , pass);
-	console.log("room_name: " , name);
+    console.log("room_id: ", link);
+    console.log("room_pass: ", pass);
+    console.log("room_name: ", name);
 
-	try {
-		let room_link = link;
-		let password = userEnterRoomPassword;
-		const body = { room_link, password };
-  		const response = await fetch(
-		  process.env.REACT_APP_API_URL + "/rooms/checkpassroom",
-		  {
-			method: "POST",
-			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(body),
-		  }
-		);
-  
-		const parseResponse = await response.json();
-		console.log(parseResponse);
-  
-		if (response.status == 200) {
-			console.log("Joined Room");
-			joinRoomFunc(room_link);
-		 
-		} else {
-		  toast("Password is Invalid");
-		  //   toast.error(parseResponse);
-		}
-	  } catch (err) {
-		console.error(err.message);
-	  }
+    try {
+      let room_link = link;
+      let password = userEnterRoomPassword;
+      const body = { room_link, password };
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/rooms/checkpassroom",
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
+      const parseResponse = await response.json();
+      console.log(parseResponse);
+
+      if (response.status == 200) {
+        console.log("Joined Room");
+        joinRoomFunc(room_link);
+      } else {
+        toast("Password is Invalid");
+        //   toast.error(parseResponse);
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const ClipisText = (props) => {
@@ -286,22 +284,21 @@ function Home(props) {
   const [passForUserToUse, setPassForUserToUse] = useState("");
   const [nameForUserToUse, setNameForUserToUse] = useState("");
 
-//   let linkForUserToUse;
-//   let passForUserToUse;
-//   let nameForUserToUse;
+  //   let linkForUserToUse;
+  //   let passForUserToUse;
+  //   let nameForUserToUse;
 
   const handleClosePass = () => {
-	  setEnterPass(false)
-	  setLinkForUserToUse("");
-      setPassForUserToUse("");
-      setNameForUserToUse("");
-	
-	};
+    setEnterPass(false);
+    setLinkForUserToUse("");
+    setPassForUserToUse("");
+    setNameForUserToUse("");
+  };
   const handleShowPass = (link, pass, name) => {
-	setLinkForUserToUse(link);
-	setPassForUserToUse(pass);
-	setNameForUserToUse(name);
-    setEnterPass(true);	
+    setLinkForUserToUse(link);
+    setPassForUserToUse(pass);
+    setNameForUserToUse(name);
+    setEnterPass(true);
   };
 
   //   const [createRoomInputs, setRoomInputs] = useState({
@@ -471,7 +468,11 @@ function Home(props) {
                       () =>
                         item.password == ""
                           ? joinRoomFunc(item.room_link)
-                          : handleShowPass(item.room_link, item.password, item.room_name)
+                          : handleShowPass(
+                              item.room_link,
+                              item.password,
+                              item.room_name
+                            )
 
                       // handleShowPass
                     }
@@ -827,7 +828,7 @@ function Home(props) {
                   placeholder="Room name"
                   required="required"
                   //
-                  autoComplete="false"
+                  autoComplete="off"
                   //
                   value={room_name}
                   onChange={(e) => onChange(e)}
@@ -841,7 +842,7 @@ function Home(props) {
                   placeholder="Password"
                   required="required"
                   //
-                  autoComplete="false"
+                  autoComplete="off"
                   //
                   value={password}
                   onChange={(e) => onChange(e)}
@@ -949,7 +950,16 @@ function Home(props) {
               </div>
             </form>
             <div>
-              <button className="confirm-button" onClick={()=> joinRoomWPassword(linkForUserToUse,passForUserToUse,nameForUserToUse)}>
+              <button
+                className="confirm-button"
+                onClick={() =>
+                  joinRoomWPassword(
+                    linkForUserToUse,
+                    passForUserToUse,
+                    nameForUserToUse
+                  )
+                }
+              >
                 Confirm
               </button>
             </div>
