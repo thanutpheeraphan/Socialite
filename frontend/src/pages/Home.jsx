@@ -40,7 +40,6 @@ import user1 from "../img/user1.jpg";
 import user2 from "../img/user2.jpg";
 import { fontFamily, fontSize } from "@mui/system";
 import { Hidden } from "@mui/material";
-import usePagination from "@mui/material/usePagination/usePagination";
 
 function Home(props) {
   const [createRoomInputs, setRoomInputs] = useState({

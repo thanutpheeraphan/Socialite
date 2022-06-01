@@ -62,6 +62,7 @@ const SignUp = ({ setAuth }) => {
             <form className="sign-up-form" onSubmit={onSubmitForm}>
               <label>
                 <input
+                  class="email"
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -71,6 +72,7 @@ const SignUp = ({ setAuth }) => {
               </label>
               <label>
                 <input
+                  class="password"
                   type="password"
                   name="password"
                   placeholder="Password"
